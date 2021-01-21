@@ -1,0 +1,1557 @@
+<!-- $Id: ptII8.0.release.htm 59132 2010-09-20 21:01:12Z cxh $ -->
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<title>Ptolemy II 8.0.1 Release Notes</title>
+<link href="default.css" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="#faf0e6">
+<h1>Ptolemy II 8.0.1 Release Notes</h1>
+
+Ptolemy II is a set of Java packages supporting heterogeneous,
+concurrent modeling and design.  Its <code>kernel</code> package
+supports clustered hierarchical graphs, which are collections of
+<I>entities</I> and <I>relations</I> between those entities.  Its
+<code>actor</code> package extends the kernel so that entities have
+functionality and can communicate via the relations.  Its
+<I>domains</I> extend the actor package by imposing <I>models of
+computation</I> on the interaction between entities.  Examples of
+models of computation include discrete-event systems, dataflow,
+process networks, synchronous/reactive systems, and communicating
+sequential processes.
+
+ <p>Ptolemy II includes a number of support packages, such as 
+
+ <br><code>data</code>, providing a type system, data encapsulation and an
+ expression parser,
+
+ <br><code>plot</code>, providing visual display of data,
+
+ <br><code>math</code>, providing matrix and vector math and signal
+processing functions, and
+
+ <br><code>graph</code>, providing graph-theoretic manipulations.
+
+
+ <p>The three volumes of the Ptolemy II Design Document
+describes the Ptolemy II design and
+the implementation of the Java classes.
+<ul>
+ <li><a href="design/ptIIdesign1-intro.pdf">Volume 1: Introduction to Ptolemy II</a> (Local PDF)
+ <li><a href="design/ptIIdesign2-software.pdf">Volume 2: Ptolemy II Software Architecture</a> (Local PDF)
+ <li><a href="design/ptIIdesign3-domains.pdf">Volume 3: Ptolemy II Domains</a> (Local PDF)
+</ul>
+
+ <p>The
+"<a href="design/usingVergil/index.htm">Using Vergil</a>"
+describes how to use Vergil.
+
+
+<h2>Complete List of Domains in Ptolemy II</h2>
+ <!-- We include this list here since we will be posting the release notes
+to the newsgroups etc.  See also main.htm
+ -->
+<ul>
+<li> <a href="../ptolemy/domains/ci/doc/body.htm" target="body">CI</a>:
+	 component interaction (experimental),
+<li> <a href="../ptolemy/domains/continuous/doc/body.htm" target="body">Continuous</a>:
+	continuous-time modeling (redesign of the CT domain)
+<li> <a href="../ptolemy/domains/csp/doc/body.htm" target="body">CSP</a>:
+	 communicating sequential processes,
+<li> <a href="../ptolemy/domains/ct/doc/body.htm" target="body">CT</a>:
+	continuous-time modeling,
+<li> <a href="../ptolemy/domains/de/doc/body.htm" target="body">DE</a>:
+	discrete-event modeling,
+<li> <a href="../ptolemy/domains/dde/doc/body.htm" target="body">DDE</a>:
+	distributed discrete events (experimental),
+<li> <a href="../ptolemy/domains/ddf/doc/body.htm" target="body">DDF</a>:
+	dynamic dataflow
+<li> <a href="../ptolemy/domains/dt/doc/body.htm" target="body">DT</a>:
+	discrete time,
+<li> <a href="../ptolemy/domains/fsm/doc/body.htm" target="body">FSM</a>:
+	finite state machines,
+<li> <a href="../ptolemy/domains/giotto/doc/body.htm" target="body">Giotto</a>:
+	periodic time-driven (experimental),
+<li> <a href="../ptolemy/domains/gr/doc/body.htm" target="body">GR</a>:
+	3-D graphics (experimental),
+ <!-- petrinet ??-->
+<li> <a href="../ptolemy/domains/hdf/doc/body.htm" target="body">HDF</a>:
+	heterochronous dataflow
+<li> <a href="../ptolemy/domains/modal/doc/body.htm" target="body">Modal</a>:
+	 finite state machines and modal model (redesign of the FSM domain)
+<li> <a href="../ptolemy/domains/pn/doc/body.htm" target="body">PN</a>:
+	process networks,
+<li> <a href="../ptolemy/domains/psdf/doc/body.htm" target="body">PSDF</a>:
+	parameterized synchronous dataflow (experimental),
+<li> <a href="../ptolemy/domains/rendezvous/doc/body.htm" target="body">Rendezvous</a>:
+	rendezvous (experimental),
+<li> <a href="../ptolemy/domains/sdf/doc/body.htm" target="body">SDF</a>:
+	synchronous dataflow,
+<li> <a href="../ptolemy/domains/sr/doc/body.htm" target="body">SR</a>:
+	synchronous/reactive,
+<li> <a href="../ptolemy/domains/tm/doc/body.htm" target="body">TM</a>:
+	timed multitasking (experimental), and
+<li> <a href="../ptolemy/domains/wireless/doc/body.htm" target="body">Wireless</a>:
+	 wireless (experimental).
+
+</ul>
+
+<h2>Platforms</h2>
+
+The core of Ptolemy II 8.0.1 is 100% Java, so it should work on any
+platform that has JDK 1.5 or later.
+
+ <p>We developed Ptolemy II 8.0.1 under Mac OS 10.5 and Windows Server 2003
+and with JDK1.5.0._22.
+
+<p>Ptolemy II 8.0 will not compile under Java 1.3 because we use the
+java.lang.URI class, which is present only in Java 1.4 and later.
+JDK 1.5 or later is required so that these packages can use generics:
+backtrack, ptalon and others.
+
+
+ <p>Ptolemy II has been compiled and run
+under IBM JDK 1.6.0.  There are the following limitations
+under IBM JDK 1.6.0
+<menu>
+<li> The Copernicus code generator does not work.
+<li> Caltrop does not work.
+<li> The IBM JDK seems to return directory contents in a different
+order than the Sun JDK.  Thus actor.lib.io.DirectoryListing
+might return elements in a different order.
+</menu>
+
+
+
+
+<!--whatsnew-->
+
+<p>Contents:
+<ul>
+<li> <a href="#highlights">Highlights</a>
+    <ul>
+    <li><a href="#modelTransformation">Model Transformation</a>
+   <li><a href="#pteraDomain">Ptera Domain</a>
+   <li><a href="#causalityanalysis">Causality Analysis</a>
+   <li><a href="#continuousModal">Continuous and Modal Domains</a>
+  </ul>
+<li> <a href="#other">Other Key New Capabilities</a>
+<li> <a href="#features">Additional features</a>
+<li> <a href="#demos">New demonstrations</a>
+<li> <a href="#libraries">New and Enhanced Actor Libraries</a>
+<li> <a href="#worksinprogress">Works in Progress</a>
+<li> <a href="#bugs">Bug fixes</a>
+<li> <a href="#limitations">Limitations</a>
+</ul>
+
+<h2><a name="highlights">Highlights</a></h2>
+
+<!-- a little space -->
+<p> &nbsp;
+<h3><a name="modelTransformation">Model Transformation</a></h3>
+
+<p>The model transformation facility provides a framework for the
+analysis and transformation of actor models using model transformation
+techniques.
+
+<p>The design of large-scale models poses a number of challenges. As
+the size of the models increases to thousands of actors or hundreds of
+thousands of actors, analysis and consistent modification on the
+models become extremely hard. Furthermore, to maximize component
+reuse, a systematic approach is needed for the specification and
+maintenance of common patterns in the models and the transformation of
+those patterns.
+
+<p>The model transformation framework to be developed in this project
+aims to support the flexible specification of patterns and
+replacements by means of rules in graph grammar. An intuitive
+graphical user interface will be built. For novice users, a set of
+common transformations will be included in a library to facilitate
+their common tasks.
+
+<p>The transformations are models in their own right. They can be
+embedded in larger models hierarchically. Heterogeneous models of
+computation can be used to control the application of individual
+"atomic" transformations. This makes it easy to create sophisticated
+transformations by composing simple ones in a manageable and
+disciplined way. The sophisticated transformations will also take
+advantage of the concurrency inherent in those models of computation.
+
+<p>Model transformation can be applied as an optimization of modal
+models. These are hierarchical state machines with refinements in
+their states, which are sub-models to be executed when those states
+are active. The current implementation includes the complete
+description of each refinement in the model description, even though
+refinements of the states in a state machine tend to have large
+commonality. With the transformation technique, only one refinement
+needs to be stored completely. The others are obtained by
+transformations performed on the stored refinement. This eliminates
+redundancy and eases the job of modifying multiple refinements
+consistently.
+
+<p>Other applications of the model transformation technique include
+recognizing common design patterns in the models in a static analysis,
+replacing exiting design patterns with more efficient ones, and
+reusing design patterns by incorporating them into new models.
+
+<h4>References</h4>
+<ul>
+<li>Thomas Huining Feng, "<a href="http://www.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-77.html#in_browser" target="_top">Model Transformation with Hierarchical Discrete-Event Control</a>," Ph.D. Dissertation, EECS Department, University of California, Berkeley. UCB/EECS-2009-77. May 2009.
+<li>Christopher Brooks, Chihhong Cheng, Thomas Huining Feng, Edward A. Lee and Reinhard von Hanxleden, "<a href="http://chess.eecs.berkeley.edu/pubs/486.html#in_browser" target="_top">Model Engineering using Multimodeling</a>," In <a href="http://www.info.fundp.ac.be/mccm/2008/?page_id=23#in_browser" target="_top">1st International Workshop on Model Co-Evolution and Consistency Management (MCCM '08)</a>, Toulouse, France, Sep. 2008.
+<li>Thomas Huining Feng and Edward A. Lee, "<a href="http://chess.eecs.berkeley.edu/pubs/487.html#in_browser" target="_top">Scalable Models Using Model Transformation</a>," In <a href="http://www.artist-embedded.org/artist/ACES-MB-08.html#in_browser" target="_top">1st International Workshop on Model Based Architecting and Construction of Embedded Systems (ACESMB 2008)</a>, Toulouse, France, Sep. 2008.
+<li>Thomas Huining Feng, Miriam Zia, and Hans Vangheluwe, "<a href="http://chess.eecs.berkeley.edu/pubs/593.html#in_browser" target="_top">Multi-Formalism Modelling and Model Transformation for the Design of Reactive Systems</a>," In <a href="http://www.sce.carleton.ca/faculty/wainer/SCSC07/#in_browser" target="_top">2007 Summer Computer Simulation Conference (SCSC 2007)</a>, San Diego, CA, USA, Jul. 2007.
+</ul>
+
+<h4>Model Transformation Demonstrations</h4>
+
+<ul>
+  <li> <a href="../ptolemy/domains/ptera/demo/AdaptiveCarWash/AdaptiveCarWash.htm">AdaptiveCarWash</a> (With ModelUpdater) </li>
+  <li> <a href="../ptolemy/actor/ptalon/gt/demo/Adder/Adder.htm">Adder</a> (Requires Ptalon and Antlr)</li>
+  <li> <a href="../ptolemy/actor/gt/demo/BouncingBallX2/BouncingBallX2.htm">BouncingBallX2</a> (Requires Java 3D, see the <a href="../ptolemy/domains/gr/doc/main.htm">GR domain</a>)</li>
+  <li> <a href="../ptolemy/actor/gt/demo/ConstOptimization/ConstOptimization.htm">ConstOptimization</a> (Using Model-Based Transformation) </li>
+  <li> <a href="../ptolemy/actor/gt/demo/ConstOptimization/ConstOptimizationDE.htm">ConstOptimization DE</a> (With TransformationController) </li>
+  <li> <a href="../ptolemy/actor/gt/demo/ConstOptimization/ConstOptimizationDDF.htm">ConstOptimization DDF</a> (Without TransformationController) </li>
+  <li> <a href="../ptolemy/actor/gt/demo/DiningPhilosophers/DiningPhilosophers.htm">DiningPhilosophers</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/GameOfLife/GameOfLife.htm">GameOfLife</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/HierarchyFlattening/HierarchyFlattening.htm">HierarchyFlattening</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/MapReduce/MapReduce.htm">MapReduce</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/MapReduce/MapReduceDDF.htm">MapReduceDDF</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/ModelExecution/ModelExecution.htm">ModelExecution</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/ModelGeneration/ModelGeneration.htm">ModelGeneration</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/ModelGeneration/ModelGenerationDE.htm">ModelGeneration DE</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/PublisherTest/PublisherTest.htm">PublisherTest</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/RegressionTest/RegressionTest.htm">RegressionTest</a> </li>
+  <li> <a href="../ptolemy/actor/gt/demo/SinewaveOptimization/SinewaveOptimization.htm">SinewaveOptimization</a> </li>
+  <li>Sample design patterns may be found under MoreLibraries -&gt; DesignPatterns.  To use
+  a design pattern, drag a design pattern into a model.
+</ul>
+<p>Primary Model Transformation Developer: Thomas Huining Feng
+
+
+
+<!-- a little space -->
+<p> &nbsp;
+<h3><a name="pteraDomain">Ptera (Ptolemy Event Relationship Actor) Domain</a></h3>
+
+<p>The Ptera (Ptolemy Event Relationship Actor) domain is a discrete-event model of computation. A model in Ptera is represented with a graph of nodes and edges, where nodes represent events and directed edges between events represent scheduling relation. One or more events can be selected as initial events, which are scheduled
+at model time 0.0. When an event is fired, it possibly performs certain actions, and if there are outgoing edges from that event, the events at the end points of those edges are scheduled after non-negative delays. One or more events can also be selected as final events. The firing of final events causes the event
+queue to be emptied after their actions are performed, and therefore no more events can be processed.
+
+<p>The Ptera domain supports a different kind of modal models called PteraModalModels, compared to modal models using FSMs (Finite State Machines) as the control. A PteraModalModel uses Ptera at the top level, and each event is refined into a sub-model. The refinements can use Ptera and any other Ptolemy models of computation.
+
+<p>A Ptera model is timed. Although it should work in many domains, the DE (Discrete-Event) domain or Ptera domain itself are recommended. When embedded in those domains, the scheduling of the Ptera model is delegated to the container by calling the fireAt() function of its director.
+
+<p>There are many useful additional features for Ptera, such as canceling edges and parameters. A canceling edge, denoted by a dotted line, cancels a previously scheduled event instead of scheduling a new one. If the pointed to event has multiple instances in the event queue, then the first instance is cancelled.
+Events may also have parameters, and the actual values for those parameters are specified by the expressions on the edges that schedule them. Those expressions are evaluated at run-time. The events may refer to the values of those parameters in their actions by parameter names.
+
+<h4>References</h4>
+<ul>
+<li>Thomas Huining Feng, "<a href="http://www.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-77.html#in_browser" target="_top">Model Transformation with Hierarchical Discrete-Event Control</a>," Ph.D. Dissertation, EECS Department, University of California, Berkeley. UCB/EECS-2009-77. May 2009.
+<li>Lee W. Schruben, "<a href="http://doi.acm.org/10.1145/182.358460#in_browser" target="_top">Simulation Modeling with Event Graphs</a>," Communications of the ACM (CACM), 26(11): 957-963, 1983.
+</ul>
+
+<h4>Ptera Domain Demonstrations</h4>
+
+<ul>
+  <li> <a href="../ptolemy/domains/ptera/demo/AdaptiveCarWash/AdaptiveCarWash.htm">AdaptiveCarWash</a> (With ModelUpdater) </li>
+  <li> <a href="../ptolemy/domains/ptera/demo/AdaptiveCarWash/AdaptiveCarWashFSM.htm">AdaptiveCarWash</a> (With FSM Submodel) </li>
+  <li> <a href="../ptolemy/domains/ptera/demo/CarWash/CarWash.htm">CarWash</a> </li>
+  <li> <a href="../ptolemy/domains/ptera/demo/CarWash/CarWashDE.htm">CarWash</a>  (With DE) </li>
+  <li> <a href="../ptolemy/actor/gt/demo/ConstOptimization/ConstOptimization.htm">ConstOptimization</a> (Using Model-Based Transformation) </li>
+  <li> <a href="../ptolemy/actor/gt/demo/ConstOptimization/ConstOptimizationDE.htm">ConstOptimization</a> (With TransformationController) </li>
+  <li> <a href="../ptolemy/actor/gt/demo/GameOfLife/GameOfLife.htm">GameOfLife</a> </li>
+  <!-- Don't include demos in apps, we don't ship them ../ptolemy/apps/naomi/demo/Intersection/Intersection.htm -->
+  <li> <a href="../ptolemy/domains/ptera/demo/SimultaneousCarWash/SimultaneousCarWash.htm">SimultaneousCarWash</a> </li>
+  <li> <a href="../ptolemy/domains/ptera/demo/TrafficLight/TrafficLight.htm">TrafficLight</a> </li>
+</ul>
+
+<p>Primary Ptera Developer: Thomas Huining Feng
+
+<!-- a little space -->
+<p> &nbsp;
+
+<h3><a name="causalityanalysis">Causality Analysis</a></h3>
+Ptolemy II 8.0 includes an update to our Causality Analysis framework.
+We identified performance problems with our current
+non-conservative causality analysis for modal models within
+discrete-event (DE) systems. In this scheme, causality analysis is
+performed on the entire model at run time each time there is a mode
+change in the model. This mechanism is far too costly. We are
+investigating techniques for performing the causality analysis in a
+compositional way for the various modes at compile
+time. Unfortunately, brute force solutions result in exponentially
+growing memory requirements for the results of the causality analysis.
+
+<p>We designed, implemented and reviewed an interface that defines a
+causality interfaces for actor networks as described in the paper
+"<a href="#ZhouLee:08:CausalityInterfaces">Causality Interfaces for Actor Networks</a>."
+
+<p>Causality interfaces are also described in Ye Zhou Ph.D. Thesis,
+"<a href="#Zhou:07:Interface">Interface Theories for Causality Analysis in Actor Networks.</a>"
+
+
+<p>Causality interfaces represent dependencies between input and output
+ports of an actor and can be used to perform scheduling or static
+analysis on actor models.  
+
+<p>This substantial new work helps address performance problems in
+large Discrete Event (DE) models.  The new work provides
+more efficient static analysis for directed cycles and scheduling.
+This work solved a bug concerning execution time with DE models
+that had many actors at one level of hierarchy.  The table
+below illustrates the improvement.
+<center>
+<p>
+<table border="1">
+  <tr>
+   <th># of actors</th>
+   <th>Total execution time before</th>
+   <th>Total execution time after</th>   
+  </tr>
+  <tr>
+    <td>100</td>
+   <td>~0.2 sec.</td>
+   <td>~0.2 sec.</td>
+ </tr>
+  <tr>
+    <td>600</td>
+   <td>149 sec.</td>
+   <td>0.7 sec.</td>
+ </tr>    
+ <caption>Run times for DE models</caption>
+</table>
+</p>
+</center>
+
+<p>    One of the challenges in complex, heterogeneous models is that
+   portions of the model have temporal behavior while other portions
+   are purely functional. We have reworked the interfaces that
+   hierarchically heterogeneous models in Ptolemy II present to one
+   another for managing the passage of time. This rework supports
+   much more robust multithreaded and distributed execution without
+   compromising temporal coherence. Concretely, we have defined a
+   formalism whereby a model requests temporal behavior of its
+   container in the hierarchy, and the container responds with an
+   indication of the extent to which it can honor the request.  If
+   the extent is sufficient for the application, then the models are
+   compatibly composed. Otherwise, they are not, and the model is
+   marked defective.
+<ul>
+<li><a href="codeDoc/ptolemy/actor/util/BooleanDependency.html">BooleanDependency</a>
+<li><a href="codeDoc/ptolemy/actor/util/BreakCausalityInterface.html">BreakCausalityInterface</a>
+<li><a href="codeDoc/ptolemy/actor/util/CausalityInterface.html">CausalityInterface</a>
+<li><a href="codeDoc/ptolemy/actor/util/CausalityInterfaceForComposites.html">CausalityInterfaceForComposites</a>
+<li><a href="codeDoc/ptolemy/actor/util/DefaultCausalityInterface.html">DefaultCausalityInterface</a>
+<li><a href="codeDoc/ptolemy/actor/util/Dependency.html">Dependency</a>
+<li><a href="codeDoc/ptolemy/actor/util/RealDependency.html">RealDependency</a>
+<li><a href="codeDoc/ptolemy/actor/util/SuperdenseDependency.html">SuperdenseDependency</a>
+</ul>
+<h4>References</h4>
+<ul>
+<li><a name="ZhouLee:08:CausalityInterfaces">Ye Zhou</a>, Edward A. Lee. <a
+href="http://chess.eecs.berkeley.edu/pubs/473.html#in_browser" target="_top">Causality
+Interfaces for Actor Networks</a>, <i>ACM
+Transactions on Embedded Computing Systems (TECS)</i>,
+7(3):1-35, April 2008.
+<li><a name="Zhou:07:Interface">Ye Zhou</a>
+<a href="http://chess.eecs.berkeley.edu/pubs/302.html#in_browser" target="_top"><i>Interface Theories for Causality Analysis in Actor Networks</i></a>, PhD thesis,  University of
+California, Berkeley, May, 2007.
+</ul>
+
+<p> &nbsp;
+<h3><a name="continuousModal">Continuous and Modal Domains</a></h3>
+<p>Ptolemy II 8.0 includes a substantial rework of modal models and
+the underlying finite state machine infrastructure to make them work
+predictably and consistently across domains.</p>
+
+<p>Ptolemy II 8.0 includes a new implementation of continuous-time models
+based on the semantics given in "<a href="#LeeZheng:07:Leveraging">Synchronous Language Principles for Heterogeneous Modeling
+and Design of Embedded Systems</a>." In particular, the Continuous domain cleanly supports
+continuous-time models (using an ODE solver), discrete-event models,
+and arbitrary mixtures of the two, including signals that combine
+continuous-time segments with discrete events. It also interoperates
+cleanly with most other domains (pretty much all except PN and
+Rendezvous, for which there does not appear to be reasonable semantic
+model of such an interaction). Modal models are also cleanly supported
+with the Continuous domain, enabling hybrid system modeling with a
+rigorous semantics. The Continuous domain is expected to eventually
+replace CT.</p> 
+
+<h4>New Continuous and Modal Demonstrations</h4>
+<h5>Continuous</h5>
+<ul>
+<li><a href="../ptolemy/domains/continuous/demo/CarTracking/CarTracking.htm">Car Tracking</a>
+<li><a href="../ptolemy/domains/continuous/demo/LevelCrossingDetectorDetectsGlitches/LevelCrossingDetectorDetectsGlitches.htm">LevelCrossingDetectorDetectsGlitches</a>
+</ul>
+
+<h5>Modal</h5>
+The Modal models below are copies of the FSM models with the same name but
+the Modal models use the continuous domain, whereas the FSM models use
+the ct domain.
+<ul>
+<li><a href="../ptolemy/domains/modal/demo/ABP/ABP.htm">ABP</a>
+<li><a href="../ptolemy/domains/modal/demo/Blending/Blending.htm">Blending</a>
+<li><a href="../ptolemy/domains/modal/demo/Case/Case.htm">Case</a>
+<li><a href="../ptolemy/domains/modal/demo/ChainedTransitions/ChainedTransitions.htm">Chaine dTransitions</a>
+<li><a href="../ptolemy/domains/modal/demo/ModalBSC/ModalBSC.htm">ModalBSC</a>
+<li><a href="../ptolemy/domains/modal/demo/MultipleRuns/MultipleRuns.htm">MultipleRuns</a>
+<li><a href="../ptolemy/domains/modal/demo/StateTracker/StateTracker.htm">StateTracker</a>
+<li><a href="../ptolemy/domains/modal/demo/SystemLevelType/README.htm">System Level Type Models</a>
+</ul>
+<h4>References</h4>
+<ul>
+<li><a name="LeeZheng:07:Leveraging">Edward A. Lee, Haiyang Zheng</a>. <a
+href="http://chess.eecs.berkeley.edu/pubs/430.html#in_browser" target="_top">Leveraging
+Synchronous Language Principles for Heterogeneous Modeling
+and Design of Embedded Systems</a>, Proceedings of the
+7th ACM & IEEE international conference on Embedded
+software, Christoph M. Kirsch,  Reinhard Wilhelm (eds.),
+ACM, 114-123, 2007.
+</ul>
+
+<h2><a name="other">Other Key New Capabilities</a></h2>
+<ul>
+<li> New width inference algorithm
+<br>Relations have a width specifying the number of channels of that relation.
+Having to explicitly specify this width can be a tedious job. To make it even
+worse, the addition of one relation to a multiport might result in a model
+builder needing to go through the model again to adapt widths. To cope
+with this you can now set the width to <i>Auto</i>. In this case the width of the relation
+is inferred from other relations or other ports with a graph algorithm. This
+algorithm removes a lot of restriction that were present in the previous implementation.
+In this implementation we tried to
+come up with a solution that can infer the width of all relations for most scenarios without
+imposing a large performance cost. The algorithm propagates the widths
+it knows and at multiports tries to infer the widths of other relations from
+these propagated widths.</p>
+<p>For certain actors there is a relation between the widths of the input ports
+and the widths of the output ports. To resolve this problem, <i>width constraints</i> on
+ports have been introduced. There exists two types of width constraints.
+The first one imposes an equality constraints between two different ports. With the second type of constraints you can set the width of a port equal to
+a certain parameter.</p>
+
+<p>The last step of the algorithm is a <i>consistency check</i> in which it is checked
+that the solution obtained by the width inference algorithm is a unique one.
+A non unique solution is treated as a error. </p>
+
+<p>In this release the default width has also been changed from <i>1</i> to <i>Auto</i>.
+<br>(Bert Rodiers) </p>
+</li>
+
+<li> <i>New model generators for verification</i>.
+<p> This release contains capabilities to generate, from Ptolemy models, other types of models,
+suitable for formal verification. In particular, the <i>Formal Model Converter</i> component
+(developed by Chihhong Patrick Cheng) allows to generate models compatible with the SMV or NuSMV 
+model-checkers, from Ptolemy models in the SR domain. Also, the <i>RTMaudeCodeGenerator</i> component
+(developed by Kyungmin Bae) allows to generate models compatible with the Real Time Maude tool,
+from Ptolemy models in the DE domain.
+</p>
+<p>Please see the <a href="../ptolemy/verification/README.html">Verification README file</a> for details.
+</p>
+
+<h4>References</h4>
+<ul>
+<li>Chihhong Patrick Cheng, Teale Fristoe and Edward A. Lee. <a
+href="http://www.eecs.berkeley.edu/Pubs/TechRpts/2008/EECS-2008-41.html#in_browser" target="_top">Applied Verification: The Ptolemy Approach</a>.
+EECS Department,
+University of California, Berkeley,
+Technical Report No. UCB/EECS-2008-41.
+April 19, 2008.
+</ul>
+(Chihong Patrick Cheng, Teale Fristoe, Kyunming Bae)
+</li>
+
+</ul>
+
+<h2><a name="features">Additional Features</a></h2>
+<ul>
+<li><i>Kieler Graph Layout</i>
+<br>Experiment graph layout support using <a href="http://rtsys.informatik.uni-kiel.de/trac/kieler/wiki/Releases/Layout#in_browser" target="_top">Kieler</a>, from University of Kiel.
+This facility will automatically arrange the icons in a model.  To use
+  the layout tool, see the Graph -&gt; Automatic Layout menu choice.
+<br>(Miro Spoenemann (University of Kiel), Hauke Fuhrmann (University of Kiel))
+</li>
+
+<li><i><a name="configurableui">Configurable User Interface</a></i>
+<br>GUI (graphical user interface) properties allow Ptolemy II users or redistributors
+to configure the Ptolemy user interface by simply making changes to configuration
+files in the XML format. For example, buttons on the tool bar or menu items specific
+to a certain application domain can be added that trigger user-defined actions. Those
+actions may be defined in Java classes or as MoML change requests to be applied to the
+model being edited.
+<p>Please see the <a href="codeDoc/ptolemy/actor/gui/properties/package-summary.html">
+ptolemy.actor.gui.properties</a> documentation for details.</p>
+<p>(Thomas Huining Feng)</p>
+</li>
+
+<li><i><a name="threadedcomposite">ThreadedComposite</a></i>
+<br>The ThreadedComposite actor supports execution of either an atomic actor
+or a composite actor in a separate thread. It thus brings multithreading
+to Ptolemy domains where the director does not use threads, such as
+DE, SR, and SDF.  The actor can be used to get parallel execution on
+multicore machines, to execute actors that block on I/O without blocking
+the model execution, and to execute actors in the background.
+<p><i>ThreadedComposite demonstrations</i>
+<ul>
+<li> <a href="../ptolemy/actor/lib/hoc/demo/ThreadedComposite/BackgroundExecution.htm"></a>Background Execution</li>
+<li> <a href="../ptolemy/actor/lib/hoc/demo/ThreadedComposite/ConcurrentChat.htm"></a>Concurrent Chat</li>
+<li> <a href="../ptolemy/actor/lib/hoc/demo/ThreadedComposite/MulticoreExecution.htm"></a>Multicore Execution</li>
+<li> <a href="../ptolemy/actor/lib/hoc/demo/ThreadedComposite/ParallelExecution.htm"></a>Parallel Execution</li>
+<li> <a href="../ptolemy/actor/lib/hoc/demo/ThreadedComposite/SpontaneousSources.htm"></a>Spontaneous Sources</li>
+</ul>
+(Edward A. Lee)
+</li>
+
+<li><i>Lazy Opening of Composites</i>
+<br>
+LazyTypedCompositeActor is a replacement for TypedCompositeActor that does lazy evaluation, which means that he contents of a LazyTypedCompositeActor are not evaluated at runtime, instead they are evaluated at start up time.  LazyTypedCompositeActor was developed to improve the opening time of very large models. One issue is that this changes the results slightly because different results will occur if the results depend on the order in which actors are created. Unforuntately, the scheme we have for setting seeds in the random number generator "deterministically" has this property.
+
+<ul>
+ <li><a href="codeDoc/ptolemy/kernel/util/LazyComposite.html">LazyComposite</a>
+ <li><a href="codeDoc/ptolemy/actor/LazyTypedCompositeActor.html">LazyTypedCompositeActor</a>
+ <li><a href="codeDoc/ptolemy/moml/filter/LazyTypedCompositeActorChanges.html">LazyTypedCompositeActorChanges</a> - a MoMLFilter that may be used to convert models to use LazyTypedCompositeActor
+ <li><a href="codeDoc/ptolemy/moml/ConvertToLazy.html">ConvertToLazy</a> - A class that converts models to use LazyTypedCompositeActor 
+</ul>
+(Edward A. Lee, Christopher Brooks)
+</li>
+
+<li><i>printPDF</i>
+<br>Vergil and Ptplot now handle an optional <code>-printPDF</code>
+command line argument.  This option finds the first printer with the
+string <code>PDF</code> in the name and then prints to that printer.
+Thus, <code>-printPDF</code> requires that the full (non-free) version of
+Adobe Acrobat be installed, or some other method of printing to PDF.
+Unfortunately, the location of the resulting PDF file is not easily
+controlled, on the Mac look in <code>~/Documents/Java Printing.pdf</code>.
+<br>(Christopher Brooks)
+</li>
+
+</ul>
+
+
+
+<h2><a name="demos">New demonstrations</a></h2>
+<!-- grep "Only in" /tmp/pt78.diff | grep 8.1.devel | grep demo | awk '{if ($4 !~ /\./) {print "<a href=\"" $3 "/" $4}}' | sed 's@:/@/@'| sed 's@src/ptII8.1.devel/ptolemy@../..@' | sed 's@/\([^/]*$\)@/\1/\1.htm">\1</a>@' | sort -->
+
+<h3>Discrete Event (DE)</h3>
+<ul>
+<li><a href="../ptolemy/domains/de/demo/Clock/Clock.htm">Clock</a>  (Requires Java 3D, see the <a href="../ptolemy/domains/gr/doc/main.htm">GR domain</a>)
+<li><a href="../ptolemy/domains/gr/demo/Pong/Pong.htm">Pong</a>  (Requires Java 3D, see the <a href="../ptolemy/domains/gr/doc/main.htm">GR domain</a>)
+
+</ul>
+
+<h3>Process Network (PN)</h3>
+<ul>
+<li><a href="../ptolemy/domains/pn/demo/Stack/Stack.htm">Stack</a>
+</ul>  
+
+<h3>Synchronous Dataflow (SDF)</h3>
+<ul>
+ <li><a href="../ptolemy/data/type/demo/Objects/Objects.htm">Objects</a> - A demo for different kinds of ObjectTokens, see
+ <a href="codeDoc/ptolemy/data/type/ObjectType.html">ObjectType</a>.
+ <li><a href="../ptolemy/domains/sdf/demo/Gravitation/GravitationWithCollisionDetection.htm">Gravitation With Collision Detection</a>  (Requires Java 3D, see the <a href="../ptolemy/domains/gr/doc/main.htm">GR domain</a>)
+</ul>
+<h3>Synchronous/Reactive (SR) </h3>
+<ul>
+<li><code>$PTII/ptolemy/verification/demo/iRobotHillClimbing/iRobotHillClimbing.xml</code> (Requires NuSMV, see the <a href="../ptolemy/verification/README.html">Verification documentation)
+<li><a href="../ptolemy/actor/lib/hoc/demo/ThreadedComposite/MulticoreExecution.htm">MulticoreExecution</a>
+<li><code>$PTII/ptolemy/verification/demo/RailroadControl/RailroadSystem.htm</code> (Requires NuSMV, see the <a href="../ptolemy/verification/README.html">Verification documentation)
+<li><a href="../ptolemy/verification/demo/SimpleTrafficLight/SimpleTrafficLight.htm">Simple Traffic Light</a> (Requires NuSMV, see the <a href="../ptolemy/verification/README.html">Verification documentation)
+</ul>
+
+<h3><a name="pnCodegen">PN Code Generation</a></h3>
+<ul>
+<!-- Please keep the demos alphabetical -->
+<li><a href="../ptolemy/codegen/c/domains/pn/demo/Gravitation/Gravitation.htm">Gravitation</a>
+<li><a href="../ptolemy/codegen/c/domains/pn/demo/PNButterfly/PNButterfly.htm">PN Butterfly</a>
+</ul>
+
+<h3><a name="sdfCodegen">SDF Code Generation</a></h3>
+<ul>
+<!-- Please keep the demos alphabetical -->
+<li><a href="../ptolemy/codegen/java/actor/lib/embeddedJava/demo/CompiledCompositeActor/CompiledCompositeActor.htm">Expression demo with Java CompiledCompositeActor</a>
+<li> <a href="../ptolemy/codegen/c/domains/fsm/demo/Mod4Counter/Mod4Counter.htm">Mod4Counter</a>
+<li><a href="../ptolemy/actor/lib/jni/demo/Scale/Scale.htm">Scale</a>
+<li><a href="../ptolemy/actor/lib/jni/demo/Scale/ScaleWithEmbeddedCFileActor.htm">Scale with EmbeddedCFileActor</a>
+<li><a href="../ptolemy/codegen/java/actor/lib/embeddedJava/demo/Scale/Scale.htm">Scale with Embedded Java</a>
+<li><a href="../ptolemy/actor/lib/jni/demo/SimplePassPointer/SimplePassPointer.htm">Simple Pass Pointer</a>
+<li><a href="../ptolemy/actor/lib/jni/demo/SimplePassPointer/SimplePassPointerWithECFA.htm">Simple Pass Pointer With ECFA</a>
+
+</ul>
+
+<h3>Wireless</h3>
+<ul>
+<li><a href="../ptolemy/domains/wireless/demo/Intersections/Intersections.htm">Intersections</a>
+<li><a href="../ptolemy/domains/wireless/demo/Zigbee/Zigbee.htm">Zigbee</a>
+</ul>  
+
+
+<h2><a name="libraries">New and Enhanced Actor Libraries</a></h2>
+
+<!--grep "Only in" /tmp/p.diffs | grep java | sed 's@Only in ptII8.1.devel/@@' |  sed 's@/@.@g' | sed 's@.java@@' | awk -F : '{print "<li><a href="\"codeDoc/"" $1 "." $2 "\">" $2 "</a>"}' | sed 's/\. /./' | sed 's/> />/' -->
+
+<ul>
+<li><i>New Domain Polymorphic actors</i>:
+
+  <ul>
+    <li><a href="codeDoc/ptolemy/actor/lib/DiscreteClock.html">DiscreteClock</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/ExecutionTime.html">ExecutionTime</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/GetCausalityInterface.html">GetCausalityInterface</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/MovingMaximum.html">MovingMaximum</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/ResettableTimer.html">ResettableTimer</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/TimeDelay.html">TimeDelay</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/gui/ArrowKeyProbe.html">ArrowKeyProbe</a>
+  </ul>
+
+<li><i>Database actors</i>
+  <br>Ptolemy II 8.0 includes actors that access a database.  We have included a sample application,
+  <a href="../ptolemy/domains/space/demo/DOPCenter/DOPCenter.htm">DOPCenter</a>, which we use
+  to manage the seating in the <a href="http://embedded.eecs.berkeley.edu/dopcenter#in_browser" target="_top">Donald O. Pederson Center</a>
+  <ul>
+    <li><a href="codeDoc/ptolemy/actor/lib/database/ArrayOfRecordsExporter.html">ArrayOfRecordsExporter</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/database/ArrayOfRecordsRecorder.html">ArrayOfRecordsRecorder</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/database/DatabaseInsert.html">DatabaseInsert</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/database/DatabaseManager.html">DatabaseManager</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/database/DatabaseQuery.html">DatabaseQuery</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/database/DatabaseQuery.html">DatabaseSelect</a>
+    <li><a href="codeDoc/ptolemy/actor/lib/database/SQLStatement.html">SQLStatement</a>
+  </ul>
+
+<li>Codegen
+<ul>
+<li><a href="codeDoc/ptolemy/actor/lib/jni/CodegenActor.html">CodegenActor</a>
+<li><a href="codeDoc/ptolemy/actor/lib/jni/EmbeddedCFileActor.html">EmbeddedCFileActor</a>
+<li><a href="codeDoc/ptolemy/codegen/c/actor/lib/Interpolator.html">Interpolator</a>
+<li><a href="codeDoc/ptolemy/codegen/c/actor/lib/OrderedMerge.html">OrderedMerge</a>
+<li><a href="codeDoc/ptolemy/codegen/c/actor/lib/conversions/StringToUnsignedByteArray.html">StringToUnsignedByteArray</a>
+<li><a href="codeDoc/ptolemy/codegen/c/actor/lib/gui/TimedPlotter.html">TimedPlotter</a>
+<li><a href="codeDoc/ptolemy/codegen/c/actor/lib/hoc/MultiCompositePort.html">MultiCompositePort</a>
+<li><a href="codeDoc/ptolemy/codegen/c/actor/lib/hoc/RefinementPort.html">RefinementPort</a>
+<li><a href="codeDoc/ptolemy/codegen/c/domains/fsm/modal/ModalPort.html">ModalPort</a>
+<li><a href="codeDoc/ptolemy/codegen/c/domains/fsm/modal/RefinementPort.html">RefinementPort</a>
+<li><a href="codeDoc/ptolemy/codegen/c/domains/fsm/modal/TransitionRefinementPort.html">TransitionRefinementPort</a>
+<li><a href="codeDoc/ptolemy/codegen/actor/Director.html">Director</a>
+<li><a href="codeDoc/ptolemy/codegen/kernel/PortCodeGenerator.html">PortCodeGenerator</a>
+<li>The code generator has been extended so that Java code may be generated for a model.
+  <!-- FIXME: need demos -->
+  <ul>
+  <li><a href="codeDoc/ptolemy/actor/lib/embeddedJava/package-summary.html">ptolemy/actor/lib/embeddedJava</a>
+  <li><a href="codeDoc/ptolemy/codegen/java/actor/package-summary.html">ptolemy.codegen.java.actor</a>
+  <li><a href="codeDoc/ptolemy/codegen/java/kernel/package-summary.html">ptolemy.codegen.java.kernel</a>
+  <li><a href="codeDoc/ptolemy/codegen/java/domains/modal/kernel/package-summary.html">ptolemy.codegen.java.domains.modal.kernel</a>
+  <li><a href="codeDoc/ptolemy/codegen/java/domains/sdf/kernel/package-summary.html">ptolemy.codegen.java.domains.sdf.kernel</a>
+  <li><a href="codeDoc/ptolemy/codegen/java/domains/sdf/lib/package-summary.html">ptolemy.codegen.java.domains.sdf.lib</a>
+  </ul> 
+</ul>
+
+</ul>
+
+<li><i>New Parameter:</i> 
+<ul>
+<li><a href="codeDoc/ptolemy/actor/parameters/Priority.html">Priority</a>
+</ul>
+
+<li><i>New Continuous actors</i>:
+<ul>
+<li><a href="codeDoc/ptolemy/domains/continuous/lib/ContinuousMerge.html">ContinuousMerge</a>
+<li><a href="codeDoc/ptolemy/domains/continuous/lib/PeriodicSampler.html">PeriodicSampler</a>
+</ul>
+
+<li><i>New Discrete Event (DE) actors</i>:
+  <ul>
+    <li><a href="codeDoc/ptolemy/domains/de/lib/AverageOverTime.html">AverageOverTime</a>
+    <li><a href="codeDoc/ptolemy/domains/de/lib/SharedQueue.html">SharedQueue</a>
+    <li><a href="codeDoc/ptolemy/domains/de/lib/TestActorPortDepth.html">TestActorPortDepth</a>
+    <li><a href="codeDoc/ptolemy/domains/de/lib/TimeCompare.html">TimeCompare</a>
+  </ul>
+</ul>
+
+
+
+<h3>Other new classes</h3>
+<ul>
+<li>ptolemy.actor
+  <ul>
+    <li><a href="codeDoc/ptolemy/actor/LazyTypedCompositeActor.html">LazyTypedCompositeActor</a>
+    <li><a href="codeDoc/ptolemy/actor/RelationWidthInference.html">RelationWidthInference</a>
+    <li><a href="codeDoc/ptolemy/actor/SuperdenseTimeDirector.html">SuperdenseTimeDirector</a>
+  </ul>
+<li>ptolemy/actor/gt
+<br>The Model Transformation facility (GT) has been substantially updated to support
+Ptera.
+<br>New GT classes include:
+<ul>
+   <li><a href="codeDoc/ptolemy/actor/gt/AttributeMatcher.html">AttributeMatcher</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/Checkable.html">Checkable</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/ContainerIgnoringAttribute.html">ContainerIgnoringAttribute</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/CreationAttribute.html">CreationAttribute</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/GTAttribute.html">GTAttribute</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/GTCompositeActor.html">GTCompositeActor</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/IgnoringAttribute.html">IgnoringAttribute</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/IterativeParameter.html">IterativeParameter</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/MatchingAttribute.html">MatchingAttribute</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/MoMLGenerator.html">MoMLGenerator</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/ModalModelMatcher.html">ModalModelMatcher</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/ModelCombine.html">ModelCombine</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/ModelExecutor.html">ModelExecutor</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/NegationAttribute.html">NegationAttribute</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/OptionAttribute.html">OptionAttribute</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/PreservationAttribute.html">PreservationAttribute</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/TransformationListener.html">TransformationListener</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/TransformationMode.html">TransformationMode</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/TransitionMatcher.html">TransitionMatcher</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/ValueIterator.html">ValueIterator</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/data/SequentialTwoWayHashMap.html">SequentialTwoWayHashMap</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/ingredients/criteria/GuardCriterion.html">GuardCriterion</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/ingredients/criteria/NameCriterion.html">NameCriterion</a>
+   <li><a href="codeDoc/ptolemy/actor/gt/ingredients/criteria/StateTypeCriterion.html">StateTypeCriterion</a>
+    <li><a href="codeDoc/ptolemy/actor/gt/ingredients/operations/BooleanOperationElement.html">BooleanOperationElement</a>
+    <li><a href="codeDoc/ptolemy/actor/gt/ingredients/operations/PortCreationOperation.html">PortCreationOperation</a>
+    <li><a href="codeDoc/ptolemy/actor/gt/ingredients/operations/PortRemovalOperation.html">PortRemovalOperation</a>
+    <li><a href="codeDoc/ptolemy/actor/gt/util/RecursiveFileFilter.html">RecursiveFileFilter</a>
+</ul>
+
+<li>ptolemy/actor/gui
+  <ul>
+    <li><a href="codeDoc/ptolemy/actor/gui/ArrayOfRecordsPane.html">ArrayOfRecordsPane</a>
+    <li><a href="codeDoc/ptolemy/actor/gui/CustomQueryBoxParameter.html">CustomQueryBoxParameter</a>
+    <li><a href="codeDoc/ptolemy/actor/gui/ModelRepaintController.html">ModelRepaintController</a>
+    <li><a href="codeDoc/ptolemy/actor/gui/TopPack.html">TopPack</a>
+    <li><a href="codeDoc/ptolemy/actor/gui/style.HiddenStyle.html">HiddenStyle</a>
+  </ul>
+
+<li>ptolemy.data
+  <ul>
+    <li><a href="codeDoc/ptolemy/data/AbsentToken.html">AbsentToken</a>
+    <li><a href="codeDoc/ptolemy/data/OrderedRecordToken.html">OrderedRecordToken</a>
+    <li><a href="codeDoc/ptolemy/data/expr/ChoiceParameter.html">ChoiceParameter</a>
+    <li><a href="codeDoc/ptolemy/data/expr/ContainmentExtender.html">ContainmentExtender</a>
+    <li><a href="codeDoc/ptolemy/data/type/ObjectType.html">ObjectType</a>, see the
+      <a href="../ptolemy/data/type/demo/Objects/Objects.htm">Objects demo</a>.
+  </ul>
+
+<li>ptolemy.domains.fsm  
+  <ul>
+    <li><a href="codeDoc/ptolemy/domains/fsm/kernel/ConfigurableEntity.html">ConfigurableEntity</a>
+    <li><a href="codeDoc/ptolemy/domains/fsm/kernel/Configurer.html">Configurer</a>
+    <li><a href="codeDoc/ptolemy/domains/fsm/kernel/ContainmentExtender.html">ContainmentExtender</a>
+    <li><a href="codeDoc/ptolemy/domains/fsm/kernel/FSMCausalityInterface.html">FSMCausalityInterface</a>
+    <li><a href="codeDoc/ptolemy/domains/fsm/kernel/RefinementActor.html">RefinementActor</a>
+  </ul>
+
+<li>ptolemy.domains.modal  
+  <ul>
+    <li><a href="codeDoc/ptolemy/domains/fsm/modal/MirrorCausalityInterface.html">MirrorCausalityInterface</a>
+    <li><a href="codeDoc/ptolemy/domains/fsm/modal/RefinementExtender.html">RefinementExtender</a>
+    <li><a href="codeDoc/ptolemy/domains/fsm/modal/RefinementSuggestion.html">RefinementSuggestion</a>
+    <li><a href="codeDoc/ptolemy/gui/PtGUIUtilities.html">PtGUIUtilities</a>
+  </ul>
+
+<li>ptolemy.gui  
+  <ul>
+    <li><a href="codeDoc/ptolemy/gui/QueryChooser.html">QueryChooser</a>
+    <li><a href="codeDoc/ptolemy/gui/QueryChooserHelper.html">QueryChooserHelper</a>
+    <li><a href="codeDoc/ptolemy/gui/SettableQueryChooser.html">SettableQueryChooser</a>
+    <li><a href="codeDoc/ptolemy/gui/UndeferredGraphicalMessageHandler.html">UndeferredGraphicalMessageHandler</a>
+    <li><a href="codeDoc/ptolemy/gui/UndoListener.html">UndoListener</a>
+  </ul>
+
+<li>ptolemy.kernel
+  <ul>
+     <li><a href="codeDoc/ptolemy/kernel/undo/UndoActionsList.html">UndoActionsList</a>
+     <li><a href="codeDoc/ptolemy/kernel/util/DecoratedAttribute.html">DecoratedAttribute</a>
+     <li><a href="codeDoc/ptolemy/kernel/util/Decorator.html">Decorator</a>
+     <li><a href="codeDoc/ptolemy/kernel/util/DropTargetHandler.html">DropTargetHandler</a>
+     <li><a href="codeDoc/ptolemy/kernel/util/StaticResources.html">StaticResources</a>
+</ul>
+
+<li>ptolemy.vergil
+  <ul>
+     <li><a href="codeDoc/ptolemy/vergil/actor/lib/MonitorReceiverAttribute.html">MonitorReceiverAttribute</a>
+     <li><a href="codeDoc/ptolemy/vergil/actor/lib/MonitorReceiverContents.html">MonitorReceiverContents</a> -
+          Drag this icon into a model to show the contents of the recievers.
+     <li><a href="codeDoc/ptolemy/vergil/basic/DependencyHighlighter.html">DependencyHighlighter</a>
+     <li><a href="codeDoc/ptolemy/vergil/icon/DesignPatternIcon.html">DesignPatternIcon</a>
+     <li><a href="codeDoc/ptolemy/vergil/icon/TableIcon.html">TableIcon</a>
+     <li><a href="codeDoc/ptolemy/vergil/kernel/ListenToAction.html">ListenToAction</a>
+     <li><a href="codeDoc/ptolemy/vergil/kernel/attributes.ArrowAttribute.html">ArrowAttribute</a>
+     <li><a href="codeDoc/ptolemy/vergil/kernel/attributes.UpdateAnnotations.html">UpdateAnnotations</a>
+     <li><a href="codeDoc/ptolemy/vergil/toolbox/ArrayOfRecordsConfigureFactory.html">ArrayOfRecordsConfigureFactory</a>
+     <li><a href="codeDoc/ptolemy/vergil/toolbox/MenuItemListener.html">MenuItemListener</a>
+     <li><a href="codeDoc/ptolemy/vergil/toolbox/RadioMenuActionFactory.html">RadioMenuActionFactory</a>
+   </ul>
+</ul>
+
+<h2><a name="worksinprogress">Works in Progress</a></h2>
+<ul>
+<li> The experimental UI build in
+  <a href="codeDoc/ptolemy/actor/gui/run/package-summary.html">ptolemy.actor.gui.run</a>
+  is a prototype of some ideas about how to create run-time control panels.
+  <ul>
+ <li><a href="codeDoc/ptolemy/copernicus/applet/JarSigner.html">JarSigner</a>
+ </ul>
+</ul>
+<h2><a name="bugs">Bug fixes</a></h2>
+For the current list of bugs, see <a href="http://chess.eecs.berkeley.edu/ptexternal/bugs.html#in_browser" target="_top">Ptolemy II Bugs<a>
+ <br>and
+ <a href="http://bugzilla.ecoinformatics.org/buglist.cgi?product=Kepler&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED" target="_top">Kepler Bugs</a>
+
+<ul>
+ <li> Level-crossing links are now correctly exported
+   to MoML.  The way this works is that the lowest common
+   container of the objects being linked is responsible for
+   producing the MoML description of the link. This ensures
+   that when the MoML is encountered for creating the link,
+   that both objects being linked have already been created. 
+
+  <li>Various classes were moved to make the dependencies between packages cleaner.  In general, the
+  <a href="codeDoc/ptolemy/moml/filter/ClassChanges.html">ptolemy.moml.filter.ClassChanges</a> to handle the changes
+  that will appear in MoML files.
+<table>
+  <tr>
+    <th>Old Class</th><th>New Class</th>
+  </tr>
+
+  <tr>
+   <td>ptolemy/actor/gui.DependencyHighlighter</td>
+   <td><a href="codeDoc/ptolemy/vergil/basic/DependencyHighlighter.html">ptolemy.vergil.basic.DependencyHighlighter</a></td>
+  <tr>
+
+  </tr> 
+    <td>ptolemy/actor/lib/CodegenActor</td>
+    <td><a href="codeDoc/ptolemy/actor/lib/jni/CodegenActor.html">ptolemy.actor.lib.jni.CodegenActor</a></td>
+  <tr>
+
+  </tr> 
+    <tr>ptolemy/actor/lib.gui.LEDMatrix</td>
+    <td><a href="codeDoc/ptolemy/vergil/actor/ib/LEDMatrix.html">ptolemy.vergil.actor.lib.LEDMatrix</a></td>
+  <tr>
+
+  <tr>
+   <td>ptolemy/actor/lib.gui.ModelDisplay</td>
+   <td><a href="codeDoc/ptolemy/vergil/actor/lib/ModelDisplay.html">ptolemy.vergil.actor.lib.ModelDisplay</a></td>
+  </tr> 
+
+  <tr>
+   <td>ptolemy.codegen.c.actor.lib.CodegenActor was moved to</td>
+   <td><a href="codeDoc/ptolemy/actor/lib/jni/CodegenActor.html">ptolemy.actor.lib.jni.CodegenActor</a></td>
+  <tr>
+
+  </tr> 
+    <td>ptolemy.codegen.c.actor.lib.gui.LEDMatrix</td>
+    <td><a href="codeDoc/ptolemy/codegen/c/vergil/actor/lib/LEDMatrix.html">ptolemy.codegen.c.vergil.actor.lib.LEDMatrix</a></td>
+  <tr>
+
+  </tr> 
+    <td>ptolemy.codegen.kernel.Director</td>
+    <td><a href="codeDoc/ptolemy/codegen/actor/Director.html">ptolemy.codegen.actor.Director</a></td>
+  </tr> 
+
+  <tr>
+   <td>ptolemy.domains.curriculum.DependencyHighlighter was moved to</td>
+   <td><a href="codeDoc/ptolemy/vergil/basic/DependencyHighlighter.html">vergil.actor.basic.DependencyHighlighter</a></td>
+  </tr>
+
+  <tr>
+   <td>ptolemy.domains.sr.lib.AbsentToken</td>
+   <td><a href="codeDoc/ptolemy/data/AbsentToken.html">ptolemy.data.AbsentToken</a></td>
+  </tr>
+
+  <tr>
+   <td>ptolemy.domains.sr.lib.ButtonTime</td>
+   <td><a href="codeDoc/ptolemy/domains/sr/lib/gui/ButtonTime.html">ptolemy.domains.sr.lib.gui.ButtonTime</a></td>
+  </tr>
+
+  <tr>
+   <td>ptolemy.domains.sr.lib.NonStrictDisplay</td>
+  <td><a href="codeDoc/ptolemy/domains/sr/lib/gui/NonStrictDisplay.html">ptolemy.domains.sr.lib.gui.NonStrictDisplay</a></td>
+  </tr>
+
+  <tr>
+   <td>ptolemy.moml.SharedParameter</td>
+   <td><a href="codeDoc/ptolemy/actor/parameters/SharedParameter.html">ptolemy.actor.parameters.SharedParameter</a></td>
+  </tr>
+
+  <tr>
+   <td>ptolemy.vergil.kernel.ConfigureUnitsAction</td>
+   <td><a href="codeDoc/ptolemy/vergil/kernel/unit/ConfigureUnitsAction.html">ptolemy.vergil.kernel.unit.ConfigureUnitsAction</a></td>
+  </tr>
+
+  <tr>
+  <td></td>
+  <td></td>
+</tr> 
+</table>   
+
+<li> Various classes were moved out of ptolemy.data.unit to ptolemy.moml.unit
+
+
+<li> A few features and classes were removed outright.
+<ul>
+ <li>ptolemy/copernicus/{java,c,actor} were removed because the Ptolemy kernel has evolved and maintaining Copernicus
+  was too timeconsuming.
+
+  <li>ptolemy.domains.continuous.lib.ZeroCrossingDetector was removed because it had cloning problems because
+  of how it extended a class and removed a parameter.
+
+  <li>ptolemy.domains.curriculum.DependencyHighlighter was removed, use
+<a href="codeDoc/ptolemy/vergil/basic/DependencyHighlighter.html">ptolemy.vergil.basic.DependencyHighlighter</a> instead.
+
+  <li>
+  ptolemy/actor/util.FunctionDependency
+  <br>ptolemy/actor/util.FunctionDependencyOfAtomicActor,
+  <br>ptolemy/actor/util.FunctionDependencyOfCompositeActor,
+  <br>ptolemy.domains.fsm.kernel.FunctionDependencyOfFSMActor,
+  <br>ptolemy.domains.fsm.modal.FunctionDependencyOfModalModel
+  and
+  <br>ptolemy.domains.sr.lib.FunctionDependencyOfEnabledCompositeActor
+  <br>were removed as part of the <a =#"causalityanalysis">Causality Analysis</a> work.
+</ul>
+</ul>
+<!--/whatsnew-->
+
+<h2>Features that were new in previous Ptolemy II releases </h2>
+
+<a href="oldFeatures.htm">Features that were new in previous Ptolemy II releases </a>
+
+
+<!--vergilDocs-->
+<h2><a name="limitations">Limitations</a>
+</h2>
+<ul>
+<li><a href="http://ptolemy.eecs.berkeley.edu/ptolemyII/ptII8.0/limitations.htm#in_browser" target="_top">Ptolemy II 8.0.1 Limitations Page</a> - Limitations found after release.
+<li><a
+href="http://chess.eecs.berkeley.edu/ptexternal/bugs.html" target="_top">Ptolemy II Bugzilla</a>
+</ul>
+Version 8.0.1 has the following limitations:
+
+<h3>Release Limitations</h3>
+<ul>
+
+<li> The gzipped tar file of Ptolemy II  source files with Unix line endings
+(<code>ptII8.0.1.src.tar.gz</code>)
+ <B>requires</B> GNU tar or WinZip.  Solaris tar will fail to
+untar this file with a checksum error because the pathnames are longer
+than 100 characters.
+ <p>Note further that some of the .class names are longer than
+31 characters, which may cause problems when downloading zip files
+on the Macintosh and using Stuffit.
+
+<li> The documentation for custom actors used in demonstrations is not
+included in the release.  The source code for the custom actors can be found
+in the source download.
+
+<li> If a URL ends with <CODE>#in_browser</CODE>, then
+Ptolemy II will invoke the User's web browser.  Unfortunately, this
+does not always work, especially under Windows if Netscape is already
+running.  The workaround is to exit Netscape and let Ptolemy II
+start up Netscape for you.
+
+<li> Web Start does not work very well if the pathname to the 
+<CODE>vergil.jnlp</CODE> file has spaces in it.  The workaround is
+to place your Ptolemy II tree in a directory that does not have spaces
+in the path name if you plan on using Web Start.
+
+<li> If your user library contains actors that are not present in
+vergil, then you may see a dialog or dialogs asking if you want
+to skip these elements.  This could happen if you had developed custom
+actors and put them into your user library and these custom actors
+are not present in the release.  The work around is to click 'Skip Element'
+and continue with the start up.
+
+
+<li> Installer issues
+
+        <ul>
+
+	  <li> We don't like the first window that pops up, it is
+	  rather blank and seems unnecessary.  However, if we don't
+	  have that first window pop up, then the html pane that is
+	  rendered in the second window is sometimes the wrong size.
+	  We think this is an event thread issue, but we have not
+	  checked.
+
+	  <li>Mac OS X installer issues:
+	    <ul> 
+
+	      <li>When the  download the Mac installer, it does not automatically open,
+		The user has to go to the downloads folder and open it.
+
+	      <li>After installing, Vergil.app is rather hard to find.  <code>Vergil.app</code>
+		is in <code>bin/</code>, the default location is
+		<code>/Applications/Ptolemy/ptII8.0.1/bin/Vergil.app</code>
+		The reason we use this path is because if the user rebuilds, then the
+		<code>Vergil.app</code> script will be generated
+		in <code>bin/</code>
+
+	      <li>On the command line, the <code>open</code> command does not work. 
+		<pre>
+		  open -a Vergil Adder.xml
+		</pre>
+		it starts Vergil, but it doesn't open Adder.xml
+
+		<br>To fix this would require having Ptolemy use Apple Java Extensions, much like
+		Kepler does.  See also
+		<a href="http://book.javanb.com/mac-os-x-for-java-geeks/0596004001_macxjvgks-chp-5.html#in_browser" target="_top"><code>http://book.javanb.com/mac-os-x-for-java-geeks/0596004001_macxjvgks-chp-5.html#macxjvgks-CHP-5</code></a>.
+            </ul>
+
+	</ul>
+
+<li> Applet issues:
+	<ul>
+	<li> Applets seem to run out of memory after about 82Mb.  The workaround
+	  is to either restart your browser or to use the Web Start versions.
+	  
+        <li> The Ptalon applets don't work because antlr tries to get
+           properties.         
+	  <!-- appletviewer $PTII/ptolemy/actor/ptalon/demo/CruiseControl/CruiseControlVergil.htm --> 
+  	  <!-- Confirmed on 2/22/10 -->
+
+        <li> Distributed SDF applets are very difficult or impossible
+	  to run because the user must start up servers.
+        <!-- appletviewer $PTII/ptolemy/distributed/demo/Sleep/SleepVergil.htm -->
+        <!-- Confirmed on 2/23/10 -->
+
+	<li>The caltrop applets fail because caltrop.main.Util.setDBFI()
+	  calls setProperty to set the parser:
+        <pre> 
+        System.setProperty("javax.xml.parsers.DocumentBuilderFactory", name);
+        </pre>
+        The workaround is to run the caltrop demos as Web Start applications.
+	  <!-- 
+	       appletviewer ptolemy/caltrop/demo/FunctionClosures/FunctionClosuresVergil.htm 
+	       appletviewer ptolemy/caltrop/demo/FunctionDefinition/FunctionDefinitionVergil.htm
+	       appletviewer ptolemy/caltrop/demo/Primes/PrimesVergil.htm
+	       appletviewer ptolemy/caltrop/demo/SDFDDI/SDFDDIVergil.htm
+	   -->    
+          </pre>
+        <!-- Confirmed on 2/23/10 -->
+
+	<li> Running the Networked demo via an applet on the local
+	file system results in an AccessControlException.
+<pre>
+com.microstar.htm.htmException: XML element "entity" triggers exception:
+  java.lang.Exception: Attempted to lookup 'Waveform', but got: 
+  java.lang.ClassNotFoundException: Waveform
+Attempted to find as a moml class, but got: 
+             java.security.AccessControlException: access denied
+             (java.net.SocketPermission ptolemy.eecs.berkeley.edu resolve)
+	     in file:/C:/Program Files/Ptolemy/Ptolemy II 3.0 beta2/
+                   ptolemy/moml/demo/Networked/ at line 62 and column 118
+	at ptolemy.moml.MoMLParser.startElement(MoMLParser.java:1341)
+	at com.microstar.htm.htmParser.parseElement(XmlParser.java:944)
+	at com.microstar.htm.htmParser.parseContent(XmlParser.java:1117)
+	at com.microstar.htm.htmParser.parseElement(XmlParser.java:946)
+	at com.microstar.htm.htmParser.parseDocument(XmlParser.java:495)
+	at com.microstar.htm.htmParser.doParse(XmlParser.java:175)
+	at com.microstar.htm.htmParser.parse(XmlParser.java:145)
+	at ptolemy.moml.MoMLParser.parse(MoMLParser.java:492)
+	at ptolemy.moml.MoMLParser.parse(MoMLParser.java:471)
+	at ptolemy.moml.MoMLParser.parse(MoMLParser.java:456)
+	at ptolemy.actor.gui.MoMLApplet._createModel(MoMLApplet.java:188)
+</pre>
+
+	The Network demo does not work as a local applet because the xml file
+	includes a reference to http://ptolemy.eecs.berkeley.edu, which is
+	not on the local file system, so we get a SecurityException.
+	 <br>The workaround is to run the applet by downloading it
+	from the Ptolemy Website:
+<a href="http://ptolemy.eecs.berkeley.edu/ptolemyII/ptII8.0/ptII8.0.1/ptolemy/moml/demo/Networked/Networked.htm" target="_top"><CODE>http://ptolemy.eecs.berkeley.edu/ptolemyII/ptII8.0/ptII8.0.1/ptolemy/moml/demo/Networked/Networked.htm</CODE></a>
+        <!-- appletviewer $PTII/ptolemy/moml/demo/Networked/NetworkedVergil.htm -->
+        <!-- Confirmed on 2/23/10 -->
+
+	<li> If an icon file is not present, then a Vergil applet might
+	try to download the icon file multiple times.  Ptolemy II
+	uses XML files to store icons.  For example
+<a href="../ptolemy/actor/lib/BooleanSwitchIcon.htm"><CODE>$PTII/ptolemy/actor/lib/BooleanSwitchIcon.htm</CODE></a>
+	is an icon for
+<a href="../ptolemy/actor/lib/BooleanSwitch.java"><CODE>$PTII/ptolemy/actor/lib/BooleanSwitch.java</CODE></a>
+	 <br>The problem is that if an actor does not have an icon file,
+	then the applet may go back to the server multiple times looking
+	for the icon. 
+ <!-- Steve writes:
+      I think the MoMLParser should load Java-defined classes the same way
+      it does xml-defined classes.  It should reflect a prototype and then
+      keep the prototype around and clone it...  This would mean that it
+      only has to grab the icon once...
+ -->
+
+	</ul>
+
+<li> Web Start issues:
+	<ul>
+
+	  <li> The Web Start download tends to be large because we are
+	    not using lazy downloading.
+	  
+	  <li> The modelTransformation HierarchyFlattening demo fails under
+	    Web Start.
+	    When the "Match Ptolemy models in a directory" button is pressed, the a
+	    window with the title "Error" and the contents:
+	    <blockquote>
+	      Directory "/ptolemy.eecs.berkeley.edu/ptolemyII/ptII8.0/jnlp-8.0.1/signed/ptolemy/actor/gt/patterns"
+	      does not exist, the value of the DefaultDirectoryAttribute parameter was "$PTII/ptolemy/actor/gt/patterns"
+ 	    </blockquote>
+	    There is no stack trace.  This is annoying,
+	    it is like "Abort, Retry, Cancel?" because it does not tell the user 
+	    where the error occurred.
+	    The offending code is in ptolemy/vergil/gt/TransformationEditor.java
+	    <!-- Confirmed on 2/22/10 -->
+
+	  <li> The Matlab Wireless demo fails under Web Start.
+	    Currently, the problem is that the share library cannot be found
+	    Formerly, the problem was that the Matlab .m file cannot be found.
+	    <!-- Confirmed on 2/22/10 -->
+
+	  <li> Viewing a pdf file may bring up a blank window along with
+	    the pdf file.  Running the code generator may bring up
+	    a blank window while the java or javac processes are running.
+
+	  <li> Some of the links on the GR domain instructions page
+	    might not work under Web Start because the files they refer
+	    to are not present. 
+
+	  <li> The ModelTranformation PublisherTest model fails under
+            Web Start because it can't find the file in ../../test.
+	    <!-- Confirmed on 2/22/10 -->
+
+          <li> The ptalon/gt/demo/Adder/Adder.xml model does not work in
+            Web Start because it can't find the BaseModel.xml.
+	    <!-- Confirmed on 2/22/10 -->
+
+          <li> The ptolemy/demo/RunDemos.xml mode does not work in Web Start
+            because the .xml files can't be found.
+	    <!-- Confirmed on 2/22/10 -->
+
+          <li> The ExecDemos model fails to run under Web Start - there is no vergil script.
+	    <!-- Confirmed on 2/22/10 -->
+
+	  <li> <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=298" target="_top">Bug #298: ptinyViewer and fullViewer should optionally disable selection and drag</a>
+	    <!-- Confirmed on 2/22/10 -->
+
+       </ul>
+
+<li> Limitations in demonstrations (alphabetical by domain and demonstration)
+        <ul>
+
+	  <li> The CT CarTracking demonstration should be run using View-&gt;Run
+	    so that the user can change the fault parameter.
+
+	  <li> The database domain needs a space database demo that uses some sort of dummy public database.
+	    Java 1.6 includes Java db, see
+	    <a href="http://weblogs.java.net/blog/forsini/archive/2006/06/java_db_is_now.html" target="_top">http://weblogs.java.net/blog/forsini/archive/2006/06/java_db_is_now.html</a>.
+	    However, Mac would need a separate install.
+
+	  <li> The DDF RijndaelEncryption demo never terminates. Note that we have two Rijndael demos, the
+	    problem demo is at <code>$PTII/./ptolemy/domains/ddf/demo/RijndaelEncryption/RijndaelEncryption.xml</code>
+	    <!--  $PTII/bin/vergil ./ptolemy/domains/ddf/demo/RijndaelEncryption/RijndaelEncryption.xml -->
+	    <!-- Confirmed on 2/22/10 -->
+
+	  <li><a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=324" target="_top">Bug #324: PN Gravitation codegen fails because of a segfault</a>
+	    <!-- Confirmed on 2/22/10 -->
+
+	  <li> The SDF Bouncer demo: If the user drags the bouncing icon, it no
+	    longer bounces.
+	    <!-- $PTII/bin/vergil $PTII/ptolemy/actor/parameters/demo/Bouncer/Bouncer.xml -->
+	    <!-- Confirmed on 2/22/10 -->
+
+	  <li> In HyVisual, the HSIF translater is merely a prototype,
+	    it is not a full implementation of a HSIF translator.
+
+        </ul>
+
+<li> Minor Limitations in demonstrations (alphabetical by domain and demonstration)
+        <ul>
+	  <li> When the DE/GR Clock demo is run, the gong sound at the end is truncated.
+	    <!-- $PTII/bin/vergil ~/ptII/ptolemy/domains/de/demo/Clock/Clock.xml -->
+	    <!-- Confirmed on 2/22/10 -->
+
+	  <li> The GT Model Execution demonstration highlights the stop button?
+	    After hitting the run button, a model opens up and is running, but the toolbar icon has the stop
+	    button highlighted?  Instead, the run button should be highlighted. 
+
+	    <p>gt GameOfLife does something similar.  How do I stop it?
+
+	    <p>Maybe these need to bring up a viewer that does not have a run button.
+	      <!-- $PTII/bin/vergil ~/ptII8.0.1/ptolemy/actor/gt/demo/ModelExecution/ModelExecution.xml -->
+	      <!-- Confirmed on 2/22/10 -->
+	</ul>
+</ul>
+
+<h3>Limitations in building</h3>
+<ul>
+  <li> <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=286" target="_top">Bug #286: JavaCC 4.1 and 4.2 fail because of ReInit() problems</a>.
+
+  <li> The "export PDF" facility is incomplete.  The issue is that the library that is used is GPL'd, so we
+    need to be sure that it is possible to build a version of Ptolemy that does not include the GPL'd library.
+    One possible workaround would be to have an interim dialog pop up that tells the user how to
+    install the library.
+
+  <li> 1/8/07: GNU Make 3.81 no longer supports Windows style
+    path names with colons in them.  The affects the Copernicus
+    code generator because $PTII needs to be set to a pathname
+    with a colon in it like <code>c:/Ptolemy/ptII8.0.1</code>.
+    A path name like <code>/cygdrive/c/Ptolemy/ptII8.0.1</code>
+    will <B>not</B> work with Java.
+
+    <p>For example, if you run copernicus and copernicus runs
+      make, you may see
+      <pre>
+	makefile:360: *** target pattern contains no `%'.  Stop.
+      </pre>
+      This is because a makefile variable uses the windows style
+      pathnames with colons in them.  One solution is to
+      edit the file to use pathnames with /cygdrive.
+      Another solution is to download a working version from
+      <a href="http://www.cmake.org/files/cygwin/make.exe"><code>http://www.cmake.org/files/cygwin/make.exe</code></a>
+
+
+    <p>For details, see
+      <a href="http://www.cygwin.com/ml/cygwin-announce/2006-07/msg00008.html" target="_top"><code>http://www.cygwin.com/ml/cygwin-announce/2006-07/msg00008.html</code></a>
+      <BLOCKQUOTE>
+
+	<li> From: Christopher Faylor &lt;cgf-no-personal-reply-please at cygwin dot com&gt;
+
+	<li> To: cygwin-announce at cygwin dot com
+
+	<li> Date: Sun, 9 Jul 2006 18:13:29 -0400
+
+	  <p>I've made a new version of 'make' available for download.  This updates
+	    the package to the latest version available from fedora.redhat.com.
+	    I've included the relevant portions of the NEWS file and the Fedora
+	    ChangeLog at the end of this message.
+
+	  <p>For a brief description of this package, see 
+	    <a href="http://cygwin.com/packages/" target="_top">http://cygwin.com/packages/</a>.
+
+	  <p>Note that the --win32 command line option and "MAKE_MODE" environment
+	    variable are no longer supported in Cygwin's make.  If you need to use a
+	    Makefile which contains MS-DOS path names, then please use a MinGW
+	    version of make.
+
+	  <p>See: <a href="http://mingw.org/" target="_top">http://mingw.org/</a>
+	    for details on downloading a version of make
+	    which understands MS-DOS path names.  Please! direct any questions about
+	    the MinGW version of make to the appropriate MinGW mailing list.
+      </BLOCKQUOTE>
+
+      I have no idea what prompted this change, it seems really lame.
+      The code worked fine under Cygwin for many years.  It seems like breaking
+      an important tool such as make only hurts the GNU tools.  This means that it
+      is <b>impossible</b> to use Cygwin make with Sun Java, which uses MS-DOS paths.
+
+    <p>For further updates, see
+      <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=55" target="_top"><code>https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=55</code></a>.
+
+    <p>4/26/07: Wile compiling in <code>$PTII/jni/test</code>,
+      I was getting
+      <pre>
+	Process_begin: CreateProcess((null), /usr/bin/gcc -shared
+	-Wl,--add-stdcall-alias -o testDeux.dll testDeux.c, ...) failed.
+      </pre>
+      The problem was I was running a broken version of make and updating
+      to
+      <a href="http://www.cmake.org/files/cygwin/make.exe"><code>http://www.cmake.org/files/cygwin/make.exe</code></a>
+      helped.
+
+</ul>
+
+<h3>Limitations in the Actor Oriented Class Mechanism</h3>
+The actor oriented class mechanism described in
+<ul>
+<li>Edward A. Lee, Xiaojun Liu, Stephen Neuendorffer. <a
+href="http://chess.eecs.berkeley.edu/pubs/624.html" target="_top">Classes and inheritance in actor-oriented design</a>,
+<i>ACM Transactions on Embedded Computing Systems
+(TECS)</i>, 8(4):Article No. 29, July 2009.
+</ul>
+has various restrictions and limitations:
+
+<ul>
+  <li> If an atomic actor is to be used in an Actor Oriented Class definition,
+    then the atomic actor must have a properly implemented clone(Workspace) 
+    method. See the design documents for details.
+
+  <li> Several higher-order-components will not work inside class definitions.
+    (ModalModel, several CT actors, etc.).
+
+  <li> Name collisions can occur when adding objects to base classes
+    whose names collide with objects in derived classes.
+    Auto naming should look through the derivedList for name conflicts.
+
+  <li> Propagation of changes to a base class is very slow in Vergil.
+    If there are more than just a very few instances or derived
+    classes, interactive editing is not practical.  As a workaround,
+    put the class definitions in a separate file and edit them
+    without opening the model that creates instances. The probable
+    reason is that MoMLParser handles propagation by issuing large
+    numbers of change requests.
+
+  <li> Certain actors, such as MathFunction, change the number of ports
+    when parameters change.  This violates the derivation invariance
+    for classes.  To demonstrate the bug, put a MathFunction actor
+    in a base class that has a subclass.  Change the function parameter
+    in the subclass to anything but "modulo".  Then change the function
+    in the base class to "modulo" (which adds a port).  Now attempt
+    to insert a parameter into the port.  You will get an
+    InternalErrorException when it tries to propagate the change.
+</ul>
+
+
+<h3>Limitations in the Actor Libraries</h3>
+<ul>
+  <li>The actor library is far from complete.
+
+  <li>The Expression actor does not properly propagate type constraints in
+  an expression-dependent fashion. It works correctly for double-valued
+  expressions of double-valued inputs.
+
+  <li> The Ptolemy parameter parser uses comma "," to separate elements
+  in an array.  This causes problems when Ptolemy is run on
+  European machines that use a comma "1,0" instead of a period "1.1"
+  in floating point numbers.  See <a href="http://mercury.nceas.ucsb.edu/kepler/pipermail/kepler-users/2009-September/001712.html" target="_top">[Kepler-users]: Where to go with the problems of internationalization or how create account into forum?</a>
+
+  <li> The Datagram actors do not work very well.
+  The tests sometimes fail.
+  See <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=54" target="_top">Bug #54: Datagram actors fail their test</code></a>.
+
+  <li> The Display actor uses the Swing JTextArea component which is 
+  known to have memory leaks.
+
+  <li> The readFile() parameter function does not work with applets.
+  Instead, use readResource().
+
+  <li>Matlab Interface issues
+  <ul>
+  <!-- If you change the next paragraph update install.htm -->
+
+  <li>The Matlab interface works only under Windows, Linux and Mac OS X.
+  The Matlab interface requires that Matlab be installed on the local
+  machine.  The version of the Matlab interface that is shipped with
+  the release might not work with your version of Matlab.  The solution
+  is to recompile from source.
+
+  <li>Under Windows, Matlab models sometimes cause Ptolemy to exit the
+  second time the model is run!
+  <br>The problem seems to be a segfault within a Windows library.
+  The problem only affects systems where Matlab is compiled with 
+  Microsoft Visual C.
+
+  <li> The Matlab interface is not very stable under Windows.
+  As a workaround, try running the Matlab demos by compiling Ptolemy II from
+  source and then running <code>vergil -jni</code>.
+
+  </ul>
+
+  <li> IterateOverArray issues
+     <menu>
+        <li> <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=322#in_browser" target="_top">Bug #322: IterateOverArray has a Configuration clone problem</a>.
+    	      <!-- Confirmed on 3/01/10 -->
+
+	<li> IterateOverArray: When you drop in an actor, and then
+	another actor, and then select "undo," the second actor is
+	deleted without the first one being re-created. Thus, undo is
+        only a partial undo. The fix to this is extremely
+        complicated. Probably the only viable
+        mechanism is to use UndoStackAttribute.getUndoInfo() to get the undo
+        stack and then to manipulate the contents of that stack directly.
+	
+	<li> IterateOverArray: There should be an option to reset
+	between firings of the inside actor.
+
+	<li> IterateOverArray: If you drop a new actor onto an IterateOverArray
+        in a subclass, it will simply acquire the new contents, but not
+        actually do anything with them. It should somehow refuse to accept
+        the new object in the subclass, since to do so, it would have to
+        delete the original object defined in the base class, and this would
+        violate the derived invariant.
+
+        
+	<li> IterateOverArray: If an instance of IterateOverArray in a derived
+        class has overridden values of parameters, those are lost if
+        contained entity of the instance in the base class is replaced and
+        then an undo is requested.
+
+       
+        <li> IterateOverArray: When an actor with a display icon like
+        Const, Expression, or MathFunction is put into
+        IterateOverArray, the CopyCatIcon doesn't reflect the text display.
+
+     </menu>
+
+</ul>
+
+<h3>Limitations in the PN Domain</h3>
+The PN domain documents that it locally handles mutations.  However, this
+is currently not true in the implementation.  For the basic PN model, this
+doesn't really matter, since mutations happen pretty much the same as they
+would otherwise.  (i.e. they are non-deterministic in when they execute) 
+However, for timed PN models, there is actually some expressiveness
+lost, since timed PN models can locally execute mutations deterministically.
+
+ <p>Embedding a PN typed composite actor inside a non-process top level
+such as DE does not work.  In fact embedding a process domain inside
+a non-process domain is likely to have problems.  Profess Lee wrote:
+<BLOCKQUOTE>
+    Yes, it looks as if the code is designed so that process domains
+    (PN, CSP) can only be used within process domains.  I'm not sure
+    to what extent this is a limitation of the process domains vs. a
+    semantic problem.  What would PN mean within DE?  Since PN has
+    no well-defined notion of a "firing", how would you assign time
+    stamps to the outputs of a PN actor?  By default in DE, the time
+    stamps of the outputs of an actor match those of the inputs that
+    triggered the firing. There is no such notion in PN.
+</BLOCKQUOTE>
+
+<h3>Limitations in other domains</h3>
+<ul>
+  <li> <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=297" target="_top">Bug #297: Warn if ct and modal are combined or if continuous and fsm are combined</a>
+  <li> <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=326" target="_top">Bug #326: DDF scheduler problem with SequenceToArray</a>
+</ul>    
+
+<h3>Limitations in the User Interface</h3>
+
+Below are some of the limitations of Vergil, the Ptolemy II Graphical
+User Interface.
+
+<ul>
+  <li> The <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=323" target="_top">Bug #323: Up button does not work in modal models</a>.
+
+  <li> If a parameter name end with an underscore and a number, then
+    cutting and pasting drops the underscore and number.
+
+  <li> The labeling of ports gets messed up if you change cardinality.
+
+  <li> Cancelling a style change doesn't restore original
+    state.  There are FIXME's about this in actor.gui.style.StyleConfigurer.
+
+  <li> If there are multiple windows open for a model, say, the top
+    level vergil window and the tree view, or the top level window
+    and the inside look of a composite component, when the top
+    level window is closed, all other windows are closed, but the
+    user is not prompted to save any change to the model.
+
+  <li> When setting the type of a port, we should provide a combo
+    box that lists the common ports
+
+  <li> When creating a Modal Model, to create a transition between
+    states, hold the (Mac: Command-Mouse-Button, Windows: Control-Right-Mouse-Button)
+    and drag from one state to another.  
+    One potential workaround would
+    be to have an information message in the status bar about this.
+
+  <li> You should not change the names of built in ports - The port
+    mechanism should disallow port name changes on ports that are
+    named in Java.  The UI could recognize this.  The UI should
+    not allow the user to remove built in Java defined ports.
+
+  <li> Manually setting of the types of actors like ArrayToSequence that
+    have constraints on their element types can cause problems.
+
+  <li> HTVQ demo is badly laid out when run under vergil.
+  <li> Weak support for multiports in the graph editor.
+  <li> The integrated web browser is not a full-featured browser.
+  <li> Debugger not yet integrated.
+  <li> It is difficult to add actors to the libraries.
+  <li> No dynamic class reloading.
+  <li> Plot windows don't resize when control panel is resized
+
+  <br>If a model with plotters is executed using the run button on the
+  toolbar, and then re-executed using the run control panel accessed
+  through the View menu, then resizing the run control panel does not
+  cause the plots to resize to fit.  <br>Workaround: Close the model and
+  re-open it, and then run first using the run control panel.
+
+  <li>There is no mechanism in the UI to save a model as a class,
+    nor to save a submodel as a class.
+
+  <li>There is no mechanism in the UI to create a custom icon for
+    a library element and store it in the right place.
+
+  <li>If an actor uses a slider, then the actor tree navigator pane
+    incorrectly shows the slider as a subitem of the actor.
+
+  <li> It seems that if you close a model that has been modified,
+    get prompted to save it, and select save, then the model
+    is saved but not closed.  It should be closed too...
+
+  <li> When I select a large number of items from one model, and
+    copy and paste them into a new one, they sometimes all get
+    placed at the origin.  Strangely, if I then auto-place,
+    and then undo, they get their original (correct) placement!
+
+  <li> <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=289" target="_top">Bug #289: Under Mac OS X, printing to Acrobat 9.0 fails </a>
+    
+  <li> Printing a model that contains transparent objects can result
+    in problems when printing to Encapsulated Postscript (EPS).
+
+  <br>If a model has transparent objects, then when it is printed to
+  EPS, the resulting file is a bitmap instead of a Postscript
+  description of the graphics.  You can tell by the file size (several
+  Meg vs. several K) and by opening it in Illustrator, where in theory
+  you should be able to ungroup and select and edit individual
+  components.
+
+  <br>The way Java prints EPS is that there is an implementation of
+  Graphics2D that literally translates each graphics2D call into a
+  Postscript snippet.  If Java detects any transparent colors or images,
+  then the literal translation of each element independently doesn't
+  work, so the printing code reverts to writing everything to an image
+  and then sending the image, encapsulated in Postscript to the printer.
+
+  <br>Solution1: Use one of these pdf writing programs to generate
+  pdf-1.4 compliant pdf files, which have extensions to support
+  transparency that Postscript lacks, and then print them to eps, which
+  would use the distill implementation of the above algorithm.
+  Or alternatively, we could switch to using pdftex instead of 
+  latex-&gt;dvips-&gt;distill which should
+  embed pdf for figures directly at the expense of less robust latex support.
+
+  <br>Solution 2: Use the undocumented flag
+  -Dsun.java2d.print.pipeline=pdl on the command line to force the
+  printing to use the postscript path, ignoring transparency.
+  Under Cygwin:
+  <pre>
+  export JAVAFLAGS=-Dsun.java2d.print.pipeline=pdl
+  vergil
+  </pre>
+  Then edit the file by hand in Illustrator to add the transparency back in.
+
+</ul>
+
+<h3>Limitations in $PTII/jni</h3>
+$PTII/jni has been replaced by the
+<a href="codeDoc/ptolemy/actor/lib/jni/EmbeddedCActor.html">EmbeddedCActor</a>.
+We keep $PTII/jni around because we need the launcher for use with JNI under Cygwin
+and $PTII/jni has some simple JNI tests.
+<ul>
+
+  <li> The Interface to C actors using the Java Native Interface
+  is not available via the Windows Installer (or Web Start).
+  To use the JNI/Ptolemy II interface, you must download 
+  Ptolemy II as source files and compile.
+
+  <li> The JNI user interface was removed between Ptolemy II 4.0
+  and Ptolemy II 5.0 because the UI stopped working.
+
+</ul>
+
+<h3>Code Generation Limitations</h3>
+
+<ul>
+  <li> <a href="https://chess.eecs.berkeley.edu/bugzilla/show_bug.cgi?id=285" target="_top">Bug #285: PointerTokens do not work on 64 bit Java</a>
+  <li> Code Generation limitations are covered on the <a href="codegen.htm#limitations">Code Generation</a> page. 
+</ul>    
+
+<h3>Missing Domains</h3>
+<ul>
+  <li>Boolean and integer dataflow.
+</ul>
+ <p>For limitations discovered after the release, see the
+<a href="http://ptolemy.eecs.berkeley.edu/ptolemyII/ptII8.0/limitations.htm#in_browser" target="_top">Ptolemy II 8.0.1 website</a>
+
+<!--/vergilDocs-->
+<p><font size="2" color="#cc0000">Last Updated: $Date: 2010-09-20 14:01:12 -0700 (Mon, 20 Sep 2010) $</font>
+ <!-- Leave a trailing p here so that there is a little space at the bottom -->
+ <p>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "MoML_1.dtd">
+<entity name="_base_model" class="ptolemy.actor.TypedCompositeActor">
+    <property name="Rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="-110.0, -55.0">
+        </property>
+        <property name="lineColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.48235294,0.47058824,0.47058824,1.0}">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="29.0">
+        </property>
+        <property name="height" class="ptolemy.data.expr.Parameter" value="29.0">
+        </property>
+        <property name="centered" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="_renderFirst" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+    </property>
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.0.1_20101021">
+    </property>
+    <property name="Wireless Director" class="ptolemy.domains.wireless.kernel.WirelessDirector">
+        <property name="synchronizeToRealTime" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="timeResolution" class="ptolemy.actor.parameters.SharedParameter" value="1E-6">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-180.0, -140.0]">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={325, 54, 1514, 918}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1291, 801]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.64">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{767.121851593868, 446.1962947635808}">
+    </property>
+    <property name="GlobalInitBattery" class="ptolemy.data.expr.Parameter" value="50">
+    </property>
+    <property name="SensorCover" class="ptolemy.data.expr.Parameter" value="100">
+    </property>
+    <property name="CommCover" class="ptolemy.data.expr.Parameter" value="200">
+    </property>
+    <property name="DataReportFile" class="ptolemy.data.expr.Parameter" value="&quot;eboracum/data/defaultReport.csv&quot;">
+    </property>
+    <entity name="LimitedRangeChannel" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
+        <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = SensorCover}">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-83.0, -142.0]">
+        </property>
+    </entity>
+    <entity name="PowerLossChannel" class="ptolemy.domains.wireless.lib.PowerLossChannel">
+        <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = CommCover, power = Infinity}">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[65.0, -145.0]">
+        </property>
+    </entity>
+    <entity name="NodeRandomizer" class="ptolemy.domains.wireless.lib.NodeRandomizer">
+        <property name="randomizeInInitialize" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="range" class="ptolemy.data.expr.Parameter" value="{{100.0, 900.0}, {100.0,900.0}}">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[205.0, -135.0]">
+        </property>
+    </entity>
+    <entity name="Stop" class="ptolemy.actor.lib.Stop">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[665.0, -135.0]">
+        </property>
+    </entity>
+    <entity name="NetworkMainGateway" class="eboracum.wsn.network.node.NetworkMainGateway">
+        <property name="Network" class="ptolemy.data.expr.StringParameter" value="noDefault">
+        </property>
+        <property name="randomize" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="Battery" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+        <property name="InitBattery" class="ptolemy.data.expr.Parameter" value="GlobalInitBattery">
+        </property>
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-180.0, -10.0]">
+        </property>
+    </entity>
+    <entity name="EventTypeController" class="eboracum.wsn.type.EventTypeController">
+        <doc>Associates the Event Type Hierarchy to Events e Nodes.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[755.0, -135.0]">
+        </property>
+    </entity>
+    <entity name="DataReporter" class="eboracum.simulation.DataReporter">
+        <doc>Data reporter to generate statistics.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[575.0, -135.0]">
+        </property>
+    </entity>
+    <entity name="AtomicWirelessChannel" class="ptolemy.domains.wireless.kernel.AtomicWirelessChannel">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[905.0, -145.0]">
+        </property>
+    </entity>
+    <entity name="Stochastic" class="eboracum.wsn.event.util.Stochastic">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[330.0, -135.0]">
+        </property>
+    </entity>
+    <entity name="SimpleAdHocNetwork" class="eboracum.wsn.network.SimpleAdHocNetwork">
+        <property name="NetworkSinks" class="ptolemy.data.expr.StringParameter" value="{NetworkMainGateway}">
+        </property>
+        <property name="RebuildNetwork" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <doc>Simple Network builder based on a multi-hope ad-hoc network desing.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[435.0, -135.0]">
+        </property>
+    </entity>
+    <entity name="MovementRemoteController" class="eboracum.wsn.network.node.sensor.mobile.central.MovementRemoteController">
+        <property name="timeBetweenMovents" class="ptolemy.data.expr.Parameter" value="100">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1090.0, -135.0]">
+        </property>
+    </entity>
+    <entity name="PowerLossChannel2" class="ptolemy.domains.wireless.lib.PowerLossChannel">
+        <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = 160.0, power = Infinity}">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1275.0, -140.0]">
+        </property>
+    </entity>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <link port="Stop.input" relation="relation2"/>
+    <link port="DataReporter.out" relation="relation2"/>
+    <link port="DataReporter.trigger" relation="relation3"/>
+    <link port="SimpleAdHocNetwork.out" relation="relation3"/>
+</entity>

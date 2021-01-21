@@ -1,0 +1,13 @@
+{"washington", "berkeley"}
+{"washington", "motorolla"}
+{"mapquest", "google"}
+{"mapquest", "youtube"}
+{"mapquest", "tmobile"}
+{"mapquest", "sbc"}
+{"stanford", "berkeley"}
+{"stanford", "newsweek"}
+{"stanford", "motorolla"}
+{"stanford", "washington"}
+{"stanford", "aol"}
+{"time", "stanford"}
+{"time", "wikipedia"}

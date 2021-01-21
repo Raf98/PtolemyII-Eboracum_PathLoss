@@ -1,0 +1,5 @@
+<load>
+<event type="E" ordinary="true" commcost="1">
+<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
+</event>
+</load>

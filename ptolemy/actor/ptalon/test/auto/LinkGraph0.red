@@ -1,0 +1,12 @@
+{"google", "time"}
+{"google", "stanford"}
+{"google", "myspace"}
+{"google", "youtube"}
+{"google", "sbc"}
+{"nytimes", "time"}
+{"nytimes", "myspace"}
+{"newsweek", "time"}
+{"newsweek", "berkeley"}
+{"newsweek", "myspace"}
+{"newsweek", "motorolla"}
+{"newsweek", "wikipedia"}

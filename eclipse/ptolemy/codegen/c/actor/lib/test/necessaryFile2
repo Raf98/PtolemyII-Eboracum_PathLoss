@@ -1,0 +1,4 @@
+$Id: necessaryFile2 46670 2007-08-09 20:25:57Z cxh $
+
+This file is used by Ramp2 in rampNecessaryFiles.xml
+to illustrate use of the necessaryFiles parameter.

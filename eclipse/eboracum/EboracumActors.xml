@@ -1,0 +1,90 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="EbocarumActors" class="ptolemy.moml.EntityLibrary">
+  <configure>
+    <?moml
+      <group>
+	<doc>Eboracum Actors</doc>
+	<entity name="NetworkMainGateway" class="eboracum.wsn.network.node.NetworkMainGateway">
+		<doc>Special WSN Node designed only to be the main gateway of the network.</doc>
+	</entity>
+	<entity name="SimpleWSNNode" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+		<doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
+	</entity>
+	<entity name="DummyControlledWSNNode" class="eboracum.wsn.network.node.sensor.controlled.DummyControlledWSNNode">
+		<doc></doc>
+	</entity>
+	<entity name="AntControlledWSNNode" class="eboracum.wsn.network.node.sensor.controlled.AntControlledWSNNode">
+		<doc></doc>
+	</entity>
+	<entity name="PSControlledWSNNode" class="eboracum.wsn.network.node.sensor.controlled.PSControlledWSNNode">
+		<doc></doc>
+	</entity>
+	<entity name="RandomControlledWSNNode" class="eboracum.wsn.network.node.sensor.controlled.RandomControlledWSNNode">
+		<doc></doc>
+	</entity>
+	<entity name="SimpleMobileWSNNode" class="eboracum.wsn.network.node.sensor.mobile.SimpleMobileWSNNode">
+		<doc></doc>
+	</entity>
+	<entity name="RandomMobileWSNNode" class="eboracum.wsn.network.node.sensor.mobile.RandomMobileWSNNode">
+		<doc></doc>
+	</entity>
+	<entity name="DynamicReorganizedWSNNode" class="eboracum.wsn.network.node.sensor.mobile.DynamicReorganizedMobileWSNNode">
+		<doc></doc>
+	</entity>
+	<entity name="AtomicEvent" class="eboracum.wsn.event.AtomicEvent">
+		<doc></doc>
+	</entity>
+	<entity name="PeriodicEvent" class="eboracum.wsn.event.PeriodicEvent">
+		<doc></doc>
+	</entity>
+	<entity name="StochasticStaticEvent" class="eboracum.wsn.event.StochasticStaticEvent">
+		<doc></doc>
+	</entity>
+	<entity name="StochasticPeriodicStaticEvent" class="eboracum.wsn.event.StochasticPeriodicStaticEvent">
+		<doc></doc>
+	</entity>
+	<entity name="StochasticPeriodicJumperEvent" class="eboracum.wsn.event.StochasticPeriodicJumperEvent">
+		<doc></doc>
+	</entity>
+	<entity name="SimpleMobileEvent" class="eboracum.wsn.event.SimpleMobileEvent">
+		<doc></doc>
+	</entity>
+	<entity name="RandomMobileEvent" class="eboracum.wsn.event.RandomMobileEvent">
+		<doc></doc>
+	</entity>
+	<entity name="StochasticMobileEvent" class="eboracum.wsn.event.StochasticMobileEvent">
+		<doc></doc>
+	</entity>
+	<entity name="FullyStochasticMobileEvent" class="eboracum.wsn.event.FullyStochasticMobileEvent">
+		<doc></doc>
+	</entity>
+	<entity name="FullyStochasticMobileEvent" class="eboracum.wsn.event.FullyStochasticMobileEvent">
+		<doc></doc>
+	</entity>
+	<entity name="AntControlledDRMobileWSNNode" class="eboracum.wsn.network.node.sensor.mobile.controlled.AntControlledDRMobileWSNNode">
+		<doc></doc>
+	</entity>
+	<entity name="PSControlledDRMobileWSNNode" class="eboracum.wsn.network.node.sensor.mobile.controlled.PSControlledDRMobileWSNNode">
+		<doc></doc>
+	</entity>
+	<entity name="SimpleAdHocNetwork" class="eboracum.wsn.network.SimpleAdHocNetwork">
+		<doc>Simple Network builder based on a multi-hope ad-hoc network desing.</doc>
+	</entity>
+	<entity name="EventTypeController" class="eboracum.wsn.type.EventTypeController">
+		<doc>Associates the Event Type Hierarchy to Events e Nodes.</doc>
+	</entity>
+	<entity name="Stochastic" class="eboracum.wsn.event.util.Stochastic">
+		<doc>Stochastic Component</doc>
+	</entity>
+	<entity name="DataReporter" class="eboracum.simulation.DataReporter">
+		<doc>Data reporter to generate statistics.</doc>
+	</entity>
+	<entity name="GreedyCentralizedLoadBalancer" class="eboracum.wsn.agent.central.GreedyCentralizedLoadBalancer">
+		<doc></doc>
+	</entity>
+	</group>
+    ?>
+  </configure>
+</entity>

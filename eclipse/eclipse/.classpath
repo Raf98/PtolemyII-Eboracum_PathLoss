@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="**/CVS/|**/adm/|**/codeDoc/|build/|config/|jni/test/jni/meaningOfLife/|jni/test/jni/testDeux/|jni/test/jni/testTrois/|ptolemy/backtrack/test/|ptolemy/copernicus/kernel/fragment/JavaFragmentParser.java|doc/coding/templates/|ptolemy/apps/agilent/|ptolemy/apps/anytimecontrol/|ptolemy/apps/apes/|ptolemy/apps/charon/|ptolemy/apps/crazyboard/|ptolemy/apps/etherealSting/|ptolemy/apps/fullscreen/|ptolemy/apps/giotto/|ptolemy/apps/ia/|ptolemy/apps/interfaces/|ptolemy/apps/kurt/|ptolemy/apps/jmf/|ptolemy/apps/kvm/|ptolemy/apps/lego/|ptolemy/apps/lejos/|ptolemy/apps/midp/|ptolemy/apps/mobileCoding/|ptolemy/apps/pendulum/|ptolemy/apps/rijndael/|ptolemy/apps/robot/|ptolemy/apps/security/|ptolemy/apps/sobel/|ptolemy/apps/soot/|ptolemy/apps/throttle/|ptolemy/apps/tini/|ptolemy/apps/transmission/|ptolemy/apps/vergil/|ptolemy/apps/waba/|ptolemy/apps/webstart/|ptolemy/apps/xsl/|ptolemy/apps/zaurus/|ptolemy/codegen/lib/|ptolemy/codegen/kernel/newInterfaces/|ptolemy/domains/ct/demo/Saber/|ptolemy/domains/giotto/demo/Hierarchy/Hierarchy/|ptolemy/domains/giotto/demo/Multimode/Multimode/|ptolemy/domains/giotto/demo/Simple/Simple/|ptolemy/domains/gro/|ptolemy/domains/gr/lib/experimental/|ptolemy/domains/pdf/|ptolemy/plot/servlet/|vendors/|ptolemy/codegen/c/actor/lib/oldJavaFiles/|ptolemy/codegen/dsp/lib/|ptolemy/moml/test/NoPackageActor.java|src/|target/|ptolemy/actor/gui/run|ptolemy/chic/|doc/doclets/|ptolemy/backtrack/|ptolemy/backtrack/ast/|ptolemy/actor/lib/logic/fuzzy/|ptolemy/vergil/basic/itextpdf/|ptolemy/actor/lib/jai/|ptolemy/actor/lib/jmf/|ptolemy/actor/lib/joystick/|ptolemy/actor/lib/excel/|vendors/sun/jxta/|ptolemy/actor/lib/jxta/|ptolemy/moml/jxta/|ptolemy/actor/lib/opencv/|ptolemy/actor/lib/io/comm/|ptolemy/domains/gr/|ptolemy/matlab/|ptolemy/domains/gr/lib/quicktime/|diva/util/java2d/svg/|ptolemy/domains/ptinyos/|ptolemy/actor/lib/x10/|ptolemy/actor/lib/x10/" kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/bsh-2.0b4.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/ptCal.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/java_cup.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/saxon8.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/saxon8-dom.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/ptcolt.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/jython.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/kieler.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/ptjacl.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/ptolemy/distributed/jini/jar/jini-core.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/ptolemy/distributed/jini/jar/jini-ext.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/ptolemy/distributed/jini/jar/sun-util.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/mapss.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/ptolemy/actor/ptalon/antlr/antlr.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/sootclasses.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/polyglotclasses-1.3.2.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/jasminclasses.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/ptolemy/actor/lib/database/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/ptolemy/actor/lib/database/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1/lib/PDFRenderer.jar"/>
+	<classpathentry kind="output" path="eclipse"/>
+</classpath>

@@ -1,0 +1,13 @@
+#!/bin/sh
+# $Id: runModels 55814 2009-10-11 00:15:21Z cxh $
+# A script that runs models using MoMLSimpleStatisticalApplication
+# and saves the output in individual files
+
+for file in $@
+do
+    echo $file
+    logfile="`dirname $file`/`basename $file .xml`_`date +%Y%m%d%H%M%S`.out"
+    (time java -Xmx1600M -classpath "$PTII" \
+    	 ptolemy.actor.gui.MoMLSimpleStatisticalApplication \
+	 $file) >& $logfile
+done

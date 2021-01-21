@@ -1,0 +1,5 @@
+$Id: solutions.txt 55755 2009-09-23 18:00:27Z cxh $
+
+The solutions are checked in to cvs, but are only readable by Professor Lee.
+To check them out, use:
+cvs -d :ext:bennett.eecs.berkeley.edu:/users/eal/repository co ptIIsolutions

@@ -1,0 +1,8 @@
+JarIndex-Version: 1.0
+
+string.jar
+ptolemy
+ptolemy/actor
+ptolemy/actor/lib
+ptolemy/actor/lib/string
+
