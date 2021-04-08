@@ -7,8 +7,18 @@ import ptolemy.vergil.kernel.attributes.RectangleAttribute;
 
 public class PathLossRectangleAttribute extends RectangleAttribute{
 
-    double pathLoss;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     
+    public double x, y;
+    public double freeSpacePathLoss;
+    public double hataPathLoss;
+    public double distanceFromNode;
+    public double frequency;
+    public double heightFactor;
+    public boolean available;
     
     public PathLossRectangleAttribute(NamedObj container, String name)
             throws IllegalActionException, NameDuplicationException {
