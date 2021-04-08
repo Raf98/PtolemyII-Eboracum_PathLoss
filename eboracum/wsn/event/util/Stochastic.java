@@ -123,7 +123,12 @@ public class Stochastic extends TypedAtomicActor {
 					ArrayList<Double> temp = new ArrayList<Double>();
 					for (int i=0; i<row.length; i++){
 						if (i > 0) {
-							temp.add(Double.parseDouble(row[i])); 
+						    /*
+			                                 * code change - csv reading "," instead of "."
+			                                 * */
+			                                
+						    temp.add(Double.parseDouble(row[i].replace(",", ".")));
+							//temp.add(Double.parseDouble(row[i])); 
 						}
 					}
 					spectro.add(temp);
@@ -147,7 +152,13 @@ public class Stochastic extends TypedAtomicActor {
 			br = new BufferedReader(new FileReader(histoFile));
 			while ((line = br.readLine()) != null) {
 				int binId = Integer.parseInt(line.split(";")[0]);
-				double binValue = Double.parseDouble(line.split(";")[1]);
+				
+				/*
+				 * code change - csv reading "," instead of "."
+				 * */
+				
+				double binValue = Double.parseDouble(line.split(";")[1].replace(",", "."));
+				//double binValue = Double.parseDouble(line.split(";")[1]);
 				histo.add(binId,binValue);
 			}
 			br.close();

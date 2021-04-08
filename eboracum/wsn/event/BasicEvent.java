@@ -59,10 +59,10 @@ public abstract class BasicEvent extends TypedAtomicActor {
         triggerTime = new Parameter(this, "TriggerTime"); 
         triggerTime.setExpression("0");// default event start at 0
         // Define event node's wireless ports.
-        out = new WirelessIOPort(this, "output", false, true);
+        out = new WirelessIOPort(this, "outputEvent", false, true);//changed from output to outputEvent
         out.outsideChannel.setExpression("$SensorChannelName"); //"$SensorChannelName"
         out.setTypeEquals(BaseType.STRING);
-        outCentral = new WirelessIOPort(this, "output2", false, true);
+        outCentral = new WirelessIOPort(this, "outputEvent2", false, true);//changed from output2 to outputEvent2
         outCentral.outsideChannel.setExpression("AtomicWirelessChannel"); //"$SensorChannelName"
         outCentral.setTypeEquals(BaseType.STRING);
         // Create the node's icon to be used on Vergil

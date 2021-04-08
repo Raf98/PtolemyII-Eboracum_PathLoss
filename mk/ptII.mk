@@ -41,7 +41,7 @@
 prefix =	/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1
 
 # Usually the same as prefix.  exec_prefix is part of the autoconf standard.
-exec_prefix =	${prefix}
+exec_prefix =	/home/rafael/Documentos/EngenhariaDeComputacao/Semestre8/TCC1/ptII8.0.1
 
 # Source directory we are building from.
 srcdir =	.
@@ -214,7 +214,7 @@ JFLAGS = 	$(JDEBUG) $(JOPTIMIZE)
 JAVADOC = 	/usr/bin/javadoc
 
 # The javah binary, used by jni for matlab.
-JAVAH =		
+JAVAH =		/usr/bin/javah
 
 # The javaws command is used to test Webstart JNLP files.
 JAVAWS =	

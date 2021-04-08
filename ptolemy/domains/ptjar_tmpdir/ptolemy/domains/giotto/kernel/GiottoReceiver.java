@@ -24,7 +24,7 @@
  PT_COPYRIGHT_VERSION_2
  COPYRIGHTENDKEY
  */
-package ptolemy.domains.ptjar_tmpdir.ptolemy.domains.giotto.kernel;
+package ptolemy.domains.giotto.kernel;
 
 import java.util.LinkedList;
 import java.util.List;

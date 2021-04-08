@@ -25,7 +25,7 @@
  COPYRIGHTENDKEY
 
  */
-package ptolemy.domains.ptjar_tmpdir.ptolemy.domains.giotto.kernel;
+package ptolemy.domains.giotto.kernel;
 
 import java.io.File;
 import java.util.Iterator;

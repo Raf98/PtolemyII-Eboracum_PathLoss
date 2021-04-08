@@ -140,6 +140,7 @@ public class LimitedRangeChannel extends DelayChannel {
             throws IllegalActionException {
         double range = Double.POSITIVE_INFINITY;
         boolean rangeIsSet = false;
+        
 
         if (properties != null) {
             Token field = properties.get("range");
@@ -149,6 +150,10 @@ public class LimitedRangeChannel extends DelayChannel {
                 // example, a Complex or a Long is given.
                 range = ((ScalarToken) field).doubleValue();
                 rangeIsSet = true;
+                
+              //alteraçao para debug
+                System.out.println("isInRange called");
+                System.out.println("Range: " + range);
             }
         }
 
@@ -162,9 +167,17 @@ public class LimitedRangeChannel extends DelayChannel {
             ScalarToken field = (ScalarToken) defaultPropertiesValue
                     .get("range");
             range = field.doubleValue();
+            
+            System.out.println("isInRange called - default");
+            System.out.println("Range: " + range);
+            System.out.println("Source: " + source.getFullName());
+            System.out.println("Destination: " + destination.getFullName());
         }
 
         boolean result = (_distanceBetween(source, destination) <= range);
+        
+        //System.out.println("Distance: " + _distanceBetween(source, destination));
+        System.out.println("isInRange called - END");
 
         // Whether a port is in range depends on the
         // transmit properties of this sender, so we set up

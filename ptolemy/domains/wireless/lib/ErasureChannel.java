@@ -195,7 +195,15 @@ public class ErasureChannel extends AtomicWirelessChannel {
         WirelessIOPort destination = (WirelessIOPort) receiver.getContainer();
         double d = _distanceBetween(sender, destination);
         distance.setToken(new DoubleToken(d));
+        
+        //comment debug
+        System.out.println("*************TransmitTo***************");
+        System.out.println("Distance: " + d);
+        System.out.println("Source: " + sender.getFullName());
+        System.out.println("Destination: " + destination.getFullName());
+        System.out.println("*************TransmitTo-End***************");
 
+        
         double experiment = _random.nextDouble();
         double probability = ((DoubleToken) lossProbability.getToken())
                 .doubleValue();

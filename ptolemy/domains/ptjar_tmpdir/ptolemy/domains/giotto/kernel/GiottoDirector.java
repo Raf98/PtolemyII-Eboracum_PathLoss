@@ -26,7 +26,7 @@
 
  // NOTE: Downgraded to red due to extensive changes.  EAL
  */
-package ptolemy.domains.ptjar_tmpdir.ptolemy.domains.giotto.kernel;
+package ptolemy.domains.giotto.kernel;
 
 import java.util.Iterator;
 import java.util.LinkedList;

@@ -1,0 +1,107 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="testModel" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.0.1_20101021">
+    </property>
+    <property name="Wireless Director" class="ptolemy.domains.wireless.kernel.WirelessDirector">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="68.0, 32.0">
+        </property>
+    </property>
+    <property name="Rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[285.0, 205.0]">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="height" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="centered" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </property>
+    <property name="Rectangle2" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[325.0, 225.0]">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="height" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="centered" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </property>
+    <property name="Rectangle3" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[310.0, 205.0]">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="height" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="centered" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </property>
+    <property name="Rectangle4" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[285.0, 220.0]">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="height" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="centered" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </property>
+    <property name="Rectangle5" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[305.0, 225.0]">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="height" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="centered" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </property>
+    <property name="Rectangle6" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[330.0, 205.0]">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="height" class="ptolemy.data.expr.Parameter" value="20.0">
+        </property>
+        <property name="centered" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={0, 26, 1366, 742}, maximized=true}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1161, 623]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{580.5, 311.5}">
+    </property>
+    <entity name="PowerLoss" class="ptolemy.domains.wireless.lib.PowerLossChannel">
+        <property name="name" class="ptolemy.data.expr.NameParameter" value="PowerLoss">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{230, 30}">
+        </property>
+    </entity>
+    <entity name="TerrainProperty" class="ptolemy.domains.wireless.lib.TerrainProperty">
+        <property name="channelName" class="ptolemy.data.expr.StringParameter" value="PowerLoss">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{145, 145}">
+        </property>
+    </entity>
+    <entity name="GraphicalLocator" class="ptolemy.domains.wireless.lib.GraphicalLocator">
+        <property name="inputChannelName" class="ptolemy.data.expr.StringParameter" value="PowerLoss">
+        </property>
+        <property name="outputChannelName" class="ptolemy.data.expr.StringParameter" value="PowerLoss">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[485.0, 280.0]">
+        </property>
+    </entity>
+    <entity name="GraphicalLocator2" class="ptolemy.domains.wireless.lib.GraphicalLocator">
+        <property name="inputChannelName" class="ptolemy.data.expr.StringParameter" value="PowerLoss">
+        </property>
+        <property name="outputChannelName" class="ptolemy.data.expr.StringParameter" value="PowerLoss">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[620.0, 260.0]">
+        </property>
+    </entity>
+</entity>
