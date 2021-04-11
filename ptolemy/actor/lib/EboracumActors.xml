@@ -84,6 +84,10 @@
 	<entity name="GreedyCentralizedLoadBalancer" class="eboracum.wsn.agent.central.GreedyCentralizedLoadBalancer">
 		<doc></doc>
 	</entity>
+	
+	<entity name="PathLossWSNNode" class="eboracum.pathloss.PathLossWSNNode">
+		<doc>Path Loss WSN Node</doc>
+	</entity>
 	</group>
     ?>
   </configure>

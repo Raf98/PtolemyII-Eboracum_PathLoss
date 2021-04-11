@@ -24,6 +24,14 @@ public class PathLossRectangleAttribute extends RectangleAttribute{
             throws IllegalActionException, NameDuplicationException {
         super(container, name);
         // TODO Auto-generated constructor stub
+        this.heightFactor = 0;
+    }
+    
+    public PathLossRectangleAttribute(NamedObj container, String name, double heightFactor)
+            throws IllegalActionException, NameDuplicationException {
+        super(container, name);
+        // TODO Auto-generated constructor stub
+        this.heightFactor = heightFactor;
     }
     
     
