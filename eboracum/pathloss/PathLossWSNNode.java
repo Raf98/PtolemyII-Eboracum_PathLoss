@@ -59,14 +59,14 @@ public class PathLossWSNNode extends SimpleWSNNode{
         super.buildIcon();
         
         Location wsnNodeLocation = (Location) this._circle.getAttribute("_location");
-        System.out.println(wsnNodeLocation.getLocation()[1]);
+        //System.out.println(wsnNodeLocation.getLocation()[1]);
         double wsnNodeX = wsnNodeLocation.getLocation()[0];
         double wsnNodeY = wsnNodeLocation.getLocation()[1];
         double nodeWidth = Double.parseDouble(this._circle.width.getValueAsString());
         double nodeHeight = Double.parseDouble(this._circle.height.getValueAsString());
         
         //redefinir pra descobrir de acordo com o Path Loss free space
-        Location circleCommLocation = (Location) this._circle_comm.getAttribute("_location");
+        /*Location circleCommLocation = (Location) this._circle_comm.getAttribute("_location");
         System.out.println(circleCommLocation.getLocation()[1]);
         double circleCommX = circleCommLocation.getLocation()[0];
         double circleCommY = circleCommLocation.getLocation()[1];
@@ -74,6 +74,7 @@ public class PathLossWSNNode extends SimpleWSNNode{
         double circleCommHeight = Double.parseDouble(this._circle_comm.height.getValueAsString());
         System.out.println(circleCommWidth);
         System.out.println(circleCommHeight);
+        */
         
         pathLossMethods = new PathLossMethods(800e6);
                 
@@ -115,7 +116,7 @@ public class PathLossWSNNode extends SimpleWSNNode{
                   
                   System.out.println("HATA: " + pathLossPoints[i][j].hataPathLoss);
                   
-                  if(pathLossPoints[i][j].hataPathLoss > -20) {
+                  if(pathLossPoints[i][j].hataPathLoss < 20) {
                       pathLossPoints[i][j].fillColor.setToken("{1.0, 1.0, 0.0, 0.7}");
                   }
 

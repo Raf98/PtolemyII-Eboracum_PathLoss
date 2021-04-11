@@ -23,19 +23,21 @@ public class PathLossMethods {
     public double freeSpace(double frequency, double distance) {
         double wavelength = LIGHT_SPEED/frequency;
         
-        return 20*Math.log10((wavelength/(4*Math.PI*distance)));
+        return 20*Math.log10(((4*Math.PI*distance)/wavelength));
     }
     
     public double freeSpace(double distance) {
         double wavelength = LIGHT_SPEED/frequency;
                 
-        return 20*Math.log10((wavelength/(4*Math.PI*distance)));
+        return 20*Math.log10(((4*Math.PI*distance)/wavelength));
     }
     
     public int freeSpaceMaximumDistance() { //equation assuming 20dB as maximum power that can be lost
         double wavelength = LIGHT_SPEED/frequency;
-        double maximumPathLoss = -20;
-        double maxDistance = (wavelength/(4*Math.PI*Math.pow(10, maximumPathLoss/20)))*1000;
+        double maximumPathLoss = 20;
+        double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelength)/(4*Math.PI))*1000;
+        
+        System.out.println(maxDistance);
         
         return (int)maxDistance;
     }
@@ -44,7 +46,14 @@ public class PathLossMethods {
      * */
     public int freeSpaceMaximumDistance(double maximumPathLoss) {
         double wavelength = LIGHT_SPEED/frequency;
-        double maxDistance = (wavelength/(4*Math.PI*Math.pow(10, maximumPathLoss/20)))*1000;
+        double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelength)/(4*Math.PI))*1000;
+        
+        
+        /*double count;
+        for(int i = 0; i < 100; i++) {
+            count = (double)i/100;
+            System.out.println("PL for " + count + " km: " + this.freeSpace(count)+ " dB");
+        }*/
         
         return (int)maxDistance;
     }
