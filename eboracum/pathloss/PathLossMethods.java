@@ -7,6 +7,7 @@ public class PathLossMethods {
     final double LIGHT_SPEED = 299792458;
     
     public double frequency;
+    public double frequencyMHz;
     public double transmitterAntennaHeight;
     public double receiverAntennaHeight;
     
@@ -18,6 +19,7 @@ public class PathLossMethods {
     
     public PathLossMethods(double frequency) {
         this.frequency = frequency;
+        this.frequencyMHz = this.frequency/1e6;
     }
     
     public double freeSpace(double frequency, double distance) {
@@ -61,10 +63,17 @@ public class PathLossMethods {
     public double largeUrbanHata(double frequency, double distance,
             double transmitterAntennaHeight, 
             double receiverAntennaHeight) {
-        double receiverAntennaCorrectionFactor = (1.1*Math.log10(frequency) - 0.7)*receiverAntennaHeight 
-                - (1.56*Math.log10(frequency) - 0.8);
+        double receiverAntennaCorrectionFactor;
+        double frequencyMHz = frequency/1e6;
+                
+         if(frequency > 300e6) {
+             receiverAntennaCorrectionFactor = 3.2*Math.log10(Math.pow(11.75*receiverAntennaHeight, 2)) - 4.97;
+         } else {
+             receiverAntennaCorrectionFactor = 8.29*Math.log10(Math.pow(1.54*receiverAntennaHeight, 2)) - 1.1;
+         }
         
-        return (69.55 + 26.16*Math.log10(frequency) - 13.82*Math.log10(transmitterAntennaHeight)
+        
+        return (69.55 + 26.16*Math.log10(frequencyMHz) - 13.82*Math.log10(transmitterAntennaHeight)
                 - receiverAntennaCorrectionFactor + (44.9 - 6.55*Math.log10(transmitterAntennaHeight))
                 *Math.log10(distance));
         
@@ -73,10 +82,15 @@ public class PathLossMethods {
     public double largeUrbanHata(double distance,
             double transmitterAntennaHeight, 
             double receiverAntennaHeight) {
-        double receiverAntennaCorrectionFactor = (1.1*Math.log10(this.frequency) - 0.7)*receiverAntennaHeight 
-                - (1.56*Math.log10(this.frequency) - 0.8);
+        double receiverAntennaCorrectionFactor;
         
-        return (69.55 + 26.16*Math.log10(this.frequency) - 13.82*Math.log10(transmitterAntennaHeight)
+        if(this.frequency > 300e6) {
+            receiverAntennaCorrectionFactor = 3.2*Math.log10(Math.pow(11.75*receiverAntennaHeight, 2)) - 4.97;
+        } else {
+            receiverAntennaCorrectionFactor = 8.29*Math.log10(Math.pow(1.54*receiverAntennaHeight, 2)) - 1.1;
+        }
+        
+        return (69.55 + 26.16*Math.log10(this.frequencyMHz) - 13.82*Math.log10(transmitterAntennaHeight)
                 - receiverAntennaCorrectionFactor + (44.9 - 6.55*Math.log10(transmitterAntennaHeight))
                 *Math.log10(distance));
         
@@ -85,15 +99,13 @@ public class PathLossMethods {
     public double smallMediumUrbanHata(double frequency, double distance,
             double transmitterAntennaHeight, 
             double receiverAntennaHeight) {
-        double receiverAntennaCorrectionFactor;
+       double receiverAntennaCorrectionFactor;
+       double frequencyMHz = frequency/1e6;
         
-        if(frequency > 300e6) {
-            receiverAntennaCorrectionFactor = 3.2*Math.log10(Math.pow(11.75*receiverAntennaHeight, 2)) - 4.97;
-        } else {
-            receiverAntennaCorrectionFactor = 8.29*Math.log10(Math.pow(1.54*receiverAntennaHeight, 2)) - 1.1;
-        }
+       receiverAntennaCorrectionFactor = (1.1*Math.log10(frequencyMHz) - 0.7)*receiverAntennaHeight 
+               - (1.56*Math.log10(frequencyMHz) - 0.8);
         
-        return (69.55 + 26.16*Math.log10(frequency) - 13.82*Math.log10(transmitterAntennaHeight)
+        return (69.55 + 26.16*Math.log10(frequencyMHz) - 13.82*Math.log10(transmitterAntennaHeight)
                 - receiverAntennaCorrectionFactor + (44.9 - 6.55*Math.log10(transmitterAntennaHeight))
                 *Math.log10(distance));
         
@@ -102,15 +114,10 @@ public class PathLossMethods {
     public double smallMediumUrbanHata(double distance,
             double transmitterAntennaHeight, 
             double receiverAntennaHeight) {
-        double receiverAntennaCorrectionFactor;
+        double receiverAntennaCorrectionFactor = (1.1*Math.log10(this.frequencyMHz) - 0.7)*receiverAntennaHeight 
+                - (1.56*Math.log10(this.frequencyMHz) - 0.8);
         
-        if(frequency > 300e6) {
-            receiverAntennaCorrectionFactor = 3.2*Math.log10(Math.pow(11.75*receiverAntennaHeight, 2)) - 4.97;
-        } else {
-            receiverAntennaCorrectionFactor = 8.29*Math.log10(Math.pow(1.54*receiverAntennaHeight, 2)) - 1.1;
-        }
-        
-        return (69.55 + 26.16*Math.log10(frequency) - 13.82*Math.log10(transmitterAntennaHeight)
+        return (69.55 + 26.16*Math.log10(this.frequencyMHz) - 13.82*Math.log10(transmitterAntennaHeight)
                 - receiverAntennaCorrectionFactor + (44.9 - 6.55*Math.log10(transmitterAntennaHeight))
                 *Math.log10(distance));
         
@@ -119,11 +126,12 @@ public class PathLossMethods {
     public double ruralHata(double frequency, double distance,
             double transmitterAntennaHeight, 
             double receiverAntennaHeight) {
+        double frequencyMHz = frequency/1e6;
         //if(distance) checar se area eh maior ou menor pra aplicar um metodo ou outro posteriormente
         double urbanHataPathLoss = this.largeUrbanHata(frequency, distance,
                 transmitterAntennaHeight, receiverAntennaHeight);
         
-        return urbanHataPathLoss - 4.78*Math.pow((Math.log10(frequency)), 2) + 18.33*Math.log10(frequency) - 35.94;
+        return urbanHataPathLoss - 4.78*Math.pow((Math.log10(frequencyMHz)), 2) + 18.33*Math.log10(frequencyMHz) - 35.94;
     }
     
     public double ruralHata(double distance,
@@ -133,6 +141,6 @@ public class PathLossMethods {
         double urbanHataPathLoss = this.largeUrbanHata(distance,
                 transmitterAntennaHeight, receiverAntennaHeight);
         
-        return urbanHataPathLoss - 4.78*Math.pow((Math.log10(this.frequency)), 2) + 18.33*Math.log10(this.frequency) - 35.94;
+        return urbanHataPathLoss - 4.78*Math.pow((Math.log10(this.frequencyMHz)), 2) + 18.33*Math.log10(this.frequencyMHz) - 35.94;
     }
 }

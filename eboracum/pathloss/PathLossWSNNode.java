@@ -122,12 +122,12 @@ public class PathLossWSNNode extends SimpleWSNNode{
 
                 } else {
                     pathLossPoints[i][j].available = false;  
-                    pathLossPoints[i][j].fillColor.setToken("{1.0, 0.0, 0.0, 0.5}");
+                    pathLossPoints[i][j].fillColor.setToken("{1.0, 0.0, 0.0, 0.0}");
                 }
                 
                 Location l = new Location(pathLossPoints[i][j],"_location");
                 l.setLocation(new double[] {pathLossPoints[i][j].x, pathLossPoints[i][j].y});
-                pathLossPoints[i][j].lineColor.setToken("{0.0, 0.0, 0.0, 0.02}");
+                pathLossPoints[i][j].lineColor.setToken("{0.0, 0.0, 0.0, 0.0}");
             }
         }
     }
