@@ -2,6 +2,8 @@ package eboracum.wsn.network;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import eboracum.wsn.network.node.WirelessNode;
 import ptolemy.data.expr.StringParameter;
 import ptolemy.kernel.CompositeEntity;
 import ptolemy.kernel.Entity;
@@ -37,7 +39,17 @@ public class SimpleAdHocNetwork extends AdHocNetwork{
         Iterator<Entity> n = nodes.iterator();
     	while (n.hasNext()) {
     		Entity node = (Entity) n.next();
-            if (calcDistance(node, gatewayNode) <= this.coverRadius && !gatewayNode.equals(node) && 
+    		
+    		//new way to use coverRadius, according to the node
+    		double nodeCoverRadius, gatewayCoverRadius;
+    		try {
+    		    nodeCoverRadius = Double.parseDouble(((WirelessNode) node).commCoverRadius.getExpression());
+                    gatewayCoverRadius = Double.parseDouble(((WirelessNode) gatewayNode).commCoverRadius.getExpression());
+    		} catch (NumberFormatException e) {
+    		    nodeCoverRadius = this.coverRadius;
+    		}//*/
+    		
+            if (calcDistance(node, gatewayNode) <= nodeCoverRadius /*this.coverRadius*/ && !gatewayNode.equals(node) && 
             		((StringParameter)node.getAttribute("Gateway")).getExpression().equals("")) {
         		((StringParameter)node.getAttribute("Gateway")).setExpression(gatewayNode.getName());
         		this.networkedNodes.add(node);

@@ -99,8 +99,10 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
     	double c2 = Math.abs(Math.abs(lnode1.getLocation()[1])-Math.abs(lnode2.getLocation()[1]));
     	
     	//print mod
+    	/*
     	double p1[] = {lnode1.getLocation()[0], lnode1.getLocation()[1]};
     	double p2[] = {lnode2.getLocation()[0], lnode2.getLocation()[1]};
+    	
     	
     	System.out.println("***************ADHOC******************");
     	System.out.println("NODE1: " + node1.getFullName());
@@ -108,11 +110,12 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
         System.out.println("Source - x: " + p1[0] + "; y: " + p1[1]);
         System.out.println("Destination - x: " + p2[0] + "; y: " + p2[1]);
         
-        double angle = Math.atan2(/*Math.abs*/(p1[1] - p2[1]), /*Math.abs*/(p1[0] - p2[0]))* 180 / Math.PI;
+        double angle = Math.atan2((p1[1] - p2[1]), (p1[0] - p2[0]))* 180 / Math.PI;
         
         System.out.println("Angle: " + angle); 
         System.out.println("Distance: " + Math.sqrt(c1*c1+c2*c2));
         System.out.println("***************ADHOC******************");
+        */
         
     	return Math.sqrt(c1*c1+c2*c2);
     }

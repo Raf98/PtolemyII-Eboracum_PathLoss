@@ -85,14 +85,15 @@ public class PathLossMethods {
         double receiverAntennaCorrectionFactor;
         
         if(this.frequency > 300e6) {
-            receiverAntennaCorrectionFactor = 3.2*Math.log10(Math.pow(11.75*receiverAntennaHeight, 2)) - 4.97;
+            receiverAntennaCorrectionFactor = 3.2*Math.pow(Math.log10(11.75*receiverAntennaHeight), 2) - 4.97;
+            //System.out.println("Receiver: " + receiverAntennaCorrectionFactor);
         } else {
-            receiverAntennaCorrectionFactor = 8.29*Math.log10(Math.pow(1.54*receiverAntennaHeight, 2)) - 1.1;
+            receiverAntennaCorrectionFactor = 8.29*Math.pow(Math.log10(1.54*receiverAntennaHeight), 2) - 1.1;
         }
         
         return (69.55 + 26.16*Math.log10(this.frequencyMHz) - 13.82*Math.log10(transmitterAntennaHeight)
                 - receiverAntennaCorrectionFactor + (44.9 - 6.55*Math.log10(transmitterAntennaHeight))
-                *Math.log10(distance));
+                *Math.log10(distance/1000));
         
     }
     
@@ -140,6 +141,7 @@ public class PathLossMethods {
         //if(distance) checar se area eh maior ou menor pra aplicar um metodo ou outro posteriormente
         double urbanHataPathLoss = this.largeUrbanHata(distance,
                 transmitterAntennaHeight, receiverAntennaHeight);
+        System.out.println("URBAN: " + urbanHataPathLoss);
         
         return urbanHataPathLoss - 4.78*Math.pow((Math.log10(this.frequencyMHz)), 2) + 18.33*Math.log10(this.frequencyMHz) - 35.94;
     }

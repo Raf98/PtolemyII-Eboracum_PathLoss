@@ -79,6 +79,7 @@ public class PathLossWSNNode extends SimpleWSNNode{
         pathLossMethods = new PathLossMethods(800e6);
                 
         double circleCommRadius = pathLossMethods.freeSpaceMaximumDistance();
+        this.commCoverRadius.setExpression(Double.toString(circleCommRadius));
         System.out.println("DISTANCE: " + circleCommRadius);
         //double circleCommRadius = 200;//Double.parseDouble(this.commCoverRadius.getValueAsString());
         double initialX = wsnNodeX - circleCommRadius;// - nodeWidth;
@@ -109,20 +110,21 @@ public class PathLossWSNNode extends SimpleWSNNode{
                 
                 if(circleCommShape.contains(point)) {
                   pathLossPoints[i][j].available = true;  
-                  pathLossPoints[i][j].fillColor.setToken("{0.0, 1.0, 0.0, 0.5}");
+                  //pathLossPoints[i][j].fillColor.setToken("{0.0, 1.0, 0.0, 0.5}");
                   
                   pathLossPoints[i][j].hataPathLoss = pathLossMethods.ruralHata(pathLossPoints[i][j].distanceFromNode, 
                           2, 2);
                   
                   System.out.println("HATA: " + pathLossPoints[i][j].hataPathLoss);
+                  System.out.println("Distance: " + pathLossPoints[i][j].distanceFromNode);
                   
                   if(pathLossPoints[i][j].hataPathLoss < 20) {
-                      pathLossPoints[i][j].fillColor.setToken("{1.0, 1.0, 0.0, 0.7}");
+                      //pathLossPoints[i][j].fillColor.setToken("{1.0, 1.0, 0.0, 0.7}");
                   }
 
                 } else {
                     pathLossPoints[i][j].available = false;  
-                    pathLossPoints[i][j].fillColor.setToken("{1.0, 0.0, 0.0, 0.0}");
+                    //pathLossPoints[i][j].fillColor.setToken("{1.0, 0.0, 0.0, 0.0}");
                 }
                 
                 Location l = new Location(pathLossPoints[i][j],"_location");
