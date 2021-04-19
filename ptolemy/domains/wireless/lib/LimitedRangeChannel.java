@@ -152,8 +152,8 @@ public class LimitedRangeChannel extends DelayChannel {
                 rangeIsSet = true;
                 
               //alteraçao para debug
-                System.out.println("isInRange called");
-                System.out.println("Range: " + range);
+                //System.out.println("isInRange called");
+                //System.out.println("Range: " + range);
             }
         }
 
@@ -168,16 +168,18 @@ public class LimitedRangeChannel extends DelayChannel {
                     .get("range");
             range = field.doubleValue();
             
+            /*
             System.out.println("isInRange called - default");
             System.out.println("Range: " + range);
             System.out.println("Source: " + source.getFullName());
             System.out.println("Destination: " + destination.getFullName());
+            */
         }
 
         boolean result = (_distanceBetween(source, destination) <= range);
         
         //System.out.println("Distance: " + _distanceBetween(source, destination));
-        System.out.println("isInRange called - END");
+        //System.out.println("isInRange called - END");
 
         // Whether a port is in range depends on the
         // transmit properties of this sender, so we set up

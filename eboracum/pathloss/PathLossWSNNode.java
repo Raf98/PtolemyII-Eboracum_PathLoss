@@ -80,12 +80,12 @@ public class PathLossWSNNode extends SimpleWSNNode{
                 
         double circleCommRadius = pathLossMethods.freeSpaceMaximumDistance();
         this.commCoverRadius.setExpression(Double.toString(circleCommRadius));
-        System.out.println("DISTANCE: " + circleCommRadius);
+        //System.out.println("DISTANCE: " + circleCommRadius);
         //double circleCommRadius = 200;//Double.parseDouble(this.commCoverRadius.getValueAsString());
         double initialX = wsnNodeX - circleCommRadius;// - nodeWidth;
         double initialY = wsnNodeY - circleCommRadius;// - nodeHeight;
-        System.out.println("INITIAL X: " + initialX);
-        System.out.println("INITIAL Y: " + initialY);
+        //System.out.println("INITIAL X: " + initialX);
+        //System.out.println("INITIAL Y: " + initialY);
         int numRowsCols = (int) ((circleCommRadius*2)/nodeWidth + 1); 
 
         Shape circleCommShape = new Ellipse2D.Double(initialX, initialY, circleCommRadius*2, circleCommRadius*2);

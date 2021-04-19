@@ -39,7 +39,7 @@ public class PathLossMethods {
         double maximumPathLoss = 20;
         double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelength)/(4*Math.PI))*1000;
         
-        System.out.println(maxDistance);
+        //System.out.println(maxDistance);
         
         return (int)maxDistance;
     }
@@ -141,7 +141,7 @@ public class PathLossMethods {
         //if(distance) checar se area eh maior ou menor pra aplicar um metodo ou outro posteriormente
         double urbanHataPathLoss = this.largeUrbanHata(distance,
                 transmitterAntennaHeight, receiverAntennaHeight);
-        System.out.println("URBAN: " + urbanHataPathLoss);
+        //System.out.println("URBAN: " + urbanHataPathLoss);
         
         return urbanHataPathLoss - 4.78*Math.pow((Math.log10(this.frequencyMHz)), 2) + 18.33*Math.log10(this.frequencyMHz) - 35.94;
     }

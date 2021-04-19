@@ -67,9 +67,11 @@ public abstract class WirelessNode extends TypedAtomicActor {
     protected Map<String, Double> eventCommCostMap;
    // private boolean flagAlive;
     
+    public StringParameter commChannelName;
+    
     public WirelessNode(CompositeEntity container, String name) throws IllegalActionException, NameDuplicationException {
     	super(container, name);
-    	StringParameter commChannelName = new StringParameter(this,"CommChannelName");
+    	/*StringParameter*/ commChannelName = new StringParameter(this,"CommChannelName");
     	commChannelName.setExpression("PowerLossChannel");
     	commCoverRadius = new Parameter(this,"CommCoverRadius");
     	commCoverRadius.setExpression("CommCover");
@@ -94,6 +96,11 @@ public abstract class WirelessNode extends TypedAtomicActor {
     	this.eventCommCostMap = new HashMap<String, Double>();
   //  	flagAlive = true;
 		buildIcon();
+		
+		/*System.out.println("COMM CHANNEL");
+	for(var item : commChannelName.attributeList()) {
+	    System.out.println(item);
+	}*/
     }
     
     public void initialize() throws IllegalActionException {

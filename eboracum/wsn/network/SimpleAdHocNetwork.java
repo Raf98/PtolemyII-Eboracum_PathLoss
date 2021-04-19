@@ -26,6 +26,9 @@ public class SimpleAdHocNetwork extends AdHocNetwork{
         	Iterator<Entity> n = tempNetworkNode.iterator();
         	while (n.hasNext()) {
         		Entity node = (Entity) n.next();
+        	        System.out.println("ENTITY: " + node.getClassName());
+                        ((WirelessNode)node).commChannelName.setExpression(this.commChannelName.getExpression());
+        	        
         		try {
 					this.defineThisNodeAsGateway(node);
 				} catch (IllegalActionException e) {

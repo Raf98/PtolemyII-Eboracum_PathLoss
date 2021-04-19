@@ -2,6 +2,8 @@ package eboracum.wsn.network;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import eboracum.wsn.network.node.WirelessNode;
 import ptolemy.actor.CompositeActor;
 import ptolemy.actor.TypedAtomicActor;
 import ptolemy.actor.TypedIOPort;
@@ -33,12 +35,15 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
     protected int numNodesToBeNetoworked;
     public TypedIOPort out;
     
+    
+    public StringParameter commChannelName;
+    
     public AdHocNetwork(CompositeEntity container, String name)
             throws IllegalActionException, NameDuplicationException {
         super(container, name);
         networkSinks = new StringParameter(this, "NetworkSinks");
         networkSinks.setExpression("");
-        StringParameter commChannelName = new StringParameter(this,"CommChannelName");
+        /*StringParameter*/ commChannelName = new StringParameter(this,"CommChannelName");
     	commChannelName.setExpression("PowerLossChannel");
     	commCoverRadius = new Parameter(this,"CommCoverRadius");
     	commCoverRadius.setExpression("CommCover");
@@ -126,6 +131,13 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
 		Iterator actors = container.deepEntityList().iterator();
         while (actors.hasNext()) {
             Entity node = (Entity) actors.next();
+            
+            if(node.getClassName().equals("ptolemy.domains.wireless.lib.PowerLossChannel")) {
+                this.commChannelName.setExpression(node.getName());
+                System.out.println("ENTITY - CLASS NAME: " + node.getClassName());
+                System.out.println("ENTITY - NAME: " + node.getName());
+            }
+            
             // Skip actors that are not properly marked.
             Attribute mark = node.getAttribute("networked");
             if (!(mark instanceof Variable)) {
@@ -148,6 +160,9 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
            			((StringParameter)node.getAttribute("Gateway")).setExpression("END");
            			this.networkedNodes.add(node);
            			this.sinks.add(node);
+           			
+           			//System.out.println(node.getFullName());
+           			((WirelessNode)node).commChannelName.setExpression(this.commChannelName.getExpression());
            		}
            	}
         }

@@ -691,12 +691,13 @@ public class AtomicWirelessChannel extends TypedAtomicActor implements
         double[] p2 = _locationOf(port2);
         
         //print mod
-        System.out.println("Source - x: " + p1[0] + "; y: " + p1[1]);
+        /*System.out.println("Source - x: " + p1[0] + "; y: " + p1[1]);
         System.out.println("Destination - x: " + p2[0] + "; y: " + p2[1]);
         
-        double angle = Math.atan2(/*Math.abs*/(p1[1] - p2[1]), /*Math.abs*/(p1[0] - p2[0]))* 180 / Math.PI;
+        double angle = Math.atan2((p1[1] - p2[1]), (p1[0] - p2[0]))* 180 / Math.PI;
         
         System.out.println("Angle: " + angle); 
+        */
         
         return Math.sqrt(((p1[0] - p2[0]) * (p1[0] - p2[0]))
                 + ((p1[1] - p2[1]) * (p1[1] - p2[1])));
