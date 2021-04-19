@@ -8,11 +8,14 @@ import ptolemy.actor.CompositeActor;
 import ptolemy.actor.TypedAtomicActor;
 import ptolemy.actor.TypedIOPort;
 import ptolemy.data.BooleanToken;
+import ptolemy.data.RecordToken;
+import ptolemy.data.ScalarToken;
 import ptolemy.data.Token;
 import ptolemy.data.expr.Parameter;
 import ptolemy.data.expr.StringParameter;
 import ptolemy.data.expr.Variable;
 import ptolemy.data.type.BaseType;
+import ptolemy.domains.wireless.lib.PowerLossChannel;
 import ptolemy.kernel.CompositeEntity;
 import ptolemy.kernel.Entity;
 import ptolemy.kernel.util.Attribute;
@@ -136,6 +139,15 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
                 this.commChannelName.setExpression(node.getName());
                 System.out.println("ENTITY - CLASS NAME: " + node.getClassName());
                 System.out.println("ENTITY - NAME: " + node.getName());
+                
+                PowerLossChannel powerLossChannel = (PowerLossChannel)node;
+                
+                System.out.println(powerLossChannel.powerPropagationFactor.getExpression());
+                
+                ScalarToken maxRangeToken = (ScalarToken)((RecordToken)powerLossChannel.defaultProperties.getToken()).get("range");
+                double maxRange = maxRangeToken.doubleValue();
+            
+                System.out.println("max range: " + maxRange);
             }
             
             // Skip actors that are not properly marked.
