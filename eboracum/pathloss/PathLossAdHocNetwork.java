@@ -14,6 +14,12 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
     }
     
     @Override
+    protected void findEntitySinks() throws IllegalActionException {
+        // TODO Auto-generated method stub
+        super.findEntitySinks();
+    }
+    
+    @Override
     public void buildNetwork() {
         // TODO Auto-generated method stub
         super.buildNetwork();

@@ -88,6 +88,12 @@
 	<entity name="PathLossWSNNode" class="eboracum.pathloss.PathLossWSNNode">
 		<doc>Path Loss WSN Node</doc>
 	</entity>
+	<entity name="FreeSpaceChannel" class="eboracum.pathloss.FreeSpaceChannel">
+		<doc>Free Space Path Loss Channel</doc>
+	</entity>
+	<entity name="PathLossAdHocNetwork" class="eboracum.pathloss.PathLossAdHocNetwork">
+		<doc>Path Loss AdHoc Network</doc>
+	</entity>
 	</group>
     ?>
   </configure>

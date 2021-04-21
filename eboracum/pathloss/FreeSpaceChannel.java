@@ -44,7 +44,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         this.frequencyValue = 800e6;
         
         PathLossMethods pathLossMethods = new PathLossMethods(frequencyValue);
-        double rangeValue = pathLossMethods.freeSpaceMaximumDistance();
+        double rangeValue = pathLossMethods.freeSpaceMaximumDistance(80);
         
         defaultProperties.setExpression("{range = " + rangeValue +", power = Infinity, pathloss = 0}");
 
@@ -60,9 +60,9 @@ public class FreeSpaceChannel extends PowerLossChannel {
         defaultProperties.setTypeAtMost(type);
         
         frequency = new Parameter(this, "frequency");
-        pathLossFactor.setTypeEquals(BaseType.DOUBLE);
-        pathLossFactor.setExpression("800e6");
-        pathLossFactor.setToken(new DoubleToken(800e6));
+        frequency.setTypeEquals(BaseType.DOUBLE);
+        frequency.setExpression("800e6");
+        frequency.setToken(new DoubleToken(800e6));
         
         wavelength = new Variable(this, "wavelength");
         double wl = LIGHT_SPEED/Double.valueOf(frequency.getValueAsString());
