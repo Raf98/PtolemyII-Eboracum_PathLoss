@@ -78,9 +78,9 @@ public class PathLossWSNNode extends SimpleWSNNode{
         
         pathLossMethods = new PathLossMethods(800e6);
                 
-        double circleCommRadius = pathLossMethods.freeSpaceMaximumDistance();
+        double circleCommRadius = pathLossMethods.freeSpaceMaximumDistance(80);
         this.commCoverRadius.setExpression(Double.toString(circleCommRadius));
-        //System.out.println("DISTANCE: " + circleCommRadius);
+        System.out.println("DISTANCE: " + circleCommRadius);
         //double circleCommRadius = 200;//Double.parseDouble(this.commCoverRadius.getValueAsString());
         double initialX = wsnNodeX - circleCommRadius;// - nodeWidth;
         double initialY = wsnNodeY - circleCommRadius;// - nodeHeight;
@@ -115,8 +115,8 @@ public class PathLossWSNNode extends SimpleWSNNode{
                   pathLossPoints[i][j].hataPathLoss = pathLossMethods.ruralHata(pathLossPoints[i][j].distanceFromNode, 
                           2, 2);
                   
-                  System.out.println("HATA: " + pathLossPoints[i][j].hataPathLoss);
-                  System.out.println("Distance: " + pathLossPoints[i][j].distanceFromNode);
+                  //System.out.println("HATA: " + pathLossPoints[i][j].hataPathLoss);
+                  //System.out.println("Distance: " + pathLossPoints[i][j].distanceFromNode);
                   
                   if(pathLossPoints[i][j].hataPathLoss < 20) {
                       //pathLossPoints[i][j].fillColor.setToken("{1.0, 1.0, 0.0, 0.7}");

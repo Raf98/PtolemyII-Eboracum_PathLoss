@@ -48,7 +48,7 @@ public class PathLossMethods {
      * */
     public int freeSpaceMaximumDistance(double maximumPathLoss) {
         double wavelength = LIGHT_SPEED/frequency;
-        double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelength)/(4*Math.PI))*1000;
+        double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelength)/(4*Math.PI));//*1000;
         
         
         /*double count;
