@@ -26,9 +26,10 @@ public class SimpleAdHocNetwork extends AdHocNetwork{
         	Iterator<Entity> n = tempNetworkNode.iterator();
         	while (n.hasNext()) {
         		Entity node = (Entity) n.next();
+        		/*
         	        System.out.println("ENTITY: " + node.getClassName());
                         ((WirelessNode)node).commChannelName.setExpression(this.commChannelName.getExpression());
-        	        
+        	        */
         		try {
 					this.defineThisNodeAsGateway(node);
 				} catch (IllegalActionException e) {
@@ -38,7 +39,7 @@ public class SimpleAdHocNetwork extends AdHocNetwork{
         }
     }
 
-    private void defineThisNodeAsGateway(Entity gatewayNode) throws IllegalActionException {
+    /*private*/ protected void defineThisNodeAsGateway(Entity gatewayNode) throws IllegalActionException {
         Iterator<Entity> n = nodes.iterator();
     	while (n.hasNext()) {
     		Entity node = (Entity) n.next();

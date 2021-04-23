@@ -29,6 +29,14 @@ public class PathLossWSNNode extends SimpleWSNNode{
         antennaHeight = new Parameter(this, "AntennaHeight");
         antennaHeight.setExpression("2");
         
+        this.commChannelName.setExpression("FreeSpaceChannel");
+        in.outsideChannel.setExpression("$CommChannelName");
+        out.outsideChannel.setExpression("$CommChannelName");
+        this.network.setExpression("PathLossAdHocNetwork");
+
+        sensorCoverRadius.setExpression("50");
+        initBattery.setExpression("300");
+        
         System.out.println("FREQUENCY: " + operationFrequency.getExpression());
         System.out.println("ANTENNA HEIGHT: " + antennaHeight.getExpression());
         
@@ -95,7 +103,7 @@ public class PathLossWSNNode extends SimpleWSNNode{
         
         pathLossPoints = new PathLossRectangleAttribute[numRowsCols][numRowsCols];
         
-        for(int i = 0; i < numRowsCols; ++i) {
+        /*for(int i = 0; i < numRowsCols; ++i) {
             for(int j = 0; j < numRowsCols; ++j) {
                 pathLossPoints[i][j] = new PathLossRectangleAttribute(this.node_icon, "rec(" + i + ", " + j + ")");
                 
@@ -131,7 +139,7 @@ public class PathLossWSNNode extends SimpleWSNNode{
                 l.setLocation(new double[] {pathLossPoints[i][j].x, pathLossPoints[i][j].y});
                 pathLossPoints[i][j].lineColor.setToken("{0.0, 0.0, 0.0, 0.0}");
             }
-        }
+        }*/
     }
 
 }

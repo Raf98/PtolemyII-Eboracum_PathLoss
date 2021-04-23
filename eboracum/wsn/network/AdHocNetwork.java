@@ -135,7 +135,7 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
         while (actors.hasNext()) {
             Entity node = (Entity) actors.next();
             
-            if(node.getClassName().equals("ptolemy.domains.wireless.lib.PowerLossChannel")) {
+            /*if(node.getClassName().equals("ptolemy.domains.wireless.lib.PowerLossChannel")) {
                 this.commChannelName.setExpression(node.getName());
                 System.out.println("ENTITY - CLASS NAME: " + node.getClassName());
                 System.out.println("ENTITY - NAME: " + node.getName());
@@ -148,7 +148,7 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
                 double maxRange = maxRangeToken.doubleValue();
             
                 System.out.println("max range: " + maxRange);
-            }
+            }*/
             
             // Skip actors that are not properly marked.
             Attribute mark = node.getAttribute("networked");
@@ -174,7 +174,7 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
            			this.sinks.add(node);
            			
            			//System.out.println(node.getFullName());
-           			((WirelessNode)node).commChannelName.setExpression(this.commChannelName.getExpression());
+           			//((WirelessNode)node).commChannelName.setExpression(this.commChannelName.getExpression());
            		}
            	}
         }
