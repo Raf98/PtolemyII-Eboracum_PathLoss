@@ -196,6 +196,8 @@ public class PowerLossChannel extends LimitedRangeChannel {
 
         // Merge the receive power into the merged token.
         RecordToken result = RecordToken.merge(newPower, merged);
+        
+        //System.out.println("POWER LOSS: " + powerPropagationFactorValue);
 
         // Report the new received power.
         if (_debugging) {

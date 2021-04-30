@@ -27,6 +27,8 @@ public class FreeSpaceChannel extends PowerLossChannel {
     public Parameter frequency;
     public double frequencyValue;
     public Variable wavelength;
+    public double wavelengthValue;
+    public double calculatedRangeValue;
     
     Parameter transmitterAntennaHeight;
     Parameter receiverAntennaHeight;
@@ -43,10 +45,22 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         this.frequencyValue = 800e6;
         
-        PathLossMethods pathLossMethods = new PathLossMethods(frequencyValue);
-        double rangeValue = pathLossMethods.freeSpaceMaximumDistance(80);
+        frequency = new Parameter(this, "frequency");
+        frequency.setTypeEquals(BaseType.DOUBLE);
+        frequency.setExpression("800e6");
+        frequency.setToken(new DoubleToken(800e6));
         
-        defaultProperties.setExpression("{range = " + rangeValue +", power = Infinity, pathloss = 0}");
+        wavelength = new Variable(this, "wavelength");
+        wavelengthValue = LIGHT_SPEED/Double.valueOf(frequency.getValueAsString());
+        wavelength.setExpression(Double.toString(wavelengthValue));
+        
+        
+        PathLossMethods pathLossMethods = new PathLossMethods(frequencyValue);
+        calculatedRangeValue = pathLossMethods.freeSpaceMaximumDistance(80);
+        
+        calculatedRangeValue = calculateRange();
+        
+        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0}");
 
         // Force the type of the defaultProperties to at least include
         // the range field. This must be done after setting the value
@@ -58,15 +72,6 @@ public class FreeSpaceChannel extends PowerLossChannel {
 
         // Setting an upper bound allows the addition of fields.
         defaultProperties.setTypeAtMost(type);
-        
-        frequency = new Parameter(this, "frequency");
-        frequency.setTypeEquals(BaseType.DOUBLE);
-        frequency.setExpression("800e6");
-        frequency.setToken(new DoubleToken(800e6));
-        
-        wavelength = new Variable(this, "wavelength");
-        double wl = LIGHT_SPEED/Double.valueOf(frequency.getValueAsString());
-        wavelength.setExpression(Double.toString(wl));
         
         pathLossFactor = new Parameter(this, "pathLossFactor");
         pathLossFactor.setTypeEquals(BaseType.DOUBLE);
@@ -84,7 +89,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         double pathLossFactorValue = ((DoubleToken) this.pathLossFactor
         .getToken()).doubleValue();
         
-        System.out.println("Free Space Path Loss: " + pathLossFactorValue + " dB");
+        //System.out.println("Free Space Path Loss: " + pathLossFactorValue + " dB");
         
         String[] names = { "pathloss" };
         Token[] values = { new DoubleToken(pathLossFactorValue) };
@@ -95,5 +100,16 @@ public class FreeSpaceChannel extends PowerLossChannel {
 
         
         return result;
+    }
+    
+    
+    int calculateRange() {
+        double maximumPathLoss = 20;
+        wavelengthValue = LIGHT_SPEED/Double.valueOf(frequency.getValueAsString());
+        double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelengthValue)/(4*Math.PI))*1000;
+        
+        //System.out.println(maxDistance);
+        
+        return (int)maxDistance;
     }
 }

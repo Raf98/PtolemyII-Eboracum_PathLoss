@@ -246,6 +246,7 @@ public abstract class BasicWirelessSensorNode extends WirelessNode {
 	
 	protected void buildIcon() throws IllegalActionException, NameDuplicationException {
 		super.buildIcon();
+				
 		_circle_sensor = new EllipseAttribute(this.node_icon, "_circle_sensor");
 		_circle_sensor.centered.setToken("true");
 		_circle_sensor.width.setToken("30");

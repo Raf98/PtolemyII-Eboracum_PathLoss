@@ -167,7 +167,7 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
            		_removeLine("lineGateway_"+node.getName());
            	String[] tempSinks = (networkSinks.getExpression()).substring(1,networkSinks.getExpression().length()-1).split(",");
            	for (int i=0; i < tempSinks.length; i++){
-           		//System.out.println(tempSinks[i]);
+           		//System.out.println("ADHOC: " + tempSinks[i]);
            		if (node.getName().equals(tempSinks[i])){
            			((StringParameter)node.getAttribute("Gateway")).setExpression("END");
            			this.networkedNodes.add(node);

@@ -45,7 +45,7 @@ public abstract class WirelessNode extends TypedAtomicActor {
  //   private Entity myGateway;
     private Entity myNetwork;
 	protected EllipseAttribute _circle;
-	protected EllipseAttribute _circle_comm;
+	/*protected*/ public EllipseAttribute _circle_comm;
     protected WirelessIOPort in;
     protected WirelessIOPort out;
     protected Time timeControler;
@@ -105,6 +105,9 @@ public abstract class WirelessNode extends TypedAtomicActor {
     
     public void initialize() throws IllegalActionException {
         super.initialize();
+        
+        //Thread.dumpStack();
+
    //     flagAlive = true;
         this.numberOfReceivedMessages = 0;
         this.numberOfSentMessages = 0;

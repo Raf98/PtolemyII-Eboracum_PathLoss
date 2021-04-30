@@ -23,13 +23,14 @@ public class SimpleAdHocNetwork extends AdHocNetwork{
     	for(int i=0; i<this.nodes.size(); i++){
         	@SuppressWarnings("unchecked")
 			ArrayList<Entity> tempNetworkNode = (ArrayList<Entity>) this.networkedNodes.clone();
+        	//System.out.println(tempNetworkNode);
         	Iterator<Entity> n = tempNetworkNode.iterator();
         	while (n.hasNext()) {
         		Entity node = (Entity) n.next();
-        		/*
-        	        System.out.println("ENTITY: " + node.getClassName());
-                        ((WirelessNode)node).commChannelName.setExpression(this.commChannelName.getExpression());
-        	        */
+        		
+        	        //System.out.println("ENTITY simpleadhoc: " + node.getClassName());
+                        //((WirelessNode)node).commChannelName.setExpression(this.commChannelName.getExpression());
+        	        
         		try {
 					this.defineThisNodeAsGateway(node);
 				} catch (IllegalActionException e) {
@@ -48,9 +49,11 @@ public class SimpleAdHocNetwork extends AdHocNetwork{
     		double nodeCoverRadius, gatewayCoverRadius;
     		try {
     		    nodeCoverRadius = Double.parseDouble(((WirelessNode) node).commCoverRadius.getExpression());
+    		    //System.out.println("NODE COVER SIMPLE: " + nodeCoverRadius);
                     gatewayCoverRadius = Double.parseDouble(((WirelessNode) gatewayNode).commCoverRadius.getExpression());
     		} catch (NumberFormatException e) {
     		    nodeCoverRadius = this.coverRadius;
+                    //System.out.println("NODE COVER SIMPLE excep: " + nodeCoverRadius);
     		}//*/
     		
             if (calcDistance(node, gatewayNode) <= nodeCoverRadius /*this.coverRadius*/ && !gatewayNode.equals(node) && 
@@ -58,6 +61,7 @@ public class SimpleAdHocNetwork extends AdHocNetwork{
         		((StringParameter)node.getAttribute("Gateway")).setExpression(gatewayNode.getName());
         		this.networkedNodes.add(node);
         		_drawLine(node,gatewayNode, "lineGateway_"+node.getName());
+        		System.out.println("DRAWING LINE!");
         		//System.out.println(node+" "+gatewayNode+"  "+("lineGateway"+node.getName()));
         	}
         }

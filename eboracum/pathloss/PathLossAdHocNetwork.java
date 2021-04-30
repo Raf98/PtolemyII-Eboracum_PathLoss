@@ -6,6 +6,8 @@ import java.util.Iterator;
 import eboracum.wsn.network.SimpleAdHocNetwork;
 import eboracum.wsn.network.node.WirelessNode;
 import ptolemy.actor.CompositeActor;
+import ptolemy.actor.TypedAtomicActor;
+import ptolemy.data.BooleanToken;
 import ptolemy.data.RecordToken;
 import ptolemy.data.ScalarToken;
 import ptolemy.domains.wireless.kernel.WirelessIOPort;
@@ -16,44 +18,55 @@ import ptolemy.kernel.util.IllegalActionException;
 import ptolemy.kernel.util.NameDuplicationException;
 
 public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
+    
+    public double maxRange;
 
     public PathLossAdHocNetwork(CompositeEntity container, String name)
             throws IllegalActionException, NameDuplicationException {
-        super(container, name);
+        super(container, name);        
+        
+        maxRange = 100;
+        //findCommunicationCover();
+        //changeNodesDefautlRange();
+        
         this.commChannelName.setExpression("FreeSpaceChannel");
         PathLossMethods pathLossMethods = new PathLossMethods(800e6);
-        this.commCoverRadius.setExpression(Double.toString(pathLossMethods.freeSpaceMaximumDistance(70)));
-        System.out.println("NETWORK COVER RADIUS: " + this.commCoverRadius.getExpression());
+        this.commCoverRadius.setExpression("100");
+        //System.out.println("NETWORK COVER RADIUS: " + this.commCoverRadius.getExpression());
         // TODO Auto-generated constructor stub
     }
     
-    @Override
-    protected void findEntitySinks() throws IllegalActionException {
-        // TODO Auto-generated method stub
-        super.findEntitySinks();
+    public void initialize() throws IllegalActionException {
+        super.initialize();
+        //this.coverRadius = Double.parseDouble(commCoverRadius.getValueAsString());
+        _fireAt(this.getDirector().getModelStartTime());
     }
     
-    @Override
-    public void buildNetwork() {
-        // TODO Auto-generated method stub
-        //super.buildNetwork();
-        for(int i=0; i<this.nodes.size(); i++){
-            @SuppressWarnings("unchecked")
-                    ArrayList<Entity> tempNetworkNode = (ArrayList<Entity>) this.networkedNodes.clone();
-            Iterator<Entity> n = tempNetworkNode.iterator();
-            while (n.hasNext()) {
-                    Entity node = (Entity) n.next();
-                    System.out.println("ENTITY: " + node.getClassName());
-                    ((WirelessNode)node).commChannelName.setExpression(this.commChannelName.getExpression());
-                    
-                    try {
-                                    this.defineThisNodeAsGateway(node);
-                            } catch (IllegalActionException e) {
-                                    e.printStackTrace();
-                            }
+    public void fire() throws IllegalActionException {
+        //super.fire();
+        if (this.rebuildNetwork.getExpression().equals("true") || this.getDirector().getModelStartTime().equals(this.getDirector().getModelTime())){
+                this.networkedNodes = new ArrayList<Entity>();
+                this.sinks = new ArrayList<Entity>();
+                
+                this.findCommunicationCover();
+                this.changeNodesDefautlRange();
+                
+                this.findEntitySinks();
+                //System.out.println("BUILD NETWORK CALLED");
+                this.buildNetwork();
         }
+        if (!this.getDirector().getModelStartTime().equals(this.getDirector().getModelTime())){
+                @SuppressWarnings("unchecked")
+                ArrayList<Entity> tempNodes = (ArrayList<Entity>) this.nodes.clone();
+                Iterator<Entity> n = tempNodes.iterator();
+                while (n.hasNext()) {
+                        Entity node = (Entity) n.next();
+                        ((TypedAtomicActor)node).getDirector().fireAtCurrentTime((TypedAtomicActor)node);
+                }
+        }
+        if (this.nodes.size()<=this.sinks.size()) out.send(0, new BooleanToken("true"));
     }
-    }
+    
     
     public void findCommunicationCover() {
         CompositeActor container = (CompositeActor) getContainer();
@@ -65,26 +78,59 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
             
             if(node.getClassName().equals("eboracum.pathloss.FreeSpaceChannel"/*"ptolemy.domains.wireless.lib.PowerLossChannel"*/)) {
                 this.commChannelName.setExpression(node.getName());
-                System.out.println("ENTITY - CLASS NAME: " + node.getClassName());
-                System.out.println("ENTITY - NAME: " + node.getName());
+                //System.out.println("ENTITY - CLASS NAME: " + node.getClassName());
+                //System.out.println("ENTITY - NAME: " + node.getName());
                 
                 FreeSpaceChannel freeSpaceChannel = (FreeSpaceChannel) node;
                 PowerLossChannel powerLossChannel = (PowerLossChannel) node;
                 
-                System.out.println(freeSpaceChannel.pathLossFactor.getExpression());
+                //System.out.println(freeSpaceChannel.pathLossFactor.getExpression());
                 
                 ScalarToken maxRangeToken;
                 try {
                     maxRangeToken = (ScalarToken)((RecordToken)powerLossChannel.defaultProperties.getToken()).get("range");
-                    double maxRange = maxRangeToken.doubleValue();
+                    maxRange = maxRangeToken.doubleValue();
                     
-                    System.out.println("max range - free space: " + maxRange);
+                    //System.out.println("max range - free space: " + maxRange);
                 } catch (IllegalActionException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-            }
+            } 
         }
+    }
+    
+    void changeNodesDefautlRange() {
+        CompositeActor container = (CompositeActor) getContainer();
+        @SuppressWarnings("rawtypes")
+        Iterator actors = container.deepEntityList().iterator();
+        
+        while (actors.hasNext()) {
+            Entity node = (Entity) actors.next();
+            
+            
+            if(node.getClassName().equals("eboracum.wsn.network.node.sensor.SimpleWSNNode") 
+                    || node.getClassName().equals("eboracum.wsn.network.node.NetworkMainGateway")) {
+                
+                WirelessNode wNode = (WirelessNode)node;
+                wNode.commChannelName.setExpression(this.commChannelName.getExpression());
+                wNode.commCoverRadius.setExpression(Double.toString(this.maxRange));
+                wNode.network.setExpression("PathLossAdHocNetwork");
+                
+                try {
+                    //wNode._circle_comm.fillColor.setToken("{1.0, 0.0, 0.0, 0.2}");
+                    wNode.initialize();
+                    //wNode._circle_comm.width.setToken(Double.toString(Double.parseDouble(this.commCoverRadius.getValueAsString())*2));
+                    //wNode._circle_comm.height.setToken(Double.toString(Double.parseDouble(this.commCoverRadius.getValueAsString())*2));
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+               
+                //System.out.println("CHANGE NODES :" + node.getFullName());
+                }
+            }
+        
     }
 
 }
