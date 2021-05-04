@@ -113,6 +113,11 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
                     || node.getClassName().equals("eboracum.wsn.network.node.NetworkMainGateway")) {
                 
                 WirelessNode wNode = (WirelessNode)node;
+                
+                wNode.updateNodeCommunicationInfos(this.commChannelName.getExpression(), 
+                                                   this.maxRange, 
+                                                   this.getName());
+                /*
                 wNode.commChannelName.setExpression(this.commChannelName.getExpression());
                 wNode.commCoverRadius.setExpression(Double.toString(this.maxRange));
                 wNode.network.setExpression("PathLossAdHocNetwork");
@@ -125,7 +130,7 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
-                }
+                }*/
                
                 //System.out.println("CHANGE NODES :" + node.getFullName());
                 }

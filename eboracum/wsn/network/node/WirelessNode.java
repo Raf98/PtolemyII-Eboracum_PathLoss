@@ -45,7 +45,7 @@ public abstract class WirelessNode extends TypedAtomicActor {
  //   private Entity myGateway;
     private Entity myNetwork;
 	protected EllipseAttribute _circle;
-	/*protected*/ public EllipseAttribute _circle_comm;
+    protected EllipseAttribute _circle_comm;
     protected WirelessIOPort in;
     protected WirelessIOPort out;
     protected Time timeControler;
@@ -341,5 +341,19 @@ public abstract class WirelessNode extends TypedAtomicActor {
 	public double round(double value) {
 		return Math.round(value*10000000.0)/10000000.0;
 	}
+	
+	//new method added for path loss capability
+	public void updateNodeCommunicationInfos(String commChannel, double newRange, String networkName) {
+	    this.commChannelName.setExpression(commChannel);
+            this.commCoverRadius.setExpression(Double.toString(newRange));
+            this.network.setExpression(networkName);
+            
+            try {
+                this.initialize();                      //updates node cover visually
+            } catch (IllegalActionException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } 	
+        }
 
 }

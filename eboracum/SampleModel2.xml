@@ -50,6 +50,14 @@
         <property name="y" class="ptolemy.data.expr.Parameter" value="250.0">
         </property>
     </property>
+    <property name="lineGateway_SimpleWSNNode3" class="ptolemy.vergil.kernel.attributes.LineAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[335.0, 305.0]">
+        </property>
+        <property name="x" class="ptolemy.data.expr.Parameter" value="-230.0">
+        </property>
+        <property name="y" class="ptolemy.data.expr.Parameter" value="-20.0">
+        </property>
+    </property>
     <entity name="LimitedRangeChannel" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
         <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = SensorCover}">
         </property>
@@ -104,6 +112,8 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
+        <property name="Battery" class="ptolemy.data.expr.Parameter" value="292.0">
+        </property>
         <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[115.0, 35.0]">
         </property>
@@ -142,6 +152,15 @@
     <entity name="FreeSpaceChannel" class="eboracum.pathloss.FreeSpaceChannel">
         <doc>Free Space Path Loss Channel</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="{-75, 615}">
+        </property>
+    </entity>
+    <entity name="SimpleWSNNode3" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="FreeSpaceChannel">
+        </property>
+        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
+        </property>
+        <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[335.0, 305.0]">
         </property>
     </entity>
 </entity>
