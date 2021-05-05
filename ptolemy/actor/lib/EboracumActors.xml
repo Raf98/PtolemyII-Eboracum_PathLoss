@@ -94,6 +94,9 @@
 	<entity name="PathLossAdHocNetwork" class="eboracum.pathloss.PathLossAdHocNetwork">
 		<doc>Path Loss AdHoc Network</doc>
 	</entity>
+	<entity name="LogDistanceChannel" class="eboracum.pathloss.LogDistanceChannel">
+		<doc>Log-Distance Path Loss Channel</doc>
+	</entity>
 	</group>
     ?>
   </configure>

@@ -1,5 +1,6 @@
 package eboracum.pathloss;
 
+
 import ptolemy.data.DoubleToken;
 import ptolemy.data.RecordToken;
 import ptolemy.data.Token;
@@ -9,7 +10,6 @@ import ptolemy.data.type.BaseType;
 import ptolemy.data.type.RecordType;
 import ptolemy.data.type.Type;
 import ptolemy.domains.wireless.kernel.WirelessIOPort;
-import ptolemy.domains.wireless.kernel.WirelessReceiver;
 import ptolemy.domains.wireless.lib.PowerLossChannel;
 import ptolemy.kernel.CompositeEntity;
 import ptolemy.kernel.util.IllegalActionException;
@@ -22,20 +22,13 @@ public class FreeSpaceChannel extends PowerLossChannel {
      */
     private static final long serialVersionUID = 1L;
 
-    final double LIGHT_SPEED = 299792458;
+    public final double LIGHT_SPEED = 299792458;
     
     public Parameter frequency;
     public double frequencyValue;
     public Variable wavelength;
     public double wavelengthValue;
     public double calculatedRangeValue;
-    
-    Parameter transmitterAntennaHeight;
-    Parameter receiverAntennaHeight;
-    
-    
-    double transmitterAntennaGain;
-    double receiverAntennaGain;
     
     public Parameter pathLossFactor;
 
@@ -58,7 +51,9 @@ public class FreeSpaceChannel extends PowerLossChannel {
         PathLossMethods pathLossMethods = new PathLossMethods(frequencyValue);
         calculatedRangeValue = pathLossMethods.freeSpaceMaximumDistance(80);
         
-        calculatedRangeValue = calculateRange();
+        calculatedRangeValue = this.calculateRange();
+        
+        System.out.println("PathLoss - 300m: " + this.calculatePathLoss(300));
         
         defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0}");
 
@@ -76,7 +71,20 @@ public class FreeSpaceChannel extends PowerLossChannel {
         pathLossFactor = new Parameter(this, "pathLossFactor");
         pathLossFactor.setTypeEquals(BaseType.DOUBLE);
         pathLossFactor
-                .setExpression("wavelength / ((4 * PI * distance)*(4 * PI * distance))");
+                .setExpression("20*log10((4 * PI * distance)/wavelength)");
+        /*"wavelength / ((4 * PI * distance)*(4 * PI * distance))"*/
+    }
+    
+    @Override
+    public void initialize() throws IllegalActionException {
+        // TODO Auto-generated method stub
+        super.initialize();
+        calculatedRangeValue = calculateRange();
+        
+        System.out.println("PathLoss - 300m: " + calculatePathLoss(300));
+        
+        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0}");
+
     }
     
     @Override
@@ -104,12 +112,23 @@ public class FreeSpaceChannel extends PowerLossChannel {
     
     
     int calculateRange() {
-        double maximumPathLoss = 20;
-        wavelengthValue = LIGHT_SPEED/Double.valueOf(frequency.getValueAsString());
-        double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelengthValue)/(4*Math.PI))*1000;
+        double maximumPathLoss = 80;
+        frequencyValue = Double.valueOf(frequency.getValueAsString());
+        wavelengthValue = LIGHT_SPEED/frequencyValue;
         
-        //System.out.println(maxDistance);
+        double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelengthValue)/(4*Math.PI));//*1000;
+        
+        System.out.println("MAX DISTANCE - FS: " + maxDistance);
         
         return (int)maxDistance;
+    }
+    
+    //distance in meters
+    int calculatePathLoss(double distance) {
+        wavelengthValue = LIGHT_SPEED/Double.valueOf(frequency.getValueAsString());
+        System.err.println(wavelengthValue);
+        double pathLoss = 20*Math.log10((4 * Math.PI * distance)/wavelengthValue);   
+        
+        return (int)pathLoss;
     }
 }

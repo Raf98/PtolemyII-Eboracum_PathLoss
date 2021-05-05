@@ -112,7 +112,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="Battery" class="ptolemy.data.expr.Parameter" value="292.0">
+        <property name="Battery" class="ptolemy.data.expr.Parameter" value="297.0">
         </property>
         <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[115.0, 35.0]">
@@ -150,6 +150,8 @@
         </property>
     </entity>
     <entity name="FreeSpaceChannel" class="eboracum.pathloss.FreeSpaceChannel">
+        <property name="frequency" class="ptolemy.data.expr.Parameter" value="915E6">
+        </property>
         <doc>Free Space Path Loss Channel</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="{-75, 615}">
         </property>
