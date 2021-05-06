@@ -30,26 +30,26 @@ public class FreeSpaceChannel extends PowerLossChannel {
     public double wavelengthValue;
     public double calculatedRangeValue;
     
+    public double maximumPathLoss;
+    
     public Parameter pathLossFactor;
 
     public FreeSpaceChannel(CompositeEntity container, String name)
             throws IllegalActionException, NameDuplicationException {
         super(container, name);
         
-        this.frequencyValue = 800e6;
+        this.frequencyValue = 915e6;
+        this.maximumPathLoss = 100;
         
         frequency = new Parameter(this, "frequency");
         frequency.setTypeEquals(BaseType.DOUBLE);
-        frequency.setExpression("800e6");
-        frequency.setToken(new DoubleToken(800e6));
+        frequency.setExpression(Double.toString(this.frequencyValue));
+        frequency.setToken(new DoubleToken(this.frequencyValue));
         
         wavelength = new Variable(this, "wavelength");
         wavelengthValue = LIGHT_SPEED/Double.valueOf(frequency.getValueAsString());
         wavelength.setExpression(Double.toString(wavelengthValue));
         
-        
-        PathLossMethods pathLossMethods = new PathLossMethods(frequencyValue);
-        calculatedRangeValue = pathLossMethods.freeSpaceMaximumDistance(80);
         
         calculatedRangeValue = this.calculateRange();
         
@@ -112,7 +112,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
     
     
     int calculateRange() {
-        double maximumPathLoss = 80;
+        //double maximumPathLoss = 80;
         frequencyValue = Double.valueOf(frequency.getValueAsString());
         wavelengthValue = LIGHT_SPEED/frequencyValue;
         
@@ -126,7 +126,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
     //distance in meters
     int calculatePathLoss(double distance) {
         wavelengthValue = LIGHT_SPEED/Double.valueOf(frequency.getValueAsString());
-        System.err.println(wavelengthValue);
+        //System.err.println(wavelengthValue);
         double pathLoss = 20*Math.log10((4 * Math.PI * distance)/wavelengthValue);   
         
         return (int)pathLoss;

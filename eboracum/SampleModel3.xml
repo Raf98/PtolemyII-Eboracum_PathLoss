@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
     "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
-<entity name="SampleModel2" class="ptolemy.actor.TypedCompositeActor">
+<entity name="SampleModel3" class="ptolemy.actor.TypedCompositeActor">
     <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.0.1_20101021">
     </property>
     <property name="Wireless Director" class="ptolemy.domains.wireless.kernel.WirelessDirector">
@@ -34,30 +34,6 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[745.0, -175.0]">
         </property>
     </property>
-    <property name="lineGateway_SimpleWSNNode" class="ptolemy.vergil.kernel.attributes.LineAttribute">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[20.0, 90.0]">
-        </property>
-        <property name="x" class="ptolemy.data.expr.Parameter" value="85.0">
-        </property>
-        <property name="y" class="ptolemy.data.expr.Parameter" value="195.0">
-        </property>
-    </property>
-    <property name="lineGateway_SimpleWSNNode2" class="ptolemy.vergil.kernel.attributes.LineAttribute">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[115.0, 35.0]">
-        </property>
-        <property name="x" class="ptolemy.data.expr.Parameter" value="-10.0">
-        </property>
-        <property name="y" class="ptolemy.data.expr.Parameter" value="250.0">
-        </property>
-    </property>
-    <property name="lineGateway_SimpleWSNNode3" class="ptolemy.vergil.kernel.attributes.LineAttribute">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[335.0, 305.0]">
-        </property>
-        <property name="x" class="ptolemy.data.expr.Parameter" value="-230.0">
-        </property>
-        <property name="y" class="ptolemy.data.expr.Parameter" value="-20.0">
-        </property>
-    </property>
     <entity name="LimitedRangeChannel" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
         <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = SensorCover}">
         </property>
@@ -86,7 +62,7 @@
         </property>
     </entity>
     <entity name="NetworkMainGateway" class="eboracum.wsn.network.node.NetworkMainGateway">
-        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="FreeSpaceChannel">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
@@ -95,7 +71,7 @@
         </property>
     </entity>
     <entity name="SimpleWSNNode" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="FreeSpaceChannel">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
@@ -108,7 +84,7 @@
         </property>
     </entity>
     <entity name="SimpleWSNNode2" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="FreeSpaceChannel">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
@@ -149,20 +125,18 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="{-5, 505}">
         </property>
     </entity>
-    <entity name="FreeSpaceChannel" class="eboracum.pathloss.FreeSpaceChannel">
-        <property name="frequency" class="ptolemy.data.expr.Parameter" value="915E6">
-        </property>
-        <doc>Free Space Path Loss Channel</doc>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="{-75, 615}">
-        </property>
-    </entity>
     <entity name="SimpleWSNNode3" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="FreeSpaceChannel">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
         <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[335.0, 305.0]">
+        </property>
+    </entity>
+    <entity name="LogDistanceChannel" class="eboracum.pathloss.LogDistanceChannel">
+        <doc>Log-Distance Path Loss Channel</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{300, 660}">
         </property>
     </entity>
 </entity>

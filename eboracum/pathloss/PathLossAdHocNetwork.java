@@ -76,19 +76,20 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
         while (actors.hasNext()) {
             Entity node = (Entity) actors.next();
             
-            if(node.getClassName().equals("eboracum.pathloss.FreeSpaceChannel"/*"ptolemy.domains.wireless.lib.PowerLossChannel"*/)) {
+            if(node.getClassName().startsWith("eboracum.pathloss.") && node.getClassName().contains("Channel")) {
+            //if(node.getClassName().equals("eboracum.pathloss.FreeSpaceChannel"/*"ptolemy.domains.wireless.lib.PowerLossChannel"*/)) {
                 this.commChannelName.setExpression(node.getName());
-                //System.out.println("ENTITY - CLASS NAME: " + node.getClassName());
-                //System.out.println("ENTITY - NAME: " + node.getName());
+                System.out.println("ENTITY - CLASS NAME: " + node.getClassName());
+                System.out.println("ENTITY - NAME: " + node.getName());
                 
                 FreeSpaceChannel freeSpaceChannel = (FreeSpaceChannel) node;
-                PowerLossChannel powerLossChannel = (PowerLossChannel) node;
+                //PowerLossChannel powerLossChannel = (PowerLossChannel) node;
                 
                 //System.out.println(freeSpaceChannel.pathLossFactor.getExpression());
                 
                 ScalarToken maxRangeToken;
                 try {
-                    maxRangeToken = (ScalarToken)((RecordToken)powerLossChannel.defaultProperties.getToken()).get("range");
+                    maxRangeToken = (ScalarToken)((RecordToken)freeSpaceChannel.defaultProperties.getToken()).get("range");
                     maxRange = maxRangeToken.doubleValue();
                     
                     //System.out.println("max range - free space: " + maxRange);
