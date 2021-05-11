@@ -10,6 +10,7 @@ import ptolemy.actor.TypedAtomicActor;
 import ptolemy.data.BooleanToken;
 import ptolemy.data.RecordToken;
 import ptolemy.data.ScalarToken;
+import ptolemy.data.expr.StringParameter;
 import ptolemy.domains.wireless.kernel.WirelessIOPort;
 import ptolemy.domains.wireless.lib.PowerLossChannel;
 import ptolemy.kernel.CompositeEntity;
@@ -20,6 +21,7 @@ import ptolemy.kernel.util.NameDuplicationException;
 public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
     
     public double maxRange;
+    public double fraunhoferDistance;
 
     public PathLossAdHocNetwork(CompositeEntity container, String name)
             throws IllegalActionException, NameDuplicationException {
@@ -83,6 +85,7 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
                 System.out.println("ENTITY - NAME: " + node.getName());
                 
                 FreeSpaceChannel freeSpaceChannel = (FreeSpaceChannel) node;
+                this.fraunhoferDistance = freeSpaceChannel.calculateFraunhoferDistance();
                 //PowerLossChannel powerLossChannel = (PowerLossChannel) node;
                 
                 //System.out.println(freeSpaceChannel.pathLossFactor.getExpression());
@@ -138,5 +141,38 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
             }
         
     }
+    
+   @Override
+   protected void defineThisNodeAsGateway(Entity gatewayNode) throws IllegalActionException {
+       Iterator<Entity> n = nodes.iterator();
+       while (n.hasNext()) {
+               Entity node = (Entity) n.next();
+               
+               //new way to use coverRadius, according to the node
+               double nodeCoverRadius, gatewayCoverRadius;
+               try {
+                   nodeCoverRadius = Double.parseDouble(((WirelessNode) node).commCoverRadius.getExpression());
+                   //System.out.println("NODE COVER SIMPLE: " + nodeCoverRadius);
+                   gatewayCoverRadius = Double.parseDouble(((WirelessNode) gatewayNode).commCoverRadius.getExpression());
+               } catch (NumberFormatException e) {
+                   nodeCoverRadius = this.coverRadius;
+                   //System.out.println("NODE COVER SIMPLE excep: " + nodeCoverRadius);
+               }
+               
+               double distanceTR = calcDistance(node, gatewayNode);
+               
+               if (distanceTR <= nodeCoverRadius && distanceTR > this.fraunhoferDistance 
+                       && !gatewayNode.equals(node) && 
+                       ((StringParameter)node.getAttribute("Gateway")).getExpression().equals("")) {
+                       ((StringParameter)node.getAttribute("Gateway")).setExpression(gatewayNode.getName());
+                       this.networkedNodes.add(node);
+                       _drawLine(node,gatewayNode, "lineGateway_"+node.getName());
+                       //System.out.println("DRAWING LINE!");
+                       //System.out.println(node+" "+gatewayNode+"  "+("lineGateway"+node.getName()));
+                       //System.out.println("FRAUNHOFER: " + this.fraunhoferDistance);
+                       //System.out.println("DISTANCE TR: " + distanceTR);
+               }
+       }
+   }
 
 }

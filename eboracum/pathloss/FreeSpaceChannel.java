@@ -3,6 +3,7 @@ package eboracum.pathloss;
 
 import ptolemy.data.DoubleToken;
 import ptolemy.data.RecordToken;
+import ptolemy.data.ScalarToken;
 import ptolemy.data.Token;
 import ptolemy.data.expr.Parameter;
 import ptolemy.data.expr.Variable;
@@ -33,13 +34,16 @@ public class FreeSpaceChannel extends PowerLossChannel {
     public double maximumPathLoss;
     
     public Parameter pathLossFactor;
+    
+    public double maxAntennaHeight;
 
     public FreeSpaceChannel(CompositeEntity container, String name)
             throws IllegalActionException, NameDuplicationException {
         super(container, name);
         
         this.frequencyValue = 915e6;
-        this.maximumPathLoss = 100;
+        this.maximumPathLoss = 120;
+        this.maxAntennaHeight = 2;
         
         frequency = new Parameter(this, "frequency");
         frequency.setTypeEquals(BaseType.DOUBLE);
@@ -55,7 +59,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         System.out.println("PathLoss - 300m: " + this.calculatePathLoss(300));
         
-        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0}");
+        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0.0}");
 
         // Force the type of the defaultProperties to at least include
         // the range field. This must be done after setting the value
@@ -83,7 +87,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         System.out.println("PathLoss - 300m: " + calculatePathLoss(300));
         
-        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0}");
+        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0.0}");
 
     }
     
@@ -110,6 +114,73 @@ public class FreeSpaceChannel extends PowerLossChannel {
         return result;
     }
     
+    @Override
+    protected boolean _isInRange(WirelessIOPort source, WirelessIOPort destination, RecordToken properties)
+            throws IllegalActionException {
+        double range = Double.POSITIVE_INFINITY;
+        boolean rangeIsSet = false;
+        
+
+        if (properties != null) {
+            Token field = properties.get("range");
+
+            if (field instanceof ScalarToken) {
+                // NOTE: This may throw a NotConvertibleException, if,
+                // example, a Complex or a Long is given.
+                range = ((ScalarToken) field).doubleValue();
+                rangeIsSet = true;
+                
+              //alteraçao para debug
+                //System.out.println("isInRange called");
+                //System.out.println("Range: " + range);
+            }
+        }
+
+        if (!rangeIsSet) {
+            // Type constraints in the constructor make the casts safe.
+            RecordToken defaultPropertiesValue = (RecordToken) defaultProperties
+                    .getToken();
+
+            // Type of the field must be convertible to double, but
+            // need not actually be a double.
+            ScalarToken field = (ScalarToken) defaultPropertiesValue
+                    .get("range");
+            range = field.doubleValue();
+            
+            /*
+            System.out.println("isInRange called - default");
+            System.out.println("Range: " + range);
+            System.out.println("Source: " + source.getFullName());
+            System.out.println("Destination: " + destination.getFullName());
+            */
+        }
+        
+        double distanceBetweenTR = _distanceBetween(source, destination);
+        boolean result = (distanceBetweenTR <= range && distanceBetweenTR > this.calculateFraunhoferDistance());
+        
+        //System.out.println("Distance: " + _distanceBetween(source, destination));
+        //System.out.println("isInRange called - END");
+        
+        //System.out.println("Fraunhofer distance: " + this.calculateFraunhoferDistance());
+        //System.out.println("Distance: " + distanceBetweenTR);
+        //System.out.println("Is In Range? " + result);
+
+        // Whether a port is in range depends on the
+        // transmit properties of this sender, so we set up
+        // a listener to be notified of any changes in those
+        // properties.  Note that we need to do this even if the
+        // properties argument to this method is null because while
+        // a port may specify no properties now, it may later acquire
+        // properties.
+        if (source.getOutsideChannel() == this) {
+            source.outsideTransmitProperties.addValueListener(this);
+        } else {
+            source.insideTransmitProperties.addValueListener(this);
+        }
+
+        return result;
+    }
+    
     
     int calculateRange() {
         //double maximumPathLoss = 80;
@@ -130,5 +201,10 @@ public class FreeSpaceChannel extends PowerLossChannel {
         double pathLoss = 20*Math.log10((4 * Math.PI * distance)/wavelengthValue);   
         
         return (int)pathLoss;
+    }
+    
+    double calculateFraunhoferDistance() {
+        double fraunhoferDistance = (2*Math.pow(this.maxAntennaHeight, 2))/this.wavelengthValue;
+        return fraunhoferDistance;
     }
 }

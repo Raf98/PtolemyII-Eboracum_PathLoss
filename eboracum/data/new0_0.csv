@@ -1,0 +1,15 @@
+Simulation Identification;new0
+Round;0
+Initial Battery;2700000.0
+Communication Radius;160.0
+Sensor Cover Radius;120.0
+Node Idle Energy Cost;0.3
+CPU Processing Energy Cost;50.0
+Summary of Nodes
+Class Name;Number of Instances
+eboracum.wsn.network.node.sensor.controlled.PSControlledWSNNode;49
+Summary of Events
+Class Name;Type;Number of Instances;Tasks Cost Graph; Comm Energy Cost
+eboracum.wsn.network.node.StochasticPeriodicJumperEvent;E0;1;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;0.0018
+
+Results

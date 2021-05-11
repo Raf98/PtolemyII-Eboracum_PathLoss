@@ -1,0 +1,114 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="SampleModel" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.0.1_20101021">
+    </property>
+    <property name="Wireless Director" class="ptolemy.domains.wireless.kernel.WirelessDirector">
+        <property name="synchronizeToRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-180.0, -140.0]">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={0, 0, 1370, 772}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1147, 655]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.64">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{657.9375, 336.9288194444446}">
+    </property>
+    <property name="GlobalInitBattery" class="ptolemy.data.expr.Parameter" value="300">
+    </property>
+    <property name="SensorCover" class="ptolemy.data.expr.Parameter" value="100">
+    </property>
+    <property name="CommCover" class="ptolemy.data.expr.Parameter" value="200">
+    </property>
+    <property name="DataReportFile" class="ptolemy.data.expr.Parameter" value="&quot;eboracum/data/defaultReport.csv&quot;">
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="italic" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Events and Nodes have a specific Type. &#10;&#10;Nodes are configured by default to deal with all types of events (EventType).&#10;&#10;Each Event must has one of the types represented by a Java class, &#10;sub class of EventType, in the folder eboracum.wsn.type.&#10;&#10;For each of these types is demanded a tag in the eboracum/wns/PraltformConfig.xml, like &#10;(where cost means the amount of simulation steps the event consumes to be processed):&#10;&#10;&lt;load&gt;&#10;&lt;event type=&quot;E&quot; ordinary=&quot;true&quot; commcost=&quot;1&quot;&gt;&#10;&lt;task id=&quot;0&quot;&gt;&lt;cpu name=&quot;SimpleFIFOBasedCPU&quot; cost=&quot;1&quot;/&gt;&lt;/task&gt;&#10;&lt;/event&gt;&#10;&lt;/load&gt;&#10;&#10;">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[745.0, -175.0]">
+        </property>
+    </property>
+    <property name="lineGateway_SimpleWSNNode" class="ptolemy.vergil.kernel.attributes.LineAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{230.0, 280.0}">
+        </property>
+        <property name="x" class="ptolemy.data.expr.Parameter" value="-125.0">
+        </property>
+        <property name="y" class="ptolemy.data.expr.Parameter" value="5.0">
+        </property>
+    </property>
+    <property name="lineGateway_SimpleWSNNode2" class="ptolemy.vergil.kernel.attributes.LineAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[330.0, 280.0]">
+        </property>
+        <property name="x" class="ptolemy.data.expr.Parameter" value="-100.0">
+        </property>
+        <property name="y" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+    </property>
+    <entity name="LimitedRangeChannel" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
+        <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = SensorCover}">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-83.0, -142.0]">
+        </property>
+    </entity>
+    <entity name="PowerLossChannel" class="ptolemy.domains.wireless.lib.PowerLossChannel">
+        <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = CommCover, power = Infinity}">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[65.0, -145.0]">
+        </property>
+    </entity>
+    <entity name="NodeRandomizer" class="ptolemy.domains.wireless.lib.NodeRandomizer">
+        <property name="randomizeInInitialize" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="range" class="ptolemy.data.expr.Parameter" value="{{100.0, 1000.0}, {0.0,1000.0}}">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[205.0, -135.0]">
+        </property>
+    </entity>
+    <entity name="SimpleAdHocNetwork" class="eboracum.wsn.network.SimpleAdHocNetwork">
+        <property name="NetworkSinks" class="ptolemy.data.expr.StringParameter" value="{NetworkMainGateway}">
+        </property>
+        <property name="RebuildNetworkWhenGatewayDies" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <doc>Simple Network builder based on a multi-hope ad-hoc network desing.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{470.0, -135.0}">
+        </property>
+    </entity>
+    <entity name="EventTypeController" class="eboracum.wsn.type.EventTypeController">
+        <doc>Associates the Event Type Hierarchy to Events e Nodes.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[335.0, -135.0]">
+        </property>
+    </entity>
+    <entity name="AtomicWirelessChannel" class="ptolemy.domains.wireless.kernel.AtomicWirelessChannel">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-195.0, -80.0]">
+        </property>
+    </entity>
+    <entity name="Stochastic" class="eboracum.wsn.event.util.Stochastic">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[625.0, -140.0]">
+        </property>
+    </entity>
+    <entity name="NetworkMainGateway" class="eboracum.wsn.network.node.NetworkMainGateway">
+        <doc>Special WSN Node designed only to be the main gateway of the network.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{105, 285}">
+        </property>
+    </entity>
+    <entity name="SimpleWSNNode" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{230.0, 280.0}">
+        </property>
+    </entity>
+    <entity name="PeriodicEvent" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[365.0, 355.0]">
+        </property>
+    </entity>
+    <entity name="SimpleWSNNode2" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[330.0, 280.0]">
+        </property>
+    </entity>
+</entity>

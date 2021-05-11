@@ -1,8 +1,4 @@
 <load>
 <event type="E" ordinary="true" commcost="1">
 <task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task></event>
-<!--</load>-->
-<event type="E1" ordinary="false" commcost="0.0018">
-<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="2"/></task>
-</event>
 </load>

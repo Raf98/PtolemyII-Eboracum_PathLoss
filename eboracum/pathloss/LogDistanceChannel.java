@@ -43,7 +43,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         //System.out.println("Range: " + calculatedRangeValue);
         //System.out.println("PathLoss - 300m: " + this.calculatePathLossLogDistance(300));
         
-        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0}");
+        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0.0}");
 
         /*
         // Force the type of the defaultProperties to at least include
@@ -68,7 +68,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         super.initialize();
         
         calculatedRangeValue = this.calculateRangeLogDistance();
-        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0}");
+        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0.0}");
 
         
         pathLossFactor

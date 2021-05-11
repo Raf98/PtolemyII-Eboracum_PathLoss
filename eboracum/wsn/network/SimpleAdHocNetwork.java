@@ -45,24 +45,11 @@ public class SimpleAdHocNetwork extends AdHocNetwork{
     	while (n.hasNext()) {
     		Entity node = (Entity) n.next();
     		
-    		//new way to use coverRadius, according to the node
-    		double nodeCoverRadius, gatewayCoverRadius;
-    		try {
-    		    nodeCoverRadius = Double.parseDouble(((WirelessNode) node).commCoverRadius.getExpression());
-    		    //System.out.println("NODE COVER SIMPLE: " + nodeCoverRadius);
-                    gatewayCoverRadius = Double.parseDouble(((WirelessNode) gatewayNode).commCoverRadius.getExpression());
-    		} catch (NumberFormatException e) {
-    		    nodeCoverRadius = this.coverRadius;
-                    //System.out.println("NODE COVER SIMPLE excep: " + nodeCoverRadius);
-    		}//*/
-    		
-            if (calcDistance(node, gatewayNode) <= nodeCoverRadius /*this.coverRadius*/ && !gatewayNode.equals(node) && 
+            if (calcDistance(node, gatewayNode) <= this.coverRadius && !gatewayNode.equals(node) && 
             		((StringParameter)node.getAttribute("Gateway")).getExpression().equals("")) {
         		((StringParameter)node.getAttribute("Gateway")).setExpression(gatewayNode.getName());
         		this.networkedNodes.add(node);
         		_drawLine(node,gatewayNode, "lineGateway_"+node.getName());
-        		System.out.println("DRAWING LINE!");
-        		//System.out.println(node+" "+gatewayNode+"  "+("lineGateway"+node.getName()));
         	}
         }
     }
