@@ -54,7 +54,11 @@ public class GeneralSimulation extends BenchmarksGenerator {
 		this.wirelessEvents.clear();
 		//HistogramSpectrogramFactory.newHistogram(359, "directionHist.csv");
 		//this.wirelessEvents.put(new WirelessEvent("E0", 0.0018, false,"{1.0, 0.0, 0.0, 1.0}", "<task id=\"0\"><cpu name=\"SimpleFIFOBasedCPU\" cost=\"1\"/></task>", "StochasticPeriodicJumperEvent"), 1);
-		this.wirelessEvents.put(new WirelessEvent("E0", 0.0018, false,"{1.0, 0.0, 0.0, 1.0}", "<task id=\"0\"><cpu name=\"SimpleFIFOBasedCPU\" cost=\"1\"/></task>", "FullyStochasticMobileEvent"), 100);
+		//this.wirelessEvents.put(new WirelessEvent("E0", 0.0018, false,"{1.0, 0.0, 0.0, 1.0}", "<task id=\"0\"><cpu name=\"SimpleFIFOBasedCPU\" cost=\"1\"/></task>", "FullyStochasticMobileEvent"), 100);
+		this.wirelessEvents.put(new WirelessEvent("E0", 1, false,"{1.0, 0.0, 0.0, 1.0}", "<task id=\"0\"><cpu name=\"SimpleFIFOBasedCPU\" cost=\"1\"/></task>", "FullyStochasticMobileEvent"), 100);
+	        this.wirelessEvents.put(new WirelessEvent("E1", 1, false,"{1.0, 0.0, 0.0, 1.0}", "<task id=\"0\"><cpu name=\"SimpleFIFOBasedCPU\" cost=\"1\"/></task>", "FullyStochasticMobileEvent"), 100);
+	        this.wirelessEvents.put(new WirelessEvent("E", 1, false,"{1.0, 0.0, 0.0, 1.0}", "<task id=\"0\"><cpu name=\"SimpleFIFOBasedCPU\" cost=\"1\"/></task>", "FullyStochasticMobileEvent"), 100);
+
 		//this.wirelessEvents.put(new WirelessEvent("E0", 0.0018, false,"{1.0, 0.0, 0.0, 1.0}", "<task id=\"0\"><cpu name=\"SimpleFIFOBasedCPU\" cost=\"1\"/></task>", "RandomMobileEvent"), 100);
 		
 	}

@@ -10,6 +10,8 @@ Class Name;Number of Instances
 eboracum.wsn.network.node.sensor.SimpleWSNNode;49
 Summary of Events
 Class Name;Type;Number of Instances;Tasks Cost Graph; Comm Energy Cost
-eboracum.wsn.network.node.FullyStochasticMobileEvent;E0;100;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;0.0018
+eboracum.wsn.network.node.FullyStochasticMobileEvent;E0;100;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;1.0
+eboracum.wsn.network.node.FullyStochasticMobileEvent;E;100;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;1.0
+eboracum.wsn.network.node.FullyStochasticMobileEvent;E1;100;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;1.0
 
 Results
