@@ -35,7 +35,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
     
     public Parameter pathLossFactor;
     
-    public double maxAntennaHeight;
+    public double maxAntennaDimension;
 
     public FreeSpaceChannel(CompositeEntity container, String name)
             throws IllegalActionException, NameDuplicationException {
@@ -43,7 +43,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         this.frequencyValue = 915e6;
         this.maximumPathLoss = 120;
-        this.maxAntennaHeight = 2;
+        this.maxAntennaDimension = 0.15;
         
         frequency = new Parameter(this, "frequency");
         frequency.setTypeEquals(BaseType.DOUBLE);
@@ -204,7 +204,8 @@ public class FreeSpaceChannel extends PowerLossChannel {
     }
     
     double calculateFraunhoferDistance() {
-        double fraunhoferDistance = (2*Math.pow(this.maxAntennaHeight, 2))/this.wavelengthValue;
+        double fraunhoferDistance = (2*Math.pow(this.maxAntennaDimension, 2))/this.wavelengthValue;
+        System.out.println("Fraunhofer: " + fraunhoferDistance);
         return fraunhoferDistance;
     }
 }

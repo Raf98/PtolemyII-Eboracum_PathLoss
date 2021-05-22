@@ -44,8 +44,8 @@ public class SimpleFIFOBasedCPU implements SensorCPU{
 			this.nextTimeFree = Time.NEGATIVE_INFINITY;
         }
 		if (this.nextTimeFree.equals(Time.NEGATIVE_INFINITY) && this.queue.size() > 0) {
-		        System.out.println("ELEMENT:" + this.queue.element());
-		        System.out.println(taskCostMap.get(this.queue.element().split("_")[0])); 
+		        //System.out.println("ELEMENT:" + this.queue.element());
+		        //System.out.println(taskCostMap.get(this.queue.element().split("_")[0])); 
 			this.nextTimeFree = currentTime.add(round(taskCostMap.get(this.queue.element().split("_")[0])));
 		}
 		//if (task != null) processedEvent = task;

@@ -34,6 +34,38 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[745.0, -175.0]">
         </property>
     </property>
+    <property name="lineGateway_SimpleWSNNode" class="ptolemy.vergil.kernel.attributes.LineAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[20.0, 90.0]">
+        </property>
+        <property name="x" class="ptolemy.data.expr.Parameter" value="85.0">
+        </property>
+        <property name="y" class="ptolemy.data.expr.Parameter" value="195.0">
+        </property>
+    </property>
+    <property name="lineGateway_SimpleWSNNode2" class="ptolemy.vergil.kernel.attributes.LineAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[115.0, 35.0]">
+        </property>
+        <property name="x" class="ptolemy.data.expr.Parameter" value="-10.0">
+        </property>
+        <property name="y" class="ptolemy.data.expr.Parameter" value="250.0">
+        </property>
+    </property>
+    <property name="lineGateway_SimpleWSNNode3" class="ptolemy.vergil.kernel.attributes.LineAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[335.0, 305.0]">
+        </property>
+        <property name="x" class="ptolemy.data.expr.Parameter" value="-230.0">
+        </property>
+        <property name="y" class="ptolemy.data.expr.Parameter" value="-20.0">
+        </property>
+    </property>
+    <property name="lineGateway_SimpleWSNNode4" class="ptolemy.vergil.kernel.attributes.LineAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1110.0, 335.0]">
+        </property>
+        <property name="x" class="ptolemy.data.expr.Parameter" value="-775.0">
+        </property>
+        <property name="y" class="ptolemy.data.expr.Parameter" value="-30.0">
+        </property>
+    </property>
     <entity name="LimitedRangeChannel" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
         <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = SensorCover}">
         </property>
@@ -88,7 +120,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="Battery" class="ptolemy.data.expr.Parameter" value="297.0">
+        <property name="Battery" class="ptolemy.data.expr.Parameter" value="291.0">
         </property>
         <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[115.0, 35.0]">
@@ -137,6 +169,15 @@
     <entity name="LogDistanceChannel" class="eboracum.pathloss.LogDistanceChannel">
         <doc>Log-Distance Path Loss Channel</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="{300, 660}">
+        </property>
+    </entity>
+    <entity name="SimpleWSNNode4" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
+        </property>
+        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
+        </property>
+        <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1110.0, 335.0]">
         </property>
     </entity>
 </entity>

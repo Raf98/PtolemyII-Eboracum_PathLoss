@@ -157,6 +157,14 @@ public class PathLossSimulationGenerator {
         defaultComponentsX += 200;
         
         propertiesLocalList = new ArrayList<>();
+        entity = new Entity("EventTypeController", "eboracum.wsn.type.EventTypeController");
+        propertiesLocalList.add(new Property("_location", 
+                "ptolemy.kernel.util.Location",
+                "[" + defaultComponentsX +", " + defaultComponentsY + "]"));        
+        entitiesToPropertiesMap.put(entity, propertiesLocalList);
+        defaultComponentsX += 200;
+        
+        propertiesLocalList = new ArrayList<>();
         entity = new Entity(sinkName,
                 "eboracum.wsn.network.node.NetworkMainGateway");
         propertiesLocalList.add(new Property("RebuildNetworkWhenGatewayDies", 
@@ -171,6 +179,7 @@ public class PathLossSimulationGenerator {
                 "ptolemy.data.expr.StringParameter",
                 networkName));
         entitiesToPropertiesMap.put(entity, propertiesLocalList);
+        
 
         createNodesEntities();
     }
@@ -217,6 +226,14 @@ public class PathLossSimulationGenerator {
                     networkName));
             
             
+            entitiesToPropertiesMap.put(entity, propertiesLocalList);
+            
+            entity = new Entity("PeriodicEvent"+i,
+                    "eboracum.wsn.event.PeriodicEvent");
+            propertiesLocalList = new ArrayList<>();
+            propertiesLocalList.add(new Property("_location", 
+                    "ptolemy.kernel.util.Location",
+                    "[" + (currentX + this.sensorCover/2) + ", " + currentY + "]"));
             entitiesToPropertiesMap.put(entity, propertiesLocalList);
             
             currentX += nodesDistance;
