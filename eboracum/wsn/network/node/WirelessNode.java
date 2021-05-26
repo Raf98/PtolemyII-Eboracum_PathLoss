@@ -349,7 +349,7 @@ public abstract class WirelessNode extends TypedAtomicActor {
 	    this.commChannelName.setExpression(commChannel);
             this.commCoverRadius.setExpression(Double.toString(newRange));
             this.network.setExpression(networkName);
-            
+                                    
             try {
                 this.initialize();                      //updates node cover visually
             } catch (IllegalActionException e) {

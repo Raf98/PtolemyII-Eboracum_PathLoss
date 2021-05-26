@@ -138,7 +138,7 @@ public class PathLossSimulationGenerator {
         entity = new Entity(commChannelName, commChannelType);
         propertiesLocalList.add(new Property("defaultProperties", 
                     "ptolemy.data.expr.Parameter",
-                    "{range = CommCover, power = Infinity, pathloss = 0.0}"));
+                    "{range = CommCover, power = Infinity, pathloss = 0.0, maxPL = -123.0}"));
         propertiesLocalList.add(new Property("_location", 
                 "ptolemy.kernel.util.Location",
                 "[" + defaultComponentsX + ", " + defaultComponentsY + "]"));
@@ -284,13 +284,13 @@ public class PathLossSimulationGenerator {
     }
     
     void setVergilProps() {
-        _windowsProperties = "{bounds={0, 0, 1370, 772}, maximized=false}";
-        _vergilSize = "[1147, 655]";
-        _vergilZoomFactor = 0.5;
-        _vergilCenter = "{657.9375, 336.9288194444446}";
+        _windowsProperties = "{bounds={0, 26, 1366, 742}, maximized=false}";
+        _vergilSize = "[1161, 608]";
+        _vergilZoomFactor = 0.3;
+        _vergilCenter = "{1476.328638980263, 593.6875}";
         
-        defaultComponentsX = -250;
-        defaultComponentsY = -200;
+        defaultComponentsX = -1200;
+        defaultComponentsY = -800;
     }
     
     void setEboracumProps() {
@@ -303,7 +303,7 @@ public class PathLossSimulationGenerator {
         sinkY = 0;
         numberOfNodes = 10;
         nodesOnRow = 3;
-        nodesDistance = 200;
+        nodesDistance = 500;
         
         initBattery = 500;
         commCover = 300;

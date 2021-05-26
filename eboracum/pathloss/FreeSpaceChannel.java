@@ -36,16 +36,31 @@ public class FreeSpaceChannel extends PowerLossChannel {
     public Parameter pathLossFactor;
     
     public double maxAntennaDimension;
+    
+    
+    public Parameter transmitterPower;
+    public double transmitterPowerValue;
+    public Parameter receivedPower;
+    public double receivedPowerValue;
+    
+    public Parameter transmitterAntennaGain;
+    public double transmitterAntennaGainValue;
+    public Parameter receiverAntennaGain;
+    public double receiverAntennaGainValue;
+    
 
     public FreeSpaceChannel(CompositeEntity container, String name)
             throws IllegalActionException, NameDuplicationException {
         super(container, name);
         
         this.frequencyValue = 915e6;
-        this.maximumPathLoss = 120;
+        //this.maximumPathLoss = 120;
         this.maxAntennaDimension = 0.15;
         
-        frequency = new Parameter(this, "frequency");
+        this.transmitterPowerValue = 0;
+        this.receivedPowerValue = -123;
+        
+        frequency = new Parameter(this, "Frequency(Hz)");
         frequency.setTypeEquals(BaseType.DOUBLE);
         frequency.setExpression(Double.toString(this.frequencyValue));
         frequency.setToken(new DoubleToken(this.frequencyValue));
@@ -55,18 +70,30 @@ public class FreeSpaceChannel extends PowerLossChannel {
         wavelength.setExpression(Double.toString(wavelengthValue));
         
         
-        calculatedRangeValue = this.calculateRange();
+        transmitterPower = new Parameter(this, "Transmitter Power(dBm)");
+        transmitterPower.setTypeEquals(BaseType.DOUBLE);
+        transmitterPower.setExpression(Double.toString(this.transmitterPowerValue));
+        transmitterPower.setToken(new DoubleToken(this.transmitterPowerValue));
         
-        System.out.println("PathLoss - 300m: " + this.calculatePathLoss(300));
+        receivedPower = new Parameter(this, "Received Power/Sensibility(dBm)");
+        receivedPower.setTypeEquals(BaseType.DOUBLE);
+        receivedPower.setExpression(Double.toString(this.receivedPowerValue));
+        receivedPower.setToken(new DoubleToken(this.receivedPowerValue));
         
-        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0.0}");
+        this.maximumPathLoss = calculateMaxPathLoss();
+        this.calculatedRangeValue = this.calculateRange();
+        
+        //System.out.println("PathLoss - 300m: " + this.calculatePathLoss(300));
+        
+        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = Infinity, "
+                + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
 
         // Force the type of the defaultProperties to at least include
         // the range field. This must be done after setting the value
         // above, because the value in the base class is not a subtype
         // of this specified type.
-        String[] labels = { "range", "power", "pathloss" };
-        Type[] types = { BaseType.DOUBLE, BaseType.DOUBLE,  BaseType.DOUBLE};
+        String[] labels = { "range", "power", "pathloss" , "maxPL"};
+        Type[] types = { BaseType.DOUBLE, BaseType.DOUBLE,  BaseType.DOUBLE, BaseType.DOUBLE};
         RecordType type = new RecordType(labels, types);
 
         // Setting an upper bound allows the addition of fields.
@@ -83,11 +110,14 @@ public class FreeSpaceChannel extends PowerLossChannel {
     public void initialize() throws IllegalActionException {
         // TODO Auto-generated method stub
         super.initialize();
-        calculatedRangeValue = calculateRange();
         
-        System.out.println("PathLoss - 300m: " + calculatePathLoss(300));
+        this.maximumPathLoss = calculateMaxPathLoss();
+        this.calculatedRangeValue = calculateRange();
         
-        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0.0}");
+        //System.out.println("PathLoss - 300m: " + calculatePathLoss(300));
+        
+        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = Infinity, "
+                + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
 
     }
     
@@ -205,7 +235,16 @@ public class FreeSpaceChannel extends PowerLossChannel {
     
     double calculateFraunhoferDistance() {
         double fraunhoferDistance = (2*Math.pow(this.maxAntennaDimension, 2))/this.wavelengthValue;
-        System.out.println("Fraunhofer: " + fraunhoferDistance);
+        //System.out.println("Fraunhofer: " + fraunhoferDistance);
         return fraunhoferDistance;
+    }
+    
+    double calculateMaxPathLoss() {
+        this.transmitterPowerValue = Double.valueOf(transmitterPower.getValueAsString());
+        this.receivedPowerValue = Double.valueOf(receivedPower.getValueAsString());
+        
+        double maximumPathLoss = this.transmitterPowerValue - this.receivedPowerValue;
+        System.out.println("MAX PATH LOSS: " + maximumPathLoss);
+        return maximumPathLoss;
     }
 }

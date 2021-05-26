@@ -43,20 +43,8 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         //System.out.println("Range: " + calculatedRangeValue);
         //System.out.println("PathLoss - 300m: " + this.calculatePathLossLogDistance(300));
         
-        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0.0}");
-
-        /*
-        // Force the type of the defaultProperties to at least include
-        // the range field. This must be done after setting the value
-        // above, because the value in the base class is not a subtype
-        // of this specified type.
-        String[] labels = { "range", "power", "pathloss" };
-        Type[] types = { BaseType.DOUBLE, BaseType.DOUBLE,  BaseType.DOUBLE};
-        RecordType type = new RecordType(labels, types);
-
-        // Setting an upper bound allows the addition of fields.
-        defaultProperties.setTypeAtMost(type);
-        */
+        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = Infinity, "
+                + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
         
         pathLossFactor
                 .setExpression(this.calculatePathLoss(referenceDistanceD0Value) + "+10*n*log10(distance/d0)");
@@ -67,9 +55,11 @@ public class LogDistanceChannel extends FreeSpaceChannel{
     public void initialize() throws IllegalActionException {
         super.initialize();
         
-        calculatedRangeValue = this.calculateRangeLogDistance();
-        defaultProperties.setExpression("{range = " + calculatedRangeValue +", power = Infinity, pathloss = 0.0}");
-
+        this.maximumPathLoss = this.calculateMaxPathLoss();
+        this.calculatedRangeValue = this.calculateRangeLogDistance();
+        
+        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = Infinity, "
+                + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
         
         pathLossFactor
         .setExpression(this.getFreeSpacePathLoss(referenceDistanceD0Value) + "+10*n*log10(distance/d0)");
@@ -77,7 +67,6 @@ public class LogDistanceChannel extends FreeSpaceChannel{
     
     
     int calculateRangeLogDistance() {
-        //double maximumPathLoss = 90;
         pathLossFactorNValue = Double.valueOf(pathLossFactorN.getValueAsString());
         referenceDistanceD0Value = Double.valueOf(referenceDistanceD0.getValueAsString());
         
