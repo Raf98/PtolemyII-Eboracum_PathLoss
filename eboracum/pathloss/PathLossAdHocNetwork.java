@@ -159,6 +159,7 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
                    //System.out.println("NODE COVER SIMPLE excep: " + nodeCoverRadius);
                }
                
+               //System.out.println("nodecover"+nodeCoverRadius);
                double distanceTR = calcDistance(node, gatewayNode);
                
                if (distanceTR <= nodeCoverRadius && distanceTR > this.fraunhoferDistance 
@@ -168,9 +169,9 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
                        this.networkedNodes.add(node);
                        _drawLine(node,gatewayNode, "lineGateway_"+node.getName());
                        //System.out.println("DRAWING LINE!");
-                       //System.out.println(node+" "+gatewayNode+"  "+("lineGateway"+node.getName()));
-                       //System.out.println("FRAUNHOFER: " + this.fraunhoferDistance);
-                       //System.out.println("DISTANCE TR: " + distanceTR);
+                       System.out.println(node+" "+gatewayNode+"  "+("lineGateway"+node.getName()));
+                       System.out.println("FRAUNHOFER: " + this.fraunhoferDistance);
+                       System.out.println("DISTANCE TR: " + distanceTR);
                }
        }
    }

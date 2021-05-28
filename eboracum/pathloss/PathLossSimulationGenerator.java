@@ -203,15 +203,33 @@ public class PathLossSimulationGenerator {
     
     protected void createNodesEntities() {
         double currentX= sinkX + nodesDistance, currentY = sinkY;
+        double distanceFactor = 0;
+        double numOfNodes = numberOfNodes;
+        double nodesRelation = numOfNodes/nodesOnRow;        
+        
+        if(Math.ceil(nodesRelation)%2 == 0) {
+            distanceFactor = Math.ceil(nodesRelation)/2 - 0.5;
+            //System.out.println("dist: " + distanceFactor);
+            currentY = sinkY - (nodesDistance*distanceFactor);
+        } else {
+            distanceFactor = Math.floor((nodesRelation)/2);
+            currentY = sinkY - (nodesDistance*distanceFactor);
+        }
+        
+        //System.out.println(currentY);
+        
         Entity entity;
         List<Property> propertiesLocalList;
         
         
         for(int i = 0; i < numberOfNodes; ++i) {
-            if(i%nodesOnRow == 0) {
+            if(i%nodesOnRow == 0 && i!=0) {
                 currentY += nodesDistance;
                 currentX = sinkX + nodesDistance;
+                //System.out.println("i: " + i);
             }
+            
+            //System.out.println(currentY);
             entity = new Entity("SimpleWSNNode"+i,
                     "eboracum.wsn.network.node.sensor.SimpleWSNNode");
             propertiesLocalList = new ArrayList<>();
@@ -286,11 +304,11 @@ public class PathLossSimulationGenerator {
     void setVergilProps() {
         _windowsProperties = "{bounds={0, 26, 1366, 742}, maximized=false}";
         _vergilSize = "[1161, 608]";
-        _vergilZoomFactor = 0.3;
-        _vergilCenter = "{1476.328638980263, 593.6875}";
+        _vergilZoomFactor = 0.1;
+        _vergilCenter = "{3932.0, 2400.0}";
         
-        defaultComponentsX = -1200;
-        defaultComponentsY = -800;
+        defaultComponentsX = -1300;
+        defaultComponentsY = 0;//-1500;
     }
     
     void setEboracumProps() {
@@ -299,11 +317,13 @@ public class PathLossSimulationGenerator {
         sensorChannelName = "LimitedRangeChannel";
         networkName = "PathLossAdHocNetwork";
         sinkName = "NetworkMainGateway";
-        sinkX = 50;
-        sinkY = 0;
-        numberOfNodes = 10;
+        numberOfNodes = 15;
         nodesOnRow = 3;
-        nodesDistance = 500;
+        nodesDistance = 800;
+        
+        sinkX = 50;
+        double numOfNodes = numberOfNodes;
+        sinkY = Math.ceil(numOfNodes/nodesOnRow/2)*nodesDistance;
         
         initBattery = 500;
         commCover = 300;

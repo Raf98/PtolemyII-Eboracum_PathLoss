@@ -219,7 +219,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelengthValue)/(4*Math.PI));//*1000;
         
-        System.out.println("MAX DISTANCE - FS: " + maxDistance);
+        //System.out.println("MAX DISTANCE - FS: " + maxDistance);
         
         return (int)maxDistance;
     }
