@@ -1,6 +1,9 @@
 package eboracum.pathloss;
 
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import ptolemy.data.DoubleToken;
 import ptolemy.data.RecordToken;
 import ptolemy.data.ScalarToken;
@@ -85,7 +88,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         //System.out.println("PathLoss - 300m: " + this.calculatePathLoss(300));
         
-        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = Infinity, "
+        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
                 + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
 
         // Force the type of the defaultProperties to at least include
@@ -116,7 +119,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         //System.out.println("PathLoss - 300m: " + calculatePathLoss(300));
         
-        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = Infinity, "
+        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
                 + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
 
     }
@@ -212,7 +215,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
     }
     
     
-    int calculateRange() {
+    double calculateRange() {
         //double maximumPathLoss = 80;
         frequencyValue = Double.valueOf(frequency.getValueAsString());
         wavelengthValue = LIGHT_SPEED/frequencyValue;
@@ -221,16 +224,16 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         //System.out.println("MAX DISTANCE - FS: " + maxDistance);
         
-        return (int)maxDistance;
+        return roundDouble(maxDistance);
     }
     
     //distance in meters
-    int calculatePathLoss(double distance) {
+    double calculatePathLoss(double distance) {
         wavelengthValue = LIGHT_SPEED/Double.valueOf(frequency.getValueAsString());
         //System.err.println(wavelengthValue);
         double pathLoss = 20*Math.log10((4 * Math.PI * distance)/wavelengthValue);   
         
-        return (int)pathLoss;
+        return  roundDouble(pathLoss);
     }
     
     double calculateFraunhoferDistance() {
@@ -246,5 +249,15 @@ public class FreeSpaceChannel extends PowerLossChannel {
         double maximumPathLoss = this.transmitterPowerValue - this.receivedPowerValue;
         System.out.println("MAX PATH LOSS: " + maximumPathLoss);
         return maximumPathLoss;
+    }
+    
+    double changeTxPowerToW() {
+        double txPowerW = Math.pow(10,((this.transmitterPowerValue - 30)/10));
+        return roundDouble(txPowerW); 
+    }
+    
+    double roundDouble(double num) {
+        BigDecimal bd = new BigDecimal(num).setScale(2, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

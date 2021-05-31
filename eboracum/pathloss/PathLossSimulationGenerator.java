@@ -51,6 +51,11 @@ public class PathLossSimulationGenerator {
     
     protected String defaultSpacing = "    ";
     
+    protected double transmitterAntenna;
+    protected double receiverSensivity;
+    
+    protected boolean isPLDOCalculated;
+    
     private class Entity{
         public String name, className;
         
@@ -142,6 +147,7 @@ public class PathLossSimulationGenerator {
         propertiesLocalList.add(new Property("_location", 
                 "ptolemy.kernel.util.Location",
                 "[" + defaultComponentsX + ", " + defaultComponentsY + "]"));
+        fillChannelProps(propertiesLocalList);
         entitiesToPropertiesMap.put(entity, propertiesLocalList);
         defaultComponentsX += 200;
         
@@ -252,6 +258,12 @@ public class PathLossSimulationGenerator {
             propertiesLocalList.add(new Property("_location", 
                     "ptolemy.kernel.util.Location",
                     "[" + (currentX + this.sensorCover/2) + ", " + currentY + "]"));
+            propertiesLocalList.add(new Property("Type", 
+                    "ptolemy.data.expr.StringParameter",
+                    "E" + i));
+            propertiesLocalList.add(new Property("EndType", 
+                    "ptolemy.data.expr.StringParameter",
+                    "E" + i));
             entitiesToPropertiesMap.put(entity, propertiesLocalList);
             
             currentX += nodesDistance;
@@ -317,9 +329,9 @@ public class PathLossSimulationGenerator {
         sensorChannelName = "LimitedRangeChannel";
         networkName = "PathLossAdHocNetwork";
         sinkName = "NetworkMainGateway";
-        numberOfNodes = 15;
+        numberOfNodes = 9;
         nodesOnRow = 3;
-        nodesDistance = 800;
+        nodesDistance = 20000;
         
         sinkX = 50;
         double numOfNodes = numberOfNodes;
@@ -331,9 +343,28 @@ public class PathLossSimulationGenerator {
     }
     
     
+    void setChannelProps(){
+        transmitterAntenna = 2;
+        receiverSensivity = -123;
+        isPLDOCalculated = true;
+    }
+    
+    void fillChannelProps(List<Property> propertiesLocalList){
+        propertiesLocalList.add(new Property("Transmitter Power(dBm)", 
+                "ptolemy.data.expr.Parameter",
+                String.valueOf(transmitterAntenna)));   
+        propertiesLocalList.add(new Property("Received Power/Sensibility(dBm)", 
+                "ptolemy.data.expr.Parameter",
+                String.valueOf(receiverSensivity)));
+        propertiesLocalList.add(new Property("Calculated PL(d0)", 
+                "ptolemy.data.expr.Parameter",
+                String.valueOf(isPLDOCalculated)));
+    }
+    
     public void run() {
         setVergilProps();
         setEboracumProps();
+        setChannelProps();
         
         filePath = "eboracum/pathloss/simulations/";
         createPrimalEntityInXMLFile("PLSimulation");

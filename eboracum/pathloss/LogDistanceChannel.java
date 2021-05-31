@@ -62,7 +62,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         //System.out.println("Range: " + calculatedRangeValue);
         //System.out.println("PathLoss - 300m: " + this.calculatePathLossLogDistance(300));
         
-        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = Infinity, "
+        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() + ", "
                 + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
         
         pathLossFactor
@@ -77,7 +77,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         this.maximumPathLoss = this.calculateMaxPathLoss();
         this.calculatedRangeValue = this.calculateRangeLogDistance();
         
-        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = Infinity, "
+        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
                 + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
         
         double PLD0 = checkPLD0();
@@ -89,7 +89,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
     }
     
     
-   int calculateRangeLogDistance() {
+   double calculateRangeLogDistance() {
         pathLossFactorNValue = Double.valueOf(pathLossFactorN.getValueAsString());
         referenceDistanceD0Value = Double.valueOf(referenceDistanceD0.getValueAsString());
         
@@ -103,10 +103,10 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         
        // System.out.println("MAX DISTANCE - LOG DISTANCE: " + maxDistance);
         
-        return (int)maxDistance;
+        return roundDouble(maxDistance);
     }
     
-    int calculatePathLossLogDistance(double distance) {
+    double calculatePathLossLogDistance(double distance) {
         pathLossFactorNValue = Double.valueOf(pathLossFactorN.getValueAsString());
         referenceDistanceD0Value = Double.valueOf(referenceDistanceD0.getValueAsString());
         
@@ -114,10 +114,10 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         
         double pathLoss = PLD0 + 10*pathLossFactorNValue*Math.log10(distance/this.referenceDistanceD0Value);
        
-        return (int)pathLoss;
+        return roundDouble(pathLoss);
     }
     
-    int getFreeSpacePathLoss(double distance) {
+    double getFreeSpacePathLoss(double distance) {
         return super.calculatePathLoss(distance);
     }
     

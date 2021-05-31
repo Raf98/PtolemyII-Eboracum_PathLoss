@@ -151,6 +151,10 @@
         </property>
     </entity>
     <entity name="LogDistanceChannel" class="eboracum.pathloss.LogDistanceChannel">
+        <property name="Transmitter Power(dBm)" class="ptolemy.data.expr.Parameter" value="2.0">
+        </property>
+        <property name="Calculated PL(d0)" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
         <doc>Log-Distance Path Loss Channel</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-365.0, -795.0]">
         </property>

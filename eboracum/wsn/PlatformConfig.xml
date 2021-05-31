@@ -8,4 +8,28 @@
 <event type="E1" ordinary="false" commcost="1.0">
 <task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
 </event>
+<event type="E2" ordinary="false" commcost="1.0">
+<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
+</event>
+<event type="E3" ordinary="false" commcost="1.0">
+<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
+</event>
+<event type="E4" ordinary="false" commcost="1.0">
+<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
+</event>
+<event type="E5" ordinary="false" commcost="1.0">
+<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
+</event>
+<event type="E6" ordinary="false" commcost="1.0">
+<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
+</event>
+<event type="E7" ordinary="false" commcost="1.0">
+<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
+</event>
+<event type="E8" ordinary="false" commcost="1.0">
+<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
+</event>
+<event type="E9" ordinary="false" commcost="1.0">
+<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>
+</event>
 </load>

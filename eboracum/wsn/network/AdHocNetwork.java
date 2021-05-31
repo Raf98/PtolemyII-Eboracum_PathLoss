@@ -111,7 +111,7 @@ public abstract class AdHocNetwork extends TypedAtomicActor {
     	double p1[] = {lnode1.getLocation()[0], lnode1.getLocation()[1]};
     	double p2[] = {lnode2.getLocation()[0], lnode2.getLocation()[1]};
     	
-    	
+    	/*
     	System.out.println("***************ADHOC******************");
     	System.out.println("NODE1: " + node1.getFullName());
     	System.out.println("NODE2: " + node2.getFullName());
