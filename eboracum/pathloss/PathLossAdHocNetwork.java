@@ -81,8 +81,8 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
             if(node.getClassName().startsWith("eboracum.pathloss.") && node.getClassName().contains("Channel")) {
             //if(node.getClassName().equals("eboracum.pathloss.FreeSpaceChannel"/*"ptolemy.domains.wireless.lib.PowerLossChannel"*/)) {
                 this.commChannelName.setExpression(node.getName());
-                System.out.println("ENTITY - CLASS NAME: " + node.getClassName());
-                System.out.println("ENTITY - NAME: " + node.getName());
+                //System.out.println("ENTITY - CLASS NAME: " + node.getClassName());
+                //System.out.println("ENTITY - NAME: " + node.getName());
                 
                 FreeSpaceChannel freeSpaceChannel = (FreeSpaceChannel) node;
                 this.fraunhoferDistance = freeSpaceChannel.calculateFraunhoferDistance();
@@ -94,6 +94,7 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
                 try {
                     maxRangeToken = (ScalarToken)((RecordToken)freeSpaceChannel.defaultProperties.getToken()).get("range");
                     maxRange = maxRangeToken.doubleValue();
+                    this.commCoverRadius.setExpression(String.valueOf(maxRange));
                     
                     //System.out.println("max range - free space: " + maxRange);
                 } catch (IllegalActionException e) {
@@ -144,6 +145,8 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
     
    @Override
    protected void defineThisNodeAsGateway(Entity gatewayNode) throws IllegalActionException {
+       this.coverRadius = Double.parseDouble(commCoverRadius.getValueAsString());
+       
        Iterator<Entity> n = nodes.iterator();
        while (n.hasNext()) {
                Entity node = (Entity) n.next();
@@ -169,9 +172,9 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
                        this.networkedNodes.add(node);
                        _drawLine(node,gatewayNode, "lineGateway_"+node.getName());
                        //System.out.println("DRAWING LINE!");
-                       System.out.println(node+" "+gatewayNode+"  "+("lineGateway"+node.getName()));
-                       System.out.println("FRAUNHOFER: " + this.fraunhoferDistance);
-                       System.out.println("DISTANCE TR: " + distanceTR);
+                       //System.out.println(node+" "+gatewayNode+"  "+("lineGateway"+node.getName()));
+                       //System.out.println("FRAUNHOFER: " + this.fraunhoferDistance);
+                       //System.out.println("DISTANCE TR: " + distanceTR);
                }
        }
    }

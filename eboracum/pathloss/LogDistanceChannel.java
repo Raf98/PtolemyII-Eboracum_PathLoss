@@ -62,8 +62,12 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         //System.out.println("Range: " + calculatedRangeValue);
         //System.out.println("PathLoss - 300m: " + this.calculatePathLossLogDistance(300));
         
-        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() + ", "
-                + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
+        //defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() + ", "
+        //        + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
+        
+        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
+                + "pathloss = " + this.maximumPathLoss + "}");
+        
         
         pathLossFactor
                 .setExpression(this.calculatePathLoss(referenceDistanceD0Value) + "+10*n*log10(distance/d0)");
@@ -77,8 +81,11 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         this.maximumPathLoss = this.calculateMaxPathLoss();
         this.calculatedRangeValue = this.calculateRangeLogDistance();
         
+        //defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
+        //        + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
+        
         defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
-                + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
+                + "pathloss = " + this.maximumPathLoss + "}");
         
         double PLD0 = checkPLD0();
         
@@ -103,7 +110,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         
        // System.out.println("MAX DISTANCE - LOG DISTANCE: " + maxDistance);
         
-        return roundDouble(maxDistance);
+        return roundDouble(maxDistance, 2);
     }
     
     double calculatePathLossLogDistance(double distance) {
@@ -114,7 +121,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         
         double pathLoss = PLD0 + 10*pathLossFactorNValue*Math.log10(distance/this.referenceDistanceD0Value);
        
-        return roundDouble(pathLoss);
+        return roundDouble(pathLoss, 2);
     }
     
     double getFreeSpacePathLoss(double distance) {

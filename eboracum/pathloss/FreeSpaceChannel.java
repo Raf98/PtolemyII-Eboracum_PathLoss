@@ -88,15 +88,18 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         //System.out.println("PathLoss - 300m: " + this.calculatePathLoss(300));
         
+        //defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
+        //        + "pathloss = " + this.maximumPathLoss + ", maxPL = " + this.maximumPathLoss + "}");
+        
         defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
-                + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
+                + "pathloss = " + this.maximumPathLoss + "}");
 
         // Force the type of the defaultProperties to at least include
         // the range field. This must be done after setting the value
         // above, because the value in the base class is not a subtype
         // of this specified type.
-        String[] labels = { "range", "power", "pathloss" , "maxPL"};
-        Type[] types = { BaseType.DOUBLE, BaseType.DOUBLE,  BaseType.DOUBLE, BaseType.DOUBLE};
+        String[] labels = { "range", "power", "pathloss"};// , "maxPL"};
+        Type[] types = { BaseType.DOUBLE, BaseType.DOUBLE,  BaseType.DOUBLE};//, BaseType.DOUBLE};
         RecordType type = new RecordType(labels, types);
 
         // Setting an upper bound allows the addition of fields.
@@ -119,8 +122,11 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         //System.out.println("PathLoss - 300m: " + calculatePathLoss(300));
         
+        //defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
+        //        + "pathloss = " + this.maximumPathLoss + ", maxPL = " + this.maximumPathLoss + "}");
+        
         defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
-                + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
+                + "pathloss = " + this.maximumPathLoss + "}");
 
     }
     
@@ -224,7 +230,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         //System.out.println("MAX DISTANCE - FS: " + maxDistance);
         
-        return roundDouble(maxDistance);
+        return roundDouble(maxDistance, 2);
     }
     
     //distance in meters
@@ -233,7 +239,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         //System.err.println(wavelengthValue);
         double pathLoss = 20*Math.log10((4 * Math.PI * distance)/wavelengthValue);   
         
-        return  roundDouble(pathLoss);
+        return  roundDouble(pathLoss, 2);
     }
     
     double calculateFraunhoferDistance() {
@@ -247,17 +253,17 @@ public class FreeSpaceChannel extends PowerLossChannel {
         this.receivedPowerValue = Double.valueOf(receivedPower.getValueAsString());
         
         double maximumPathLoss = this.transmitterPowerValue - this.receivedPowerValue;
-        System.out.println("MAX PATH LOSS: " + maximumPathLoss);
+        //System.out.println("MAX PATH LOSS: " + maximumPathLoss);
         return maximumPathLoss;
     }
     
     double changeTxPowerToW() {
         double txPowerW = Math.pow(10,((this.transmitterPowerValue - 30)/10));
-        return roundDouble(txPowerW); 
+        return roundDouble(txPowerW, 4); 
     }
     
-    double roundDouble(double num) {
-        BigDecimal bd = new BigDecimal(num).setScale(2, RoundingMode.HALF_UP);
+    double roundDouble(double num, int decimalPoint) {
+        BigDecimal bd = new BigDecimal(num).setScale(decimalPoint, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
 }

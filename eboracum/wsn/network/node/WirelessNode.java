@@ -235,7 +235,7 @@ public abstract class WirelessNode extends TypedAtomicActor {
 					this.timeOfDeath = (this.getDirector().getModelTime().add(((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression())))));
 					//_fireAt(this.getDirector().getModelTime().add(round(Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression()))));
 				out.send(0, new StringToken("{event="+token+",gateway="+gateway.getExpression()+"}"));
-				System.out.println("EVENT: " + token + "; NODE: " + this.getFullName() +
+				System.out.println("EVENT: " + token + "; NODE: " + this.getName() +
 				        "; GATEWAY: " + gateway.getExpression());
 				this.numberOfSentMessages++;
 				return true;

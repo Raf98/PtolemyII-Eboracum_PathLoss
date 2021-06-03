@@ -104,7 +104,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="Battery" class="ptolemy.data.expr.Parameter" value="296.0">
+        <property name="Battery" class="ptolemy.data.expr.Parameter" value="245.0">
         </property>
         <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[115.0, 35.0]">
@@ -146,12 +146,14 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
+        <property name="Battery" class="ptolemy.data.expr.Parameter" value="227.0">
+        </property>
         <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[335.0, 305.0]">
         </property>
     </entity>
     <entity name="LogDistanceChannel" class="eboracum.pathloss.LogDistanceChannel">
-        <property name="Transmitter Power(dBm)" class="ptolemy.data.expr.Parameter" value="2.0">
+        <property name="Transmitter Power(dBm)" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
         <property name="Calculated PL(d0)" class="ptolemy.data.expr.Parameter" value="true">
         </property>

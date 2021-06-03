@@ -331,7 +331,7 @@ public class PathLossSimulationGenerator {
         sinkName = "NetworkMainGateway";
         numberOfNodes = 9;
         nodesOnRow = 3;
-        nodesDistance = 20000;
+        nodesDistance = 1000;
         
         sinkX = 50;
         double numOfNodes = numberOfNodes;

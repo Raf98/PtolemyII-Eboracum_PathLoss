@@ -14,9 +14,9 @@
     </property>
     <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1161, 608]">
     </property>
-    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.5">
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.0082235551836">
     </property>
-    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{668.875, 300.2100694444447}">
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{33777.92753289475, 170.0}">
     </property>
     <property name="GlobalInitBattery" class="ptolemy.data.expr.Parameter" value="300">
     </property>
@@ -64,25 +64,9 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-83.0, -142.0]">
         </property>
     </entity>
-    <entity name="NodeRandomizer" class="ptolemy.domains.wireless.lib.NodeRandomizer">
-        <property name="randomizeInInitialize" class="ptolemy.data.expr.Parameter" value="true">
-        </property>
-        <property name="range" class="ptolemy.data.expr.Parameter" value="{{100.0, 1000.0}, {0.0,1000.0}}">
-        </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[205.0, -135.0]">
-        </property>
-    </entity>
     <entity name="EventTypeController" class="eboracum.wsn.type.EventTypeController">
         <doc>Associates the Event Type Hierarchy to Events e Nodes.</doc>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[335.0, -135.0]">
-        </property>
-    </entity>
-    <entity name="AtomicWirelessChannel" class="ptolemy.domains.wireless.kernel.AtomicWirelessChannel">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-195.0, -80.0]">
-        </property>
-    </entity>
-    <entity name="Stochastic" class="eboracum.wsn.event.util.Stochastic">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[625.0, -140.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[225.0, -135.0]">
         </property>
     </entity>
     <entity name="NetworkMainGateway" class="eboracum.wsn.network.node.NetworkMainGateway">
@@ -112,7 +96,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="Battery" class="ptolemy.data.expr.Parameter" value="297.0">
+        <property name="Battery" class="ptolemy.data.expr.Parameter" value="282.0">
         </property>
         <doc>Simple WSN Sensor Node based on a FIFO CPU to handle the Events to be processed.</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[115.0, 35.0]">
@@ -146,14 +130,14 @@
         <property name="NetworkSinks" class="ptolemy.data.expr.StringParameter" value="{NetworkMainGateway}">
         </property>
         <doc>Path Loss AdHoc Network</doc>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="{-5, 505}">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[395.0, -130.0]">
         </property>
     </entity>
     <entity name="FreeSpaceChannel" class="eboracum.pathloss.FreeSpaceChannel">
         <property name="frequency" class="ptolemy.data.expr.Parameter" value="915E6">
         </property>
         <doc>Free Space Path Loss Channel</doc>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="{-75, 615}">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[70.0, -135.0]">
         </property>
     </entity>
     <entity name="SimpleWSNNode3" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
