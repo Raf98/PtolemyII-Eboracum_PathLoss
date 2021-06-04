@@ -34,7 +34,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         this.pathLossFactorNValue = 3;
         this.referenceDistanceD0Value = 1; 
         
-        this.isPLD0CalculatedValue = false;
+        this.isPLD0CalculatedValue = true;
         this.pathLossD0Value = 65;
         
         pathLossFactorN = new Parameter(this, "n");

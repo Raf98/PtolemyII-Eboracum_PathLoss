@@ -46,9 +46,8 @@ public class FreeSpaceChannel extends PowerLossChannel {
     public Parameter receivedPower;
     public double receivedPowerValue;
     
-    public Parameter transmitterAntennaGain;
+    public Parameter antennaGain;
     public double transmitterAntennaGainValue;
-    public Parameter receiverAntennaGain;
     public double receiverAntennaGainValue;
     
 
@@ -62,6 +61,9 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         this.transmitterPowerValue = 0;
         this.receivedPowerValue = -123;
+        
+        this.transmitterAntennaGainValue = 0;
+        this.receiverAntennaGainValue = this.transmitterAntennaGainValue;
         
         frequency = new Parameter(this, "Frequency(Hz)");
         frequency.setTypeEquals(BaseType.DOUBLE);
@@ -82,6 +84,11 @@ public class FreeSpaceChannel extends PowerLossChannel {
         receivedPower.setTypeEquals(BaseType.DOUBLE);
         receivedPower.setExpression(Double.toString(this.receivedPowerValue));
         receivedPower.setToken(new DoubleToken(this.receivedPowerValue));
+        
+        antennaGain = new Parameter(this, "Antenna Gain(dBi)");
+        antennaGain.setTypeEquals(BaseType.DOUBLE);
+        antennaGain.setExpression(Double.toString(this.transmitterAntennaGainValue));
+        antennaGain.setToken(new DoubleToken(this.transmitterAntennaGainValue));
         
         this.maximumPathLoss = calculateMaxPathLoss();
         this.calculatedRangeValue = this.calculateRange();
@@ -251,8 +258,10 @@ public class FreeSpaceChannel extends PowerLossChannel {
     double calculateMaxPathLoss() {
         this.transmitterPowerValue = Double.valueOf(transmitterPower.getValueAsString());
         this.receivedPowerValue = Double.valueOf(receivedPower.getValueAsString());
+        this.transmitterAntennaGainValue = this.receiverAntennaGainValue = Double.valueOf(antennaGain.getValueAsString());
         
-        double maximumPathLoss = this.transmitterPowerValue - this.receivedPowerValue;
+        double maximumPathLoss = this.transmitterPowerValue + this.transmitterAntennaGainValue + 
+                                    this.receiverAntennaGainValue - this.receivedPowerValue;
         //System.out.println("MAX PATH LOSS: " + maximumPathLoss);
         return maximumPathLoss;
     }

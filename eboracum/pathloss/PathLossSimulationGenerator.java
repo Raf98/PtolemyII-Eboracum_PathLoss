@@ -51,12 +51,13 @@ public class PathLossSimulationGenerator {
     
     protected String defaultSpacing = "    ";
     
-    protected double transmitterAntenna;
+    protected double transmitterPower;
     protected double receiverSensivity;
-    
     protected boolean isPLDOCalculated;
+    protected double antennaGain;
+    protected double n;
     
-    private class Entity{
+    protected class Entity{
         public String name, className;
         
         public Entity(String name, String className) {
@@ -65,7 +66,7 @@ public class PathLossSimulationGenerator {
         }
     }
     
-    private class Property extends Entity{
+    protected class Property extends Entity{
         public String value;
         
         public Property(String name, String className, String value) {
@@ -329,6 +330,13 @@ public class PathLossSimulationGenerator {
         sensorChannelName = "LimitedRangeChannel";
         networkName = "PathLossAdHocNetwork";
         sinkName = "NetworkMainGateway";
+
+        initBattery = 500;
+        commCover = 300;
+        sensorCover = 90;
+    }
+    
+    void setNodesProps() {
         numberOfNodes = 9;
         nodesOnRow = 3;
         nodesDistance = 1000;
@@ -336,34 +344,39 @@ public class PathLossSimulationGenerator {
         sinkX = 50;
         double numOfNodes = numberOfNodes;
         sinkY = Math.ceil(numOfNodes/nodesOnRow/2)*nodesDistance;
-        
-        initBattery = 500;
-        commCover = 300;
-        sensorCover = 90;
     }
     
     
     void setChannelProps(){
-        transmitterAntenna = 2;
+        transmitterPower = 2;
         receiverSensivity = -123;
         isPLDOCalculated = true;
+        antennaGain = 0;
+        n = 3;
     }
     
     void fillChannelProps(List<Property> propertiesLocalList){
         propertiesLocalList.add(new Property("Transmitter Power(dBm)", 
                 "ptolemy.data.expr.Parameter",
-                String.valueOf(transmitterAntenna)));   
+                String.valueOf(transmitterPower)));   
         propertiesLocalList.add(new Property("Received Power/Sensibility(dBm)", 
                 "ptolemy.data.expr.Parameter",
                 String.valueOf(receiverSensivity)));
         propertiesLocalList.add(new Property("Calculated PL(d0)", 
                 "ptolemy.data.expr.Parameter",
                 String.valueOf(isPLDOCalculated)));
+        propertiesLocalList.add(new Property("Antenna Gain(dBi)", 
+                "ptolemy.data.expr.Parameter",
+                String.valueOf(antennaGain)));
+        propertiesLocalList.add(new Property("n", 
+                "ptolemy.data.expr.Parameter",
+                String.valueOf(n)));
     }
     
     public void run() {
         setVergilProps();
         setEboracumProps();
+        setNodesProps();
         setChannelProps();
         
         filePath = "eboracum/pathloss/simulations/";
