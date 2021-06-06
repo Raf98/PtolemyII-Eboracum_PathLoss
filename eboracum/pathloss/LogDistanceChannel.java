@@ -57,7 +57,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         isPLD0Calculated.setExpression(Boolean.toString(this.isPLD0CalculatedValue));
         isPLD0Calculated.setToken(new BooleanToken(this.isPLD0CalculatedValue));
         
-        calculatedRangeValue = this.calculateRangeLogDistance();
+        //calculatedRangeValue = this.calculateRangeLogDistance();
         
         //System.out.println("Range: " + calculatedRangeValue);
         //System.out.println("PathLoss - 300m: " + this.calculatePathLossLogDistance(300));
@@ -65,9 +65,10 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         //defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() + ", "
         //        + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
         
-        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
-                + "pathloss = " + this.maximumPathLoss + "}");
+        //defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
+        //        + "pathloss = " + this.maximumPathLoss + "}");
         
+        defaultProperties.setExpression("{range = 0.0, power = 0.0, pathloss = 0.0}");
         
         pathLossFactor
                 .setExpression(this.calculatePathLoss(referenceDistanceD0Value) + "+10*n*log10(distance/d0)");
@@ -76,10 +77,12 @@ public class LogDistanceChannel extends FreeSpaceChannel{
     
     @Override
     public void initialize() throws IllegalActionException {
-        super.initialize();
+        //super.initialize();
         
         this.maximumPathLoss = this.calculateMaxPathLoss();
-        this.calculatedRangeValue = this.calculateRangeLogDistance();
+        this.calculatedRangeValue = this.calculateRange();
+        
+        //System.out.println("PathLoss - 300m: " + calculatePathLoss(1100));
         
         //defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
         //        + "pathloss = 0.0, maxPL = " + this.maximumPathLoss + "}");
@@ -94,36 +97,7 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         
         //System.out.println("PATH LOG: " + calculatePathLossLogDistance(1165.9144011798323));
     }
-    
-    
-   double calculateRangeLogDistance() {
-        pathLossFactorNValue = Double.valueOf(pathLossFactorN.getValueAsString());
-        referenceDistanceD0Value = Double.valueOf(referenceDistanceD0.getValueAsString());
-        
-        //System.out.println("D0: " + referenceDistanceD0Value);
-        //System.out.println((this.maximumPathLoss - this.getFreeSpacePathLoss(referenceDistanceD0Value))/(10*pathLossFactorNValue));
-        
-        double PLD0 = checkPLD0();
-        
-        double maxDistance = (Math.pow(10, (this.maximumPathLoss - PLD0)/(10*pathLossFactorNValue)
-                + Math.log10(referenceDistanceD0Value)));
-        
-       // System.out.println("MAX DISTANCE - LOG DISTANCE: " + maxDistance);
-        
-        return roundDouble(maxDistance, 2);
-    }
-    
-    double calculatePathLossLogDistance(double distance) {
-        pathLossFactorNValue = Double.valueOf(pathLossFactorN.getValueAsString());
-        referenceDistanceD0Value = Double.valueOf(referenceDistanceD0.getValueAsString());
-        
-        double PLD0 = checkPLD0();
-        
-        double pathLoss = PLD0 + 10*pathLossFactorNValue*Math.log10(distance/this.referenceDistanceD0Value);
-       
-        return roundDouble(pathLoss, 2);
-    }
-    
+     
     double getFreeSpacePathLoss(double distance) {
         return super.calculatePathLoss(distance);
     }
@@ -140,6 +114,36 @@ public class LogDistanceChannel extends FreeSpaceChannel{
         }
         
         return PLD0;
+    }
+    
+    @Override
+    double calculateRange() {
+        pathLossFactorNValue = Double.valueOf(pathLossFactorN.getValueAsString());
+        referenceDistanceD0Value = Double.valueOf(referenceDistanceD0.getValueAsString());
+        
+        //System.out.println("D0: " + referenceDistanceD0Value);
+        //System.out.println((this.maximumPathLoss - this.getFreeSpacePathLoss(referenceDistanceD0Value))/(10*pathLossFactorNValue));
+        
+        double PLD0 = checkPLD0();
+        
+        double maxDistance = (Math.pow(10, (this.maximumPathLoss - PLD0)/(10*pathLossFactorNValue)
+                + Math.log10(referenceDistanceD0Value)));
+        
+       // System.out.println("MAX DISTANCE - LOG DISTANCE: " + maxDistance);
+        
+        return roundDouble(maxDistance, 2);
+    }
+    
+    @Override
+    double calculatePathLoss(double distance) {
+        pathLossFactorNValue = Double.valueOf(pathLossFactorN.getValueAsString());
+        referenceDistanceD0Value = Double.valueOf(referenceDistanceD0.getValueAsString());
+        
+        double PLD0 = checkPLD0();
+        
+        double pathLoss = PLD0 + 10*pathLossFactorNValue*Math.log10(distance/this.referenceDistanceD0Value);
+       
+        return roundDouble(pathLoss, 2);
     }
 
 }

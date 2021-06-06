@@ -91,7 +91,7 @@
         </property>
     </entity>
     <entity name="LogDistanceChannel" class="eboracum.pathloss.LogDistanceChannel">
-        <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = CommCover, power = Infinity, pathloss = 0.0, maxPL = -123.0}">
+        <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = 0.0, power = 0.0, pathloss = 0.0, maxPL = 0.0}">
         </property>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-1000.0, 0.0]">
         </property>

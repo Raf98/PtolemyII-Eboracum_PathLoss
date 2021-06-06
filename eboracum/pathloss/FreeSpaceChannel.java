@@ -90,16 +90,18 @@ public class FreeSpaceChannel extends PowerLossChannel {
         antennaGain.setExpression(Double.toString(this.transmitterAntennaGainValue));
         antennaGain.setToken(new DoubleToken(this.transmitterAntennaGainValue));
         
-        this.maximumPathLoss = calculateMaxPathLoss();
-        this.calculatedRangeValue = this.calculateRange();
+        //this.maximumPathLoss = calculateMaxPathLoss();
+        //this.calculatedRangeValue = /*((FreeSpaceChannel)this).*/calculateRange();
         
         //System.out.println("PathLoss - 300m: " + this.calculatePathLoss(300));
         
         //defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
         //        + "pathloss = " + this.maximumPathLoss + ", maxPL = " + this.maximumPathLoss + "}");
         
-        defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
-                + "pathloss = " + this.maximumPathLoss + "}");
+        //defaultProperties.setExpression("{range = " + this.calculatedRangeValue +", power = "+ changeTxPowerToW() +", "
+        //        + "pathloss = " + this.maximumPathLoss + "}");
+        
+        defaultProperties.setExpression("{range = 0.0, power = 0.0, pathloss = 0.0}");
 
         // Force the type of the defaultProperties to at least include
         // the range field. This must be done after setting the value
@@ -122,7 +124,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
     @Override
     public void initialize() throws IllegalActionException {
         // TODO Auto-generated method stub
-        super.initialize();
+        //super.initialize();
         
         this.maximumPathLoss = calculateMaxPathLoss();
         this.calculatedRangeValue = calculateRange();
@@ -235,7 +237,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         
         double maxDistance = ((Math.pow(10, maximumPathLoss/20)*wavelengthValue)/(4*Math.PI));//*1000;
         
-        //System.out.println("MAX DISTANCE - FS: " + maxDistance);
+        System.out.println("MAX DISTANCE - FS: " + maxDistance);
         
         return roundDouble(maxDistance, 2);
     }

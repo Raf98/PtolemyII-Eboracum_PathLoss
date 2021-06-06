@@ -144,7 +144,7 @@ public class PathLossSimulationGenerator {
         entity = new Entity(commChannelName, commChannelType);
         propertiesLocalList.add(new Property("defaultProperties", 
                     "ptolemy.data.expr.Parameter",
-                    "{range = CommCover, power = Infinity, pathloss = 0.0, maxPL = -123.0}"));
+                    "{range = 0.0, power = 0.0, pathloss = 0.0, maxPL = 0.0}"));
         propertiesLocalList.add(new Property("_location", 
                 "ptolemy.kernel.util.Location",
                 "[" + defaultComponentsX + ", " + defaultComponentsY + "]"));
