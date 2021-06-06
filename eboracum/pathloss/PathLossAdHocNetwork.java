@@ -21,7 +21,7 @@ import ptolemy.kernel.util.NameDuplicationException;
 public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
     
     public double maxRange;
-    public double fraunhoferDistance;
+    //public double fraunhoferDistance;
 
     public PathLossAdHocNetwork(CompositeEntity container, String name)
             throws IllegalActionException, NameDuplicationException {
@@ -85,7 +85,7 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
                 //System.out.println("ENTITY - NAME: " + node.getName());
                 
                 FreeSpaceChannel freeSpaceChannel = (FreeSpaceChannel) node;
-                this.fraunhoferDistance = freeSpaceChannel.calculateFraunhoferDistance();
+                //this.fraunhoferDistance = freeSpaceChannel.calculateFraunhoferDistance();
                 //PowerLossChannel powerLossChannel = (PowerLossChannel) node;
                 
                 //System.out.println(freeSpaceChannel.pathLossFactor.getExpression());
@@ -165,7 +165,7 @@ public class PathLossAdHocNetwork extends SimpleAdHocNetwork {
                //System.out.println("nodecover"+nodeCoverRadius);
                double distanceTR = calcDistance(node, gatewayNode);
                
-               if (distanceTR <= nodeCoverRadius && distanceTR > this.fraunhoferDistance 
+               if (distanceTR <= nodeCoverRadius /*&& distanceTR > this.fraunhoferDistance*/
                        && !gatewayNode.equals(node) && 
                        ((StringParameter)node.getAttribute("Gateway")).getExpression().equals("")) {
                        ((StringParameter)node.getAttribute("Gateway")).setExpression(gatewayNode.getName());

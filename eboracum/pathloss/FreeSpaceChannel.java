@@ -202,7 +202,7 @@ public class FreeSpaceChannel extends PowerLossChannel {
         }
         
         double distanceBetweenTR = _distanceBetween(source, destination);
-        boolean result = (distanceBetweenTR <= range && distanceBetweenTR > this.calculateFraunhoferDistance());
+        boolean result = (distanceBetweenTR <= range /*&& distanceBetweenTR > this.calculateFraunhoferDistance()*/);
         
         //System.out.println("Distance: " + _distanceBetween(source, destination));
         //System.out.println("isInRange called - END");
@@ -249,11 +249,11 @@ public class FreeSpaceChannel extends PowerLossChannel {
         return  roundDouble(pathLoss, 2);
     }
     
-    double calculateFraunhoferDistance() {
+    /*double calculateFraunhoferDistance() {
         double fraunhoferDistance = (2*Math.pow(this.maxAntennaDimension, 2))/this.wavelengthValue;
         //System.out.println("Fraunhofer: " + fraunhoferDistance);
         return fraunhoferDistance;
-    }
+    }*/
     
     double calculateMaxPathLoss() {
         this.transmitterPowerValue = Double.valueOf(transmitterPower.getValueAsString());
