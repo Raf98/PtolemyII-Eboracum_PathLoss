@@ -3,6 +3,7 @@ package eboracum.pathloss;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import eboracum.pathloss.unfinished.PathLossMethods;
 import eboracum.wsn.network.SimpleAdHocNetwork;
 import eboracum.wsn.network.node.WirelessNode;
 import ptolemy.actor.CompositeActor;

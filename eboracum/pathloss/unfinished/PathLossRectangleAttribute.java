@@ -1,4 +1,4 @@
-package eboracum.pathloss;
+package eboracum.pathloss.unfinished;
 
 import ptolemy.kernel.util.IllegalActionException;
 import ptolemy.kernel.util.NameDuplicationException;
