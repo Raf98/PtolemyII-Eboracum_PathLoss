@@ -40,6 +40,11 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
         period = 1440;
     }
     
+    @Override
+    void setFlags() {
+        differentEvents = false;
+    }
+    
     public void run() {
         setAllProps();
         

@@ -91,9 +91,9 @@
     <entity name="PeriodicEvent21" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[685.0, 525.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E21">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E21">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -101,9 +101,9 @@
     <entity name="PeriodicEvent29" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[985.0, 675.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E29">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E29">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -111,9 +111,9 @@
     <entity name="PeriodicEvent12" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 375.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E12">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E12">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -121,9 +121,9 @@
     <entity name="PeriodicEvent34" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[835.0, 825.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E34">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E34">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -155,9 +155,9 @@
     <entity name="PeriodicEvent25" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[385.0, 675.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E25">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E25">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -165,9 +165,9 @@
     <entity name="PeriodicEvent6" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 225.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E6">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E6">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -203,9 +203,9 @@
     <entity name="PeriodicEvent9" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[685.0, 225.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E9">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E9">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -225,9 +225,9 @@
     <entity name="PeriodicEvent35" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[985.0, 825.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E35">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E35">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -247,9 +247,9 @@
     <entity name="PeriodicEvent17" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[985.0, 375.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E17">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E17">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -257,9 +257,9 @@
     <entity name="PeriodicEvent19" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[385.0, 525.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E19">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E19">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -267,9 +267,9 @@
     <entity name="PeriodicEvent11" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[985.0, 225.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E11">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E11">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -277,9 +277,9 @@
     <entity name="PeriodicEvent16" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[835.0, 375.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E16">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E16">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -433,9 +433,9 @@
     <entity name="PeriodicEvent0" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 75.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E0">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E0">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -455,9 +455,9 @@
     <entity name="PeriodicEvent27" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[685.0, 675.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E27">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E27">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -465,9 +465,9 @@
     <entity name="PeriodicEvent1" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[385.0, 75.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E1">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E1">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -475,9 +475,9 @@
     <entity name="PeriodicEvent8" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[535.0, 225.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E8">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E8">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -485,9 +485,9 @@
     <entity name="PeriodicEvent20" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[535.0, 525.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E20">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E20">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -495,9 +495,9 @@
     <entity name="PeriodicEvent15" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[685.0, 375.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E15">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E15">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -553,9 +553,9 @@
     <entity name="PeriodicEvent31" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[385.0, 825.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E31">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E31">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -563,9 +563,9 @@
     <entity name="PeriodicEvent2" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[535.0, 75.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E2">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E2">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -573,9 +573,9 @@
     <entity name="PeriodicEvent18" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 525.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E18">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E18">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -583,9 +583,9 @@
     <entity name="PeriodicEvent7" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[385.0, 225.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E7">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E7">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -593,9 +593,9 @@
     <entity name="PeriodicEvent26" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[535.0, 675.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E26">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E26">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -615,9 +615,9 @@
     <entity name="PeriodicEvent33" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[685.0, 825.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E33">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E33">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -637,9 +637,9 @@
     <entity name="PeriodicEvent14" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[535.0, 375.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E14">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E14">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -647,9 +647,9 @@
     <entity name="PeriodicEvent30" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 825.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E30">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E30">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -657,9 +657,9 @@
     <entity name="PeriodicEvent28" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[835.0, 675.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E28">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E28">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -727,9 +727,9 @@
     <entity name="PeriodicEvent32" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[535.0, 825.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E32">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E32">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -737,9 +737,9 @@
     <entity name="PeriodicEvent23" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[985.0, 525.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E23">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E23">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -747,9 +747,9 @@
     <entity name="PeriodicEvent13" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[385.0, 375.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E13">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E13">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -781,9 +781,9 @@
     <entity name="PeriodicEvent5" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[985.0, 75.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E5">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E5">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -791,9 +791,9 @@
     <entity name="PeriodicEvent10" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[835.0, 225.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E10">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E10">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -801,9 +801,9 @@
     <entity name="PeriodicEvent3" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[685.0, 75.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E3">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E3">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -811,9 +811,9 @@
     <entity name="PeriodicEvent24" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 675.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E24">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E24">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -845,9 +845,9 @@
     <entity name="PeriodicEvent4" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[835.0, 75.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E4">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E4">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>
@@ -855,9 +855,9 @@
     <entity name="PeriodicEvent22" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[835.0, 525.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E22">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E22">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="1440.0">
         </property>

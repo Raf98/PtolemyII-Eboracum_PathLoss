@@ -51,7 +51,7 @@ public class PathLossSimulationGenerator {
     protected Map<Entity, List<Property>> entitiesToPropertiesMap;
     protected Map<Property, List<Property>> propertyToPropertiesMap;
     
-    protected String defaultSpacing = "    ";
+    final protected String defaultSpacing = "    ";
     
     protected double transmitterPower;
     protected double receiverSensivity;
@@ -59,7 +59,9 @@ public class PathLossSimulationGenerator {
     protected double antennaGain;
     protected double n;
     
-    protected double period = 1440;
+    protected double period;
+    
+    protected boolean differentEvents;
     
     protected class Entity{
         public String name, className;
@@ -199,7 +201,7 @@ public class PathLossSimulationGenerator {
         entitiesToPropertiesMap.put(entity, propertiesLocalList);
         
 
-        createNodesAndItsEventsEntities();
+        createNodesAndItsEventsEntities(differentEvents);
     }
 
     protected void fillProperties() {
@@ -219,7 +221,7 @@ public class PathLossSimulationGenerator {
         
     }
     
-    protected void createNodesAndItsEventsEntities() {
+    protected void createNodesAndItsEventsEntities(boolean differentEvents) {
         double currentX= sinkX + nodesDistance, currentY = sinkY;
         double distanceFactor = 0;
         double numOfNodes = numberOfNodes;
@@ -239,6 +241,7 @@ public class PathLossSimulationGenerator {
         Entity entity;
         List<Property> propertiesLocalList;
         
+        String eventType = "E";
         
         for(int i = 0; i < numberOfNodes; ++i) {
             if(i%nodesOnRow == 0 && i!=0) {
@@ -276,12 +279,14 @@ public class PathLossSimulationGenerator {
             propertiesLocalList.add(new Property("_location", 
                     "ptolemy.kernel.util.Location",
                     "[" + (currentX + this.sensorCover/2) + ", " + currentY + "]"));
+            
+            eventType = differentEvents? "E" + i : "E";
             propertiesLocalList.add(new Property("Type", 
                     "ptolemy.data.expr.StringParameter",
-                    "E" + i));
+                    eventType));
             propertiesLocalList.add(new Property("EndType", 
                     "ptolemy.data.expr.StringParameter",
-                    "E" + i));
+                    eventType));
             propertiesLocalList.add(new Property("Period", 
                     "ptolemy.data.expr.Parameter",
                     Double.toString(period)));
@@ -381,6 +386,10 @@ public class PathLossSimulationGenerator {
         n = 3;
     }
     
+    void setFlags(){
+        differentEvents = true;
+    }
+    
     void fillChannelProps(List<Property> propertiesLocalList){
         propertiesLocalList.add(new Property("Transmitter Power(dBm)", 
                 "ptolemy.data.expr.Parameter",
@@ -405,6 +414,8 @@ public class PathLossSimulationGenerator {
         setNodesProps();
         setEventsProps();
         setChannelProps();
+        
+        setFlags();
     }
     
     public void run() {
