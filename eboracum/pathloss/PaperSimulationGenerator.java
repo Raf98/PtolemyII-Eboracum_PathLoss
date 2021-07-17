@@ -1,13 +1,12 @@
 package eboracum.pathloss;
 
 import java.io.IOException;
-import java.util.List;
 
-public class PowerVariationSimulationGenerator extends PathLossSimulationGenerator{
+public class PaperSimulationGenerator extends PathLossSimulationGenerator {
     
     @Override
     void setChannelProps(){
-        transmitterPower = 11;
+        transmitterPower = 2;
         receiverSensivity = -137;
         isPLDOCalculated = true;
         n = 4;
@@ -16,9 +15,9 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
     
     @Override
     void setNodesProps() {
-        numberOfNodes = 9;
-        nodesOnRow = 3;
-        nodesDistance = 1000;
+        numberOfNodes = 36;
+        nodesOnRow = 6;
+        nodesDistance = 150;
         
         sinkX = 50;
         double numOfNodes = numberOfNodes;
@@ -26,15 +25,30 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
     }
     
     @Override
+    void setEboracumProps() {
+        super.setEboracumProps();
+
+        initBattery = 25200000;
+        commCover = 300;
+        sensorCover = 70;
+        cpuEnergyCost = 2880;
+        idleEnergyCost = 20;
+    }
+    
+    @Override
+    void setEventsProps() {
+        period = 1440;
+    }
+    
     public void run() {
         setAllProps();
         
-        filePath = "eboracum/pathloss/simulations/";
+        filePath = "eboracum/pathloss/simulations/paper/";
         
-        int initialTxPower = 11;
-        for(int i = 0; i < 4; i++) {
+        int initialTxPower = (int)this.transmitterPower;
+        for(int i = 0; i < 5; i++) {
             this.transmitterPower = initialTxPower + (i*3);
-            createPrimalEntityInXMLFile("PLPowerSimulation" + (int)this.transmitterPower);
+            createPrimalEntityInXMLFile("PaperSimulation" + (int)this.transmitterPower);
             
             try {
                 writer.close();
@@ -49,7 +63,7 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
     }
     
     public static void main(String[] args) {
-        PathLossSimulationGenerator gen = new PowerVariationSimulationGenerator();
+        PathLossSimulationGenerator gen = new PaperSimulationGenerator();
         gen.run();
     }
 }

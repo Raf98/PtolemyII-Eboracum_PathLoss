@@ -44,6 +44,8 @@ public class PathLossSimulationGenerator {
     protected double initBattery;
     protected double sensorCover;
     protected double commCover;
+    protected double cpuEnergyCost;
+    protected double idleEnergyCost;
     
     protected List<Property> propertiesList;
     protected Map<Entity, List<Property>> entitiesToPropertiesMap;
@@ -56,6 +58,8 @@ public class PathLossSimulationGenerator {
     protected boolean isPLDOCalculated;
     protected double antennaGain;
     protected double n;
+    
+    protected double period = 1440;
     
     protected class Entity{
         public String name, className;
@@ -80,6 +84,7 @@ public class PathLossSimulationGenerator {
         
         try {
             xmlFile.createNewFile();
+            //System.out.println(xmlFile.getAbsolutePath());
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -185,10 +190,16 @@ public class PathLossSimulationGenerator {
         propertiesLocalList.add(new Property("Network", 
                 "ptolemy.data.expr.StringParameter",
                 networkName));
+        propertiesLocalList.add(new Property("IdleEnergyCost", 
+                "ptolemy.data.expr.Parameter",
+                Double.toString(idleEnergyCost)));
+        propertiesLocalList.add(new Property("CPUEnergyCost", 
+                "ptolemy.data.expr.Parameter",
+                Double.toString(cpuEnergyCost)));
         entitiesToPropertiesMap.put(entity, propertiesLocalList);
         
 
-        createNodesEntities();
+        createNodesAndItsEventsEntities();
     }
 
     protected void fillProperties() {
@@ -208,7 +219,7 @@ public class PathLossSimulationGenerator {
         
     }
     
-    protected void createNodesEntities() {
+    protected void createNodesAndItsEventsEntities() {
         double currentX= sinkX + nodesDistance, currentY = sinkY;
         double distanceFactor = 0;
         double numOfNodes = numberOfNodes;
@@ -249,6 +260,12 @@ public class PathLossSimulationGenerator {
             propertiesLocalList.add(new Property("Network", 
                     "ptolemy.data.expr.StringParameter",
                     networkName));
+            propertiesLocalList.add(new Property("IdleEnergyCost", 
+                    "ptolemy.data.expr.Parameter",
+                    Double.toString(idleEnergyCost)));
+            propertiesLocalList.add(new Property("CPUEnergyCost", 
+                    "ptolemy.data.expr.Parameter",
+                    Double.toString(cpuEnergyCost)));
             
             
             entitiesToPropertiesMap.put(entity, propertiesLocalList);
@@ -265,6 +282,9 @@ public class PathLossSimulationGenerator {
             propertiesLocalList.add(new Property("EndType", 
                     "ptolemy.data.expr.StringParameter",
                     "E" + i));
+            propertiesLocalList.add(new Property("Period", 
+                    "ptolemy.data.expr.Parameter",
+                    Double.toString(period)));
             entitiesToPropertiesMap.put(entity, propertiesLocalList);
             
             currentX += nodesDistance;
@@ -334,6 +354,8 @@ public class PathLossSimulationGenerator {
         initBattery = 500;
         commCover = 300;
         sensorCover = 90;
+        cpuEnergyCost = 0;
+        idleEnergyCost = 1;
     }
     
     void setNodesProps() {
@@ -344,6 +366,10 @@ public class PathLossSimulationGenerator {
         sinkX = 50;
         double numOfNodes = numberOfNodes;
         sinkY = Math.ceil(numOfNodes/nodesOnRow/2)*nodesDistance;
+    }
+    
+    void setEventsProps() {
+        period = 2;
     }
     
     
@@ -373,12 +399,17 @@ public class PathLossSimulationGenerator {
                 String.valueOf(n)));
     }
     
-    public void run() {
+    public void setAllProps() {
         setVergilProps();
         setEboracumProps();
         setNodesProps();
+        setEventsProps();
         setChannelProps();
-        
+    }
+    
+    public void run() {
+        setAllProps();
+                
         filePath = "eboracum/pathloss/simulations/";
         createPrimalEntityInXMLFile("PLSimulation");
         try {
