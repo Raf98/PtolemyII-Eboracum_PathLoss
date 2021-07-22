@@ -9,6 +9,8 @@
         </property>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-1300.0, 0.0]">
         </property>
+        <property name="timeResolution" class="ptolemy.actor.parameters.SharedParameter" value="1E-9">
+        </property>
     </property>
     <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={0, 26, 1366, 742}, maximized=false}">
     </property>
@@ -18,14 +20,20 @@
     </property>
     <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{3932.0, 2400.0}">
     </property>
-    <property name="GlobalInitBattery" class="ptolemy.data.expr.Parameter" value="500.0">
+    <property name="GlobalInitBattery" class="ptolemy.data.expr.Parameter" value="10.0">
     </property>
     <property name="SensorCover" class="ptolemy.data.expr.Parameter" value="90.0">
     </property>
     <property name="CommCover" class="ptolemy.data.expr.Parameter" value="300.0">
     </property>
-    <entity name="SimpleWSNNode4" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[2050.0, 2000.0]">
+    <property name="DataReportFile" class="ptolemy.data.expr.Parameter" value="eboracum/pathloss/simulations/PLSimulation_DataReport">
+    </property>
+    <entity name="Stop" class="ptolemy.actor.lib.Stop">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-200.0, 0.0]">
+        </property>
+    </entity>
+    <entity name="SimpleWSNNode3" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1050.0, 2000.0]">
         </property>
         <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
@@ -36,40 +44,6 @@
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
-        </property>
-    </entity>
-    <entity name="SimpleWSNNode8" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[3050.0, 3000.0]">
-        </property>
-        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
-        </property>
-        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
-        </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
-        </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
-        </property>
-        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
-        </property>
-    </entity>
-    <entity name="PeriodicEvent0" class="eboracum.wsn.event.PeriodicEvent">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[1095.0, 1000.0]">
-        </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E0">
-        </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E0">
-        </property>
-        <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
-        </property>
-    </entity>
-    <entity name="PeriodicEvent1" class="eboracum.wsn.event.PeriodicEvent">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[2095.0, 1000.0]">
-        </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E1">
-        </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E1">
-        </property>
-        <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
     <entity name="LimitedRangeChannel" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
@@ -78,14 +52,18 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-1200.0, 0.0]">
         </property>
     </entity>
-    <entity name="PeriodicEvent2" class="eboracum.wsn.event.PeriodicEvent">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[3095.0, 1000.0]">
+    <entity name="PeriodicEvent6" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1095.0, 3000.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E2">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E6">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E2">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E6">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
+        </property>
+    </entity>
+    <entity name="EventTypeController" class="eboracum.wsn.type.EventTypeController">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-800.0, 0.0]">
         </property>
     </entity>
     <entity name="SimpleWSNNode5" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
@@ -102,84 +80,88 @@
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
-    <entity name="SimpleWSNNode2" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[3050.0, 1000.0]">
+    <entity name="LogDistanceChannel" class="eboracum.pathloss.LogDistanceChannel">
+        <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = 0.0, power = 0.0, pathloss = 0.0, maxPL = 0.0}">
         </property>
-        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-1000.0, 0.0]">
         </property>
-        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
+        <property name="Transmitter Power(dBm)" class="ptolemy.data.expr.Parameter" value="20.0">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
+        <property name="Received Power/Sensibility(dBm)" class="ptolemy.data.expr.Parameter" value="-137.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="Antenna Gain(dBi)" class="ptolemy.data.expr.Parameter" value="2.15">
         </property>
-        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        <property name="Frequency(Hz)" class="ptolemy.data.expr.Parameter" value="9.15E8">
+        </property>
+        <property name="PL(d0)" class="ptolemy.data.expr.Parameter" value="50.0">
+        </property>
+        <property name="Calculated PL(d0)" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="n" class="ptolemy.data.expr.Parameter" value="4.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent4" class="eboracum.wsn.event.PeriodicEvent">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[2095.0, 2000.0]">
+    <entity name="PeriodicEvent8" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[3095.0, 3000.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E4">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E8">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E4">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E8">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="SimpleWSNNode0" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[1050.0, 1000.0]">
+    <entity name="PeriodicEvent7" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[2095.0, 3000.0]">
         </property>
-        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E7">
         </property>
-        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
-        </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
-        </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
-        </property>
-        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
-        </property>
-    </entity>
-    <entity name="SimpleWSNNode1" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[2050.0, 1000.0]">
-        </property>
-        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
-        </property>
-        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
-        </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
-        </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
-        </property>
-        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
-        </property>
-    </entity>
-    <entity name="PeriodicEvent5" class="eboracum.wsn.event.PeriodicEvent">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[3095.0, 2000.0]">
-        </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E5">
-        </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E5">
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E7">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="EventTypeController" class="eboracum.wsn.type.EventTypeController">
+    <entity name="PeriodicEvent0" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1095.0, 1000.0]">
+        </property>
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E0">
+        </property>
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E0">
+        </property>
+        <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
+        </property>
+    </entity>
+    <entity name="PathLossAdHocNetwork" class="eboracum.pathloss.PathLossAdHocNetwork">
+        <property name="NetworkSinks" class="ptolemy.data.expr.StringParameter" value="{NetworkMainGateway}">
+        </property>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-600.0, 0.0]">
         </property>
     </entity>
-    <entity name="PeriodicEvent3" class="eboracum.wsn.event.PeriodicEvent">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[1095.0, 2000.0]">
+    <entity name="SimpleWSNNode6" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1050.0, 3000.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E3">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E3">
+        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
+        </property>
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
+        </property>
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </entity>
+    <entity name="PeriodicEvent1" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[2095.0, 1000.0]">
+        </property>
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E1">
+        </property>
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E1">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="SimpleWSNNode3" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[1050.0, 2000.0]">
+    <entity name="SimpleWSNNode8" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[3050.0, 3000.0]">
         </property>
         <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
@@ -206,24 +188,8 @@
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
-    <entity name="LogDistanceChannel" class="eboracum.pathloss.LogDistanceChannel">
-        <property name="defaultProperties" class="ptolemy.data.expr.Parameter" value="{range = 0.0, power = 0.0, pathloss = 0.0, maxPL = 0.0}">
-        </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-1000.0, 0.0]">
-        </property>
-        <property name="Transmitter Power(dBm)" class="ptolemy.data.expr.Parameter" value="20.0">
-        </property>
-        <property name="Received Power/Sensibility(dBm)" class="ptolemy.data.expr.Parameter" value="-137.0">
-        </property>
-        <property name="Calculated PL(d0)" class="ptolemy.data.expr.Parameter" value="true">
-        </property>
-        <property name="Antenna Gain(dBi)" class="ptolemy.data.expr.Parameter" value="2.15">
-        </property>
-        <property name="n" class="ptolemy.data.expr.Parameter" value="4.0">
-        </property>
-    </entity>
-    <entity name="SimpleWSNNode6" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[1050.0, 3000.0]">
+    <entity name="SimpleWSNNode0" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1050.0, 1000.0]">
         </property>
         <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
@@ -234,12 +200,6 @@
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
-        </property>
-    </entity>
-    <entity name="PathLossAdHocNetwork" class="eboracum.pathloss.PathLossAdHocNetwork">
-        <property name="NetworkSinks" class="ptolemy.data.expr.StringParameter" value="{NetworkMainGateway}">
-        </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-800.0, 0.0]">
         </property>
     </entity>
     <entity name="NetworkMainGateway" class="eboracum.wsn.network.node.NetworkMainGateway">
@@ -258,34 +218,102 @@
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
-    <entity name="PeriodicEvent6" class="eboracum.wsn.event.PeriodicEvent">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[1095.0, 3000.0]">
+    <entity name="SimpleWSNNode4" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[2050.0, 2000.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E6">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E6">
+        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
+        </property>
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
+        </property>
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </entity>
+    <entity name="PeriodicEvent4" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[2095.0, 2000.0]">
+        </property>
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E4">
+        </property>
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E4">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent8" class="eboracum.wsn.event.PeriodicEvent">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[3095.0, 3000.0]">
+    <entity name="PLDataReporter" class="eboracum.pathloss.simulations.PLDataReporter">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-400.0, 0.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E8">
+    </entity>
+    <entity name="SimpleWSNNode2" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[3050.0, 1000.0]">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E8">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
+        </property>
+        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
+        </property>
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
+        </property>
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </entity>
+    <entity name="PeriodicEvent5" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[3095.0, 2000.0]">
+        </property>
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E5">
+        </property>
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E5">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent7" class="eboracum.wsn.event.PeriodicEvent">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[2095.0, 3000.0]">
+    <entity name="SimpleWSNNode1" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[2050.0, 1000.0]">
         </property>
-        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E7">
+        <property name="CommChannelName" class="ptolemy.data.expr.StringParameter" value="LogDistanceChannel">
         </property>
-        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E7">
+        <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
+        </property>
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
+        </property>
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+    </entity>
+    <entity name="PeriodicEvent3" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1095.0, 2000.0]">
+        </property>
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E3">
+        </property>
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E3">
         </property>
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
+    <entity name="PeriodicEvent2" class="eboracum.wsn.event.PeriodicEvent">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[3095.0, 1000.0]">
+        </property>
+        <property name="Type" class="ptolemy.data.expr.StringParameter" value="E2">
+        </property>
+        <property name="EndType" class="ptolemy.data.expr.StringParameter" value="E2">
+        </property>
+        <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
+        </property>
+    </entity>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <link port="PathLossAdHocNetwork.out" relation="relation">
+    </link>
+    <link port="PLDataReporter.trigger" relation="relation">
+    </link>
+    <link port="PLDataReporter.out" relation="relation2">
+    </link>
+    <link port="Stop.input" relation="relation2">
+    </link>
 </entity>

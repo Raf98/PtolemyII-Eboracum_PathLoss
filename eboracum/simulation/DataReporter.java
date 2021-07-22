@@ -49,6 +49,9 @@ public class DataReporter extends TypedAtomicActor {
           	BenchmarksGenerator.appendDataReportFile(fileReport,"Simulation Total Time;"+df.format((this.getDirector().getModelTime().getDoubleValue())));
         	while (actors.hasNext()) {
         		Entity node = (Entity) actors.next();
+        		System.out.println("WRITING NODE INFO - DATA REPORT");
+        		System.out.println(simulationReportFile.getValueAsString());
+        		System.out.println(fileReport);
         		if (node.getClassName().equals("eboracum.wsn.network.node.NetworkMainGateway")){
         			BenchmarksGenerator.appendDataReportFile(fileReport,"Total Number of Sensed Events by the WSN;"+((NetworkMainGateway)node).eventSensoredGenCounter);
         			BenchmarksGenerator.appendDataReportFile(fileReport,"Number of Sensed Events by the WSN per Day");
@@ -96,6 +99,7 @@ public class DataReporter extends TypedAtomicActor {
     				e.printStackTrace();  
     			}
         	}
+        	System.out.println("ENDED IT");
         	out.send(0, new BooleanToken("true"));
         }
     }

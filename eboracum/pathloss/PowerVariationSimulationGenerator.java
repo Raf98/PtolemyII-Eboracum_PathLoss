@@ -7,6 +7,7 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
     
     @Override
     void setChannelProps(){
+        super.setChannelProps();
         transmitterPower = 11;
         receiverSensivity = -137;
         isPLDOCalculated = true;
@@ -26,11 +27,15 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
     }
     
     @Override
+    public void setFileProps() {
+        filePath = "eboracum/pathloss/simulations/";
+        simulationName = "PLPowerSimulation";   
+    }
+    
+    @Override
     public void run() {
         setAllProps();
-        
-        filePath = "eboracum/pathloss/simulations/";
-        
+                
         int initialTxPower = 11;
         for(int i = 0; i < 4; i++) {
             this.transmitterPower = initialTxPower + (i*3);

@@ -1,6 +1,5 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
-    "MoML_1.dtd">
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "MoML_1.dtd">
 <entity name="_base_model" class="ptolemy.actor.TypedCompositeActor">
     <property name="Rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
         <property name="_location" class="ptolemy.kernel.util.Location" value="-110.0, -55.0">

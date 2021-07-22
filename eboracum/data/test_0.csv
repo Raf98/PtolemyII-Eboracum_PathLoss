@@ -1,16 +1,25 @@
 Simulation Identification;test
 Round;0
-Initial Battery;2700.0
+Initial Battery;10.0
 Communication Radius;160.0
 Sensor Cover Radius;120.0
-Node Idle Energy Cost;0.3
+Node Idle Energy Cost;1.0
 CPU Processing Energy Cost;50.0
 Summary of Nodes
 Class Name;Number of Instances
 eboracum.wsn.network.node.sensor.SimpleWSNNode;49
 Summary of Events
 Class Name;Type;Number of Instances;Tasks Cost Graph; Comm Energy Cost
-eboracum.wsn.network.node.StochasticStaticEvent;E0;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;0.0018
-eboracum.wsn.network.node.StochasticStaticEvent;E1;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="2"/></task>;0.0018
+eboracum.wsn.network.node.PeriodicEvent;E3;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="2"/></task>;0.298082
+eboracum.wsn.network.node.PeriodicEvent;E5;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="2"/></task>;1.0
+eboracum.wsn.network.node.PeriodicEvent;E7;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="2"/></task>;1.0
+eboracum.wsn.network.node.PeriodicEvent;E;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;0.0018
+eboracum.wsn.network.node.PeriodicEvent;E1;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="2"/></task>;0.22356164
+eboracum.wsn.network.node.PeriodicEvent;E0;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;0.219178
+eboracum.wsn.network.node.PeriodicEvent;E9;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="2"/></task>;1.0
+eboracum.wsn.network.node.PeriodicEvent;E4;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;0.385753
+eboracum.wsn.network.node.PeriodicEvent;E2;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;0.249863
+eboracum.wsn.network.node.PeriodicEvent;E8;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;1.0
+eboracum.wsn.network.node.PeriodicEvent;E6;20;<task id="0"><cpu name="SimpleFIFOBasedCPU" cost="1"/></task>;1.0
 
 Results

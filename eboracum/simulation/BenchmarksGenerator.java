@@ -84,9 +84,9 @@ public abstract class BenchmarksGenerator {
         try {  
             createDataReportFile(simulationIdentification,round);
             Process p =
-                    Runtime.getRuntime().exec(System.getProperty("user.dir")+"/bin/vergil -visualsense -" +
-                            "runThenExit eboracum/data/"+simulationIdentification+".xml -DataReportFile" +
-                            "&quot;eboracum/data/"+simulationIdentification+"_"+round+".csv&quot;\"");
+                    Runtime.getRuntime().exec(System.getProperty("user.dir")+"/bin/vergil -visualsense " +
+                            "-runThenExit eboracum/data/"+simulationIdentification+".xml -DataReportFile " +
+                            "eboracum/data/"+simulationIdentification+"_"+round+".csv");
             // pode tirar
             BufferedReader reader = new BufferedReader(new
                     InputStreamReader(p.getInputStream()));

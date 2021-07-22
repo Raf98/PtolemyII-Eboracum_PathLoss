@@ -1,0 +1,17 @@
+Simulation Identification;PaperSimulation5
+Initial Battery;2.52E7
+Sensor Cover Radius;70.0
+Node Idle Energy Cost;20.0
+CPU Processing Energy Cost;2880.0
+Communication Channel Type:eboracum.pathloss.LogDistanceChannel
+Transmission Power;5.0
+Receiver Sensivity;-104.0
+Antenna Gain;2.15
+Frequency;9.15E8Summary of Nodes
+Class Name;Number of Instances
+eboracum.wsn.network.node.SimpleWSNNode;36
+Summary of Events
+Class Name;Type;Number of Instances;
+eboracum.wsn.network.node.PeriodicEvent;E1;36;
+
+Results

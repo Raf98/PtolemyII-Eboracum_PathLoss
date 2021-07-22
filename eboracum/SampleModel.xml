@@ -1,6 +1,5 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
-    "MoML_1.dtd">
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "MoML_1.dtd">
 <entity name="SampleModel" class="ptolemy.actor.TypedCompositeActor">
     <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.0.1_20101021">
     </property>
