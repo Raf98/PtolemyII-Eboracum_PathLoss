@@ -33,11 +33,12 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
         sensorCover = 70;
         cpuEnergyCost = 2880;
         idleEnergyCost = 20;
+        synchronizedRealTime = false;
     }
     
     @Override
     void setEventsProps() {
-        period = 1440;
+        period = 28800;
     }
     
     @Override

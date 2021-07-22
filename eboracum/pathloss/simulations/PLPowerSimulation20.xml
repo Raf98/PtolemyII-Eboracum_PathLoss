@@ -35,6 +35,8 @@
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
     </entity>
     <entity name="SimpleWSNNode8" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[3050.0, 3000.0]">
@@ -46,6 +48,8 @@
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
     <entity name="PeriodicEvent0" class="eboracum.wsn.event.PeriodicEvent">
@@ -95,6 +99,8 @@
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
     </entity>
     <entity name="SimpleWSNNode2" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[3050.0, 1000.0]">
@@ -106,6 +112,8 @@
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
     <entity name="PeriodicEvent4" class="eboracum.wsn.event.PeriodicEvent">
@@ -129,6 +137,8 @@
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
     </entity>
     <entity name="SimpleWSNNode1" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[2050.0, 1000.0]">
@@ -140,6 +150,8 @@
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
     <entity name="PeriodicEvent5" class="eboracum.wsn.event.PeriodicEvent">
@@ -177,6 +189,8 @@
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
     </entity>
     <entity name="SimpleWSNNode7" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[2050.0, 3000.0]">
@@ -188,6 +202,8 @@
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
     <entity name="LogDistanceChannel" class="eboracum.pathloss.LogDistanceChannel">
@@ -217,6 +233,8 @@
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
     </entity>
     <entity name="PathLossAdHocNetwork" class="eboracum.pathloss.PathLossAdHocNetwork">
         <property name="NetworkSinks" class="ptolemy.data.expr.StringParameter" value="{NetworkMainGateway}">
@@ -236,6 +254,8 @@
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
     <entity name="PeriodicEvent6" class="eboracum.wsn.event.PeriodicEvent">

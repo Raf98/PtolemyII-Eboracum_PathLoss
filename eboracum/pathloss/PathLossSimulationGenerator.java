@@ -46,6 +46,7 @@ public class PathLossSimulationGenerator {
     protected double commCover;
     protected double cpuEnergyCost;
     protected double idleEnergyCost;
+    protected boolean synchronizedRealTime;
     
     protected List<Property> propertiesList;
     protected Map<Entity, List<Property>> entitiesToPropertiesMap;
@@ -198,6 +199,9 @@ public class PathLossSimulationGenerator {
         propertiesLocalList.add(new Property("CPUEnergyCost", 
                 "ptolemy.data.expr.Parameter",
                 Double.toString(cpuEnergyCost)));
+        propertiesLocalList.add(new Property("SynchronizedRealTime", 
+                "ptolemy.data.expr.Parameter",
+                Boolean.toString(synchronizedRealTime)));
         entitiesToPropertiesMap.put(entity, propertiesLocalList);
         
 
@@ -269,6 +273,9 @@ public class PathLossSimulationGenerator {
             propertiesLocalList.add(new Property("CPUEnergyCost", 
                     "ptolemy.data.expr.Parameter",
                     Double.toString(cpuEnergyCost)));
+            propertiesLocalList.add(new Property("SynchronizedRealTime", 
+                    "ptolemy.data.expr.Parameter",
+                    Boolean.toString(synchronizedRealTime)));
             
             
             entitiesToPropertiesMap.put(entity, propertiesLocalList);
@@ -361,6 +368,7 @@ public class PathLossSimulationGenerator {
         sensorCover = 90;
         cpuEnergyCost = 0;
         idleEnergyCost = 1;
+        synchronizedRealTime = true;
     }
     
     void setNodesProps() {
