@@ -26,7 +26,7 @@
     </property>
     <property name="CommCover" class="ptolemy.data.expr.Parameter" value="300.0">
     </property>
-    <property name="DataReportFile" class="ptolemy.data.expr.Parameter" value="eboracum/pathloss/simulations/PLSimulation_DataReport">
+    <property name="DataReportFile" class="ptolemy.data.expr.Parameter" value="eboracum/pathloss/simulations/data/PLPowerSimulation17.csv">
     </property>
     <entity name="SimpleWSNNode0" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[1050.0, 1000.0]">
@@ -42,7 +42,7 @@
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
-    <entity name="PeriodicEvent3" class="eboracum.wsn.event.PeriodicEvent">
+    <entity name="E3_3" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[1095.0, 2000.0]">
         </property>
         <property name="Type" class="ptolemy.data.expr.StringParameter" value="E3">
@@ -52,7 +52,7 @@
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent8" class="eboracum.wsn.event.PeriodicEvent">
+    <entity name="E8_8" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[3095.0, 3000.0]">
         </property>
         <property name="Type" class="ptolemy.data.expr.StringParameter" value="E8">
@@ -62,7 +62,7 @@
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent2" class="eboracum.wsn.event.PeriodicEvent">
+    <entity name="E2_2" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[3095.0, 1000.0]">
         </property>
         <property name="Type" class="ptolemy.data.expr.StringParameter" value="E2">
@@ -191,6 +191,8 @@
     <entity name="PLDataReporter" class="eboracum.pathloss.simulations.PLDataReporter">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-400.0, 0.0]">
         </property>
+        <property name="SimulationReportFile" class="ptolemy.data.expr.Parameter" value="eboracum/pathloss/simulations/data/PLPowerSimulation17.csv">
+        </property>
     </entity>
     <entity name="SimpleWSNNode8" class="eboracum.wsn.network.node.sensor.SimpleWSNNode">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[3050.0, 3000.0]">
@@ -220,7 +222,7 @@
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
-    <entity name="PeriodicEvent0" class="eboracum.wsn.event.PeriodicEvent">
+    <entity name="E0_0" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[1095.0, 1000.0]">
         </property>
         <property name="Type" class="ptolemy.data.expr.StringParameter" value="E0">
@@ -230,7 +232,7 @@
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent7" class="eboracum.wsn.event.PeriodicEvent">
+    <entity name="E7_7" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[2095.0, 3000.0]">
         </property>
         <property name="Type" class="ptolemy.data.expr.StringParameter" value="E7">
@@ -240,7 +242,7 @@
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent6" class="eboracum.wsn.event.PeriodicEvent">
+    <entity name="E6_6" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[1095.0, 3000.0]">
         </property>
         <property name="Type" class="ptolemy.data.expr.StringParameter" value="E6">
@@ -250,7 +252,7 @@
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent1" class="eboracum.wsn.event.PeriodicEvent">
+    <entity name="E1_1" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[2095.0, 1000.0]">
         </property>
         <property name="Type" class="ptolemy.data.expr.StringParameter" value="E1">
@@ -284,7 +286,7 @@
         <property name="n" class="ptolemy.data.expr.Parameter" value="4.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent5" class="eboracum.wsn.event.PeriodicEvent">
+    <entity name="E5_5" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[3095.0, 2000.0]">
         </property>
         <property name="Type" class="ptolemy.data.expr.StringParameter" value="E5">
@@ -294,7 +296,7 @@
         <property name="Period" class="ptolemy.data.expr.Parameter" value="2.0">
         </property>
     </entity>
-    <entity name="PeriodicEvent4" class="eboracum.wsn.event.PeriodicEvent">
+    <entity name="E4_4" class="eboracum.wsn.event.PeriodicEvent">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[2095.0, 2000.0]">
         </property>
         <property name="Type" class="ptolemy.data.expr.StringParameter" value="E4">

@@ -28,7 +28,9 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
     
     @Override
     public void setFileProps() {
+        super.setFileProps();
         filePath = "eboracum/pathloss/simulations/";
+        dataFilesPath = filePath + "data/";
         simulationName = "PLPowerSimulation";   
     }
     
@@ -39,7 +41,8 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
         int initialTxPower = 11;
         for(int i = 0; i < 4; i++) {
             this.transmitterPower = initialTxPower + (i*3);
-            createPrimalEntityInXMLFile("PLPowerSimulation" + (int)this.transmitterPower);
+            dataReportFile = dataFilesPath + simulationName + (int)this.transmitterPower + ".csv";
+            createPrimalEntityInXMLFile(simulationName + (int)this.transmitterPower);
             
             try {
                 writer.close();
@@ -47,6 +50,8 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            
+            createDataReportFile();
             
             setNodesProps();
             setVergilProps();

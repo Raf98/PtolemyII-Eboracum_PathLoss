@@ -10,7 +10,7 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
         transmitterPower = 2;
         receiverSensivity = -104;
         isPLDOCalculated = true;
-        n = 3;
+        n = 3.5;
         antennaGain = 2.15;
     }
     
@@ -46,6 +46,7 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
     
     public void setFileProps() {
         filePath = "eboracum/pathloss/simulations/paper/";
+        dataFilesPath = filePath + "data/";
         simulationName = "PaperSimulation";
     }
     
@@ -56,9 +57,9 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
         for(int i = 0; i < 5; i++) {
             this.transmitterPower = initialTxPower + (i*3);
             this.eventType = "E"+i;
-            this.simulationName = "PaperSimulation" + (int)this.transmitterPower;
-            this.dataReportFile = this.filePath + this.simulationName + "_DataReport";
-            createPrimalEntityInXMLFile(simulationName);
+            //this.simulationName = "PaperSimulation" + (int)this.transmitterPower;
+            this.dataReportFile = this.dataFilesPath + this.simulationName + (int)this.transmitterPower + ".csv";
+            createPrimalEntityInXMLFile(simulationName + (int)this.transmitterPower);
             
             try {
                 writer.close();
@@ -67,7 +68,7 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
                 e.printStackTrace();
             }
             
-            createDataReportFile(simulationName);
+            createDataReportFile();
             
             setNodesProps();
             setVergilProps();

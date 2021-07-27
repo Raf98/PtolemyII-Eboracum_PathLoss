@@ -47,7 +47,7 @@
     <property class="ptolemy.data.expr.Parameter" name="CommCover" value="160.0">
     </property>
     <property class="ptolemy.data.expr.Parameter" name="DataReportFile"
-             value="eboracum/data/defaultReport.csv">
+             value="&#34;eboracum/data/defaultReport.csv&#34;">
     </property>
     <entity class="ptolemy.domains.wireless.lib.LimitedRangeChannel"
            name="LimitedRangeChannel">

@@ -34,6 +34,11 @@ public class PLDataReporter extends DataReporter {
             Iterator actors = container.deepEntityList().iterator();
             String fileReport = simulationReportFile.getValueAsString().substring(1,
                     simulationReportFile.getValueAsString().length() - 1);
+            
+            if(simulationReportFile.getValueAsString().equals("null")) {
+                fileReport = simulationReportFile.getExpression();
+            }
+            
             while (actors.hasNext()) {
                 Entity component = (Entity) actors.next();
                 if (component.getClassName().startsWith("eboracum.pathloss.")

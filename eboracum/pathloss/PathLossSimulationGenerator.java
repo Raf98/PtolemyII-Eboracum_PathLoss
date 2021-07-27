@@ -45,6 +45,7 @@ public class PathLossSimulationGenerator {
     protected double initBattery;
     protected double sensorCover;
     protected double commCover;
+    protected String dataFilesPath;
     protected String dataReportFile;
 
     protected double cpuEnergyCost;
@@ -214,6 +215,7 @@ public class PathLossSimulationGenerator {
         entity = new Entity("PLDataReporter", "eboracum.pathloss.simulations.PLDataReporter");
         propertiesLocalList.add(new Property("_location", "ptolemy.kernel.util.Location",
                 "[" + defaultComponentsX + ", " + defaultComponentsY + "]"));
+        propertiesLocalList.add(new Property("SimulationReportFile", "ptolemy.data.expr.Parameter", dataReportFile));
         entitiesToPropertiesMap.put(entity, propertiesLocalList);
         defaultComponentsX += 200;
 
@@ -326,12 +328,11 @@ public class PathLossSimulationGenerator {
 
             entitiesToPropertiesMap.put(entity, propertiesLocalList);
 
-            entity = new Entity("PeriodicEvent" + i, "eboracum.wsn.event.PeriodicEvent");
+            eventType = differentEvents ? "E" + i : eventType;
+            entity = new Entity(eventType + "_" + i, "eboracum.wsn.event.PeriodicEvent");
             propertiesLocalList = new ArrayList<>();
             propertiesLocalList.add(new Property("_location", "ptolemy.kernel.util.Location",
                     "[" + (currentX + this.sensorCover / 2) + ", " + currentY + "]"));
-
-            eventType = differentEvents ? "E" + i : eventType;
             propertiesLocalList.add(new Property("Type", "ptolemy.data.expr.StringParameter", eventType));
             propertiesLocalList.add(new Property("EndType", "ptolemy.data.expr.StringParameter", eventType));
             propertiesLocalList.add(new Property("Period", "ptolemy.data.expr.Parameter", Double.toString(period)));
@@ -427,7 +428,7 @@ public class PathLossSimulationGenerator {
         initBattery = 10;
         commCover = 300;
         sensorCover = 90;
-        dataReportFile = filePath + "PLSimulation_DataReport";
+        dataReportFile = dataFilesPath + simulationName + ".csv"; /*"PLSimulation_DataReport.csv";*/
 
         cpuEnergyCost = 0;
         idleEnergyCost = 1;
@@ -477,6 +478,7 @@ public class PathLossSimulationGenerator {
 
     public void setFileProps() {
         filePath = "eboracum/pathloss/simulations/";
+        dataFilesPath = filePath + "data/";
         simulationName = "PLSimulation";
     }
 
@@ -500,7 +502,7 @@ public class PathLossSimulationGenerator {
             e.printStackTrace();
         }
 
-        createDataReportFile(simulationName);
+        createDataReportFile();
     }
 
     public static void main(String[] args) {
@@ -508,10 +510,9 @@ public class PathLossSimulationGenerator {
         gen.run();
     }
 
-    protected void createDataReportFile(String simulationName) {
+    protected void createDataReportFile() {
 
-        String newDataDir = filePath + "data/";
-        File file = new File(newDataDir);
+        File file = new File(dataFilesPath);
 
         if (!file.exists()) {
             if (!file.mkdirs()) {
@@ -520,7 +521,7 @@ public class PathLossSimulationGenerator {
             }
         }
 
-        file = new File(newDataDir + simulationName + ".csv");
+        file = new File(dataReportFile);
 
         try {
             file.createNewFile();
@@ -546,6 +547,7 @@ public class PathLossSimulationGenerator {
             writer.write("Antenna Gain;" + this.antennaGain);
             writer.newLine();
             writer.write("Frequency;" + this.frequency);
+            writer.newLine();
             writer.write("Summary of Nodes");
             writer.newLine();
             writer.write("Class Name;Number of Instances");
