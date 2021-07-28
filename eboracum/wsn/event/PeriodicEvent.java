@@ -1,6 +1,7 @@
 package eboracum.wsn.event;
 
 
+import ptolemy.actor.NoTokenException;
 import ptolemy.actor.util.Time;
 import ptolemy.data.expr.Parameter;
 import ptolemy.kernel.CompositeEntity;
@@ -27,6 +28,14 @@ public class PeriodicEvent extends BasicEvent {
         lifetime = new Parameter(this, "Lifetime"); 
         lifetime.setExpression((Time.POSITIVE_INFINITY).toString());// default event duration is Time.POSITIVE_INFINITY
     }
+    
+    public void fire() throws NoTokenException, IllegalActionException {
+        String[] messageInfo = this.getName().split("_");
+        message = messageInfo[0] + "_" + messageInfo[1] + "_" + this.numberOfProducedEvents;
+        super.fire();
+    }
+
+
 
     public void initialize() throws IllegalActionException {
         super.initialize();

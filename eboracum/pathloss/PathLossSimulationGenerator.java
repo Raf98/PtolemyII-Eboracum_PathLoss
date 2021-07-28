@@ -17,6 +17,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import eboracum.simulation.BenchmarksGenerator;
+
 public class PathLossSimulationGenerator {
 
     protected File xmlFile;
@@ -57,6 +59,7 @@ public class PathLossSimulationGenerator {
     protected Map<Property, List<Property>> propertyToPropertiesMap;
     protected List<Relation> relationsList;
     protected List<Link> linksList;
+    protected List<Event> eventsList;
 
     final protected String defaultSpacing = "    ";
 
@@ -73,8 +76,12 @@ public class PathLossSimulationGenerator {
     protected boolean differentEvents;
     protected String eventType;
     protected double commCost;
+    protected double taskCost;
+    protected double taskID;
 
-    String simulationName;
+    protected String simulationName;
+
+    protected final String PLATFORM_CONFIG_FILE = "eboracum/wsn/PlatformConfig.xml";
 
     protected class Entity {
         public String name, className;
@@ -109,6 +116,31 @@ public class PathLossSimulationGenerator {
             this.relation = relation;
         }
 
+    }
+
+    protected class Task {
+        public String name;
+        public double id, cost;
+
+        public Task(double id, String name, double cost) {
+            this.id = id;
+            this.name = name;
+            this.cost = cost;
+        }
+    }
+
+    protected class Event {
+        public String type;
+        public boolean ordinary;
+        public double commCost;
+        public Task task;
+
+        public Event(String type, boolean ordinary, double commCost, Task task) {
+            this.type = type;
+            this.ordinary = ordinary;
+            this.commCost = commCost;
+            this.task = task;
+        }
     }
 
     void createPrimalEntityInXMLFile(String fileName) {
@@ -155,11 +187,11 @@ public class PathLossSimulationGenerator {
             for (Map.Entry<Entity, List<Property>> entry : entitiesToPropertiesMap.entrySet()) {
                 createEntityInXMLFile(entry.getKey(), entry.getValue());
             }
-            
+
             for (Relation rel : relationsList) {
                 createRelationInXMLFile(writer, rel, defaultSpacing);
             }
-            
+
             for (Link l : linksList) {
                 createLinkInXMLFile(writer, l, defaultSpacing);
             }
@@ -275,7 +307,7 @@ public class PathLossSimulationGenerator {
 
     protected void fillLinks() {
         linksList = new ArrayList<>();
-        
+
         linksList.add(new Link(networkName + ".out", "relation"));
         linksList.add(new Link("PLDataReporter.trigger", "relation"));
         linksList.add(new Link("PLDataReporter.out", "relation2"));
@@ -449,6 +481,9 @@ public class PathLossSimulationGenerator {
         period = 2;
         eventType = "E";
         differentEvents = true;
+        commCost = 1;
+        taskCost = 1;
+        taskID = 0;
     }
 
     void setChannelProps() {
@@ -502,6 +537,8 @@ public class PathLossSimulationGenerator {
             e.printStackTrace();
         }
 
+        addEventToListOfEvents(eventType, commCost, taskID, taskCost);
+        writeEventsInPlatformConfig();
         createDataReportFile();
     }
 
@@ -538,6 +575,8 @@ public class PathLossSimulationGenerator {
             writer.newLine();
             writer.write("CPU Processing Energy Cost;" + this.cpuEnergyCost);
             writer.newLine();
+            writer.write("Communication Cost;" + this.commCost);
+            writer.newLine();
             writer.write("Communication Channel Type:" + this.commChannelType);
             writer.newLine();
             writer.write("Transmission Power;" + this.transmitterPower);
@@ -569,6 +608,49 @@ public class PathLossSimulationGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    protected void createEventInXML(FileWriter configWriter, Event event) {
+        try {
+            configWriter.write("<event type=\"" + event.type + "\" ordinary=\"" + event.ordinary + "\" commcost=\""
+                    + event.commCost + "\">\n");
+            configWriter.write("<task id=\"" + event.task.id + "\"><cpu name=\"" + event.task.name + "\" cost=\""
+                    + event.task.cost + "\"/></task>\n");
+            configWriter.write("</event>\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void createEventsInXML(FileWriter configWriter) {
+        try {
+            configWriter.write("<load>\n");
+            for(Event e : eventsList) {
+                createEventInXML(configWriter, e);
+            }
+            configWriter.write("</load>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void writeEventsInPlatformConfig() {
+        
+        FileWriter configWriter;
+        try {
+            configWriter = new FileWriter(new File(PLATFORM_CONFIG_FILE), false);
+            createEventsInXML(configWriter);
+            configWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    protected void addEventToListOfEvents(String type, double commCost, double taskID, double taskCost) {
+        if(eventsList == null) {
+            eventsList = new ArrayList<>();
+        }
+        eventsList.add(new Event(type,false, commCost, new Task(taskID, "SimpleFIFOBasedCPU", taskCost)));
     }
 
 }

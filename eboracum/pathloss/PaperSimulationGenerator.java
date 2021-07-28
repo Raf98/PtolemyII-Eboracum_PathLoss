@@ -52,6 +52,8 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
     
     public void run() {
         setAllProps();
+        
+        final double[] commCosts = {0.219178, 0.22356164, 0.249863, 0.298082, 0.385753}; 
                 
         int initialTxPower = (int)this.transmitterPower;
         for(int i = 0; i < 5; i++) {
@@ -68,11 +70,15 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
                 e.printStackTrace();
             }
             
+            this.commCost = commCosts[i];
             createDataReportFile();
+            addEventToListOfEvents("E" + i, commCosts[i], 0, 1);
             
             setNodesProps();
             setVergilProps();
         }
+        
+        writeEventsInPlatformConfig();
     }
     
     public static void main(String[] args) {

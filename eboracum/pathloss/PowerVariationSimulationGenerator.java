@@ -35,6 +35,12 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
     }
     
     @Override
+    void setEventsProps() {
+        super.setEventsProps();
+        eventType = "E0";
+    }
+    
+    @Override
     public void run() {
         setAllProps();
                 
@@ -56,6 +62,12 @@ public class PowerVariationSimulationGenerator extends PathLossSimulationGenerat
             setNodesProps();
             setVergilProps();
         }
+        
+        for(int i = 0; i < 9; ++i) {
+            addEventToListOfEvents("E" + i, commCost, taskID, taskCost);
+        }
+        
+        writeEventsInPlatformConfig();
     }
     
     public static void main(String[] args) {

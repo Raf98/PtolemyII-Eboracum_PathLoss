@@ -3,11 +3,13 @@ Initial Battery;2.52E7
 Sensor Cover Radius;70.0
 Node Idle Energy Cost;20.0
 CPU Processing Energy Cost;2880.0
+Communication Cost;0.219178
 Communication Channel Type:eboracum.pathloss.LogDistanceChannel
 Transmission Power;2.0
 Receiver Sensivity;-104.0
 Antenna Gain;2.15
-Frequency;9.15E8Summary of Nodes
+Frequency;9.15E8
+Summary of Nodes
 Class Name;Number of Instances
 eboracum.wsn.network.node.SimpleWSNNode;36
 Summary of Events
@@ -53,9 +55,23 @@ eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode32;0;528;176;0;44;12
 eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode8;0;924;176;0;44;1253662.0712336
 eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode17;0;176;44;0;44;1253663.5178084
 eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode18;0;1540;792;0;44;1253655.3205512
-Total Number of Sensed Events by the WSN;1
+Total Number of Sensed Events by the WSN;1584
 Number of Sensed Events by the WSN per Day
-1;1
+1;109
+2;108
+3;108
+4;108
+5;108
+6;108
+7;108
+8;108
+9;108
+10;108
+11;108
+12;108
+13;108
+14;108
+15;71
 eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode13;0;1628;660;0;44;1253656.767126
 eboracum.wsn.event.PeriodicEvent;E0_26;E0;44;0
 eboracum.wsn.event.PeriodicEvent;E0_0;E0;44;0
