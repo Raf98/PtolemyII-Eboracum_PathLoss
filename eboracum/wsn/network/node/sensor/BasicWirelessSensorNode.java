@@ -188,6 +188,9 @@ public abstract class BasicWirelessSensorNode extends WirelessNode {
 			else { 
 				this.timeLastCPURun = Time.NEGATIVE_INFINITY;
 			}
+			System.out.println("BATTERY:" + battery.getExpression());
+			System.out.println("IDLE ENERGY COST: " + idleEnergyCost.getExpression());
+                        System.out.println("TIME OF DEATH:" + timeOfDeath);
 	}
 	
 	protected void eventDoneManager(List<Object> runReturn) throws NoRoomException, IllegalActionException{
