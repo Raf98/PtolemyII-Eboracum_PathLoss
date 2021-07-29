@@ -110,12 +110,14 @@ public abstract class BasicWirelessSensorNode extends WirelessNode {
 		this.tempEvent = null;
 		if(this.sensoring.hasToken(0)){
 			this.tempEvent = this.sensoring.get(0).toString();
-			//System.out.println(this.tempEvent);
+			//System.out.println("EVENT:" + this.tempEvent);
 			this.tempEvent = tempEvent.substring(1,tempEvent.length()-1);
+	                //System.out.println("EVENT:" + this.tempEvent);
 			ClassLoader classLoader = EventType.class.getClassLoader();
 			try {
 				@SuppressWarnings("rawtypes")
 				Class tn = classLoader.loadClass("eboracum.wsn.type."+this.tempEvent.split("_")[0]);
+		                //System.out.println("eboracum.wsn.type."+this.tempEvent.split("_")[0]);
 	           	if (this.getType().getClass().isAssignableFrom(tn)){
 	    			//if (Double.parseDouble(this.battery.getValueAsString()) > Double.parseDouble(this.sensoringEnergyCost.getExpression())){
 	           			if (this.eventSensedManager(tempEvent)){
@@ -151,15 +153,25 @@ public abstract class BasicWirelessSensorNode extends WirelessNode {
 	public void cpuRunManager() throws NoRoomException, IllegalActionException{
 			Time tempTimeLastCPURun = Time.NEGATIVE_INFINITY; //temporary variable to help the scheme of battery consumption when not synchronised to the real time
 			tempTimeLastCPURun = this.timeLastCPURun; 
+			//System.out.println("TEMP TIME CPU RUN: " + tempTimeLastCPURun);
 			List<Object> runReturn = this.cpu.run(tempEvent,this.getDirector().getModelTime());
+			
+			//System.out.println("RUN RETURN: " + runReturn);
+			
+			//if(tempEvent != null)
+	                //System.out.println("BATTERY BWSN BF4:" + battery.getExpression() + " ;EVENT: " + tempEvent);
 			if ((Integer)runReturn.get(0)>0){ // if CPU has process to handle, collect information about this run
 				this.timeLastCPURun = this.getDirector().getModelTime(); // last time of CPU run
 				this.numberOfQueuedEvents = (Integer)runReturn.get(0); // collect number of event in the CPU waiting to be processed for statistics
+                                System.out.println("CPU RUN: " + timeLastCPURun);
+                                System.out.println("TEMPTIMECPU: " + tempTimeLastCPURun);
 			}
 			else
 				this.numberOfQueuedEvents = 0;
 			if ((String)runReturn.get(1) != null){
 				// if an event was processed
+	                         System.out.println("\nPROCESSING EVENT " + (String)runReturn.get(1) + " - BATTERY = "+ battery.getExpression());
+	                         System.out.println("TIME OF DEATH PROCESSING: " + timeOfDeath);
 				if (Double.parseDouble(battery.getValueAsString()) >= ((Double.parseDouble(CPUEnergyCost.getValueAsString())*(this.getDirector().getModelTime().getDoubleValue()-this.newTimeControler.getDoubleValue())))){ // if it has battery yet 
 					// deals with the processed event
 					battery.setExpression(Double.toString(Double.parseDouble(battery.getValueAsString())-((Double.parseDouble(CPUEnergyCost.getValueAsString())*(this.getDirector().getModelTime().getDoubleValue()-this.newTimeControler.getDoubleValue())))));
@@ -167,30 +179,40 @@ public abstract class BasicWirelessSensorNode extends WirelessNode {
 						this.timeOfDeath = (this.getDirector().getModelTime().add(((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression())))));
 					this.eventDoneManager(runReturn);
 				}
+				System.out.println("TIME OF DEATH PROCESSED: " + timeOfDeath);
+				System.out.println("PROCESSED EVENT - " + (String)runReturn.get(1) + " BATTERY = "+battery.getExpression());
 			}
 			else {
 				if (!this.timeControler.equals(this.getDirector().getModelTime())){
+				    //System.out.println("GOT HERE");
 					if (((tempTimeLastCPURun != Time.NEGATIVE_INFINITY)) && ((Integer)runReturn.get(0)>0)){
+					    //System.out.println("GOT HERE 2");
+		                            System.out.println("PROCESSING 2; BATTERY = "+battery.getExpression());
 						if (Double.parseDouble(battery.getValueAsString()) >= ((Double.parseDouble(CPUEnergyCost.getValueAsString())*(this.getDirector().getModelTime().getDoubleValue()-this.newTimeControler.getDoubleValue())))){ 
 							battery.setExpression(Double.toString(Double.parseDouble(battery.getValueAsString())-((Double.parseDouble(CPUEnergyCost.getValueAsString())*(this.getDirector().getModelTime().getDoubleValue()-this.newTimeControler.getDoubleValue())))));
 							if (this.synchronizedRealTime.getExpression().equals("false"))
 								this.timeOfDeath = (this.getDirector().getModelTime().add(((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression())))));
+							System.out.println(Double.parseDouble(battery.getValueAsString())-((Double.parseDouble(CPUEnergyCost.getValueAsString())*(this.getDirector().getModelTime().getDoubleValue()-this.newTimeControler.getDoubleValue()))));
 						}
+		                                      System.out.println("PROCESSED 2; BATTERY = "+battery.getExpression());
 					}
 				}
+	                            //System.out.println("GOT HERE 2: " + this.synchronizedRealTime.getExpression());
 			}
 			// control the next fire if it is NOT synchronized to the real time
 			if ((Time)runReturn.get(2) != Time.NEGATIVE_INFINITY){
 				if (this.synchronizedRealTime.getExpression().equals("false")){
 						this._fireAt(((Time)runReturn.get(2))); // fire at when the next event processing finishes
 				}
+				System.out.println("GOT HERE");
 			}
 			else { 
 				this.timeLastCPURun = Time.NEGATIVE_INFINITY;
 			}
-			System.out.println("BATTERY:" + battery.getExpression());
-			System.out.println("IDLE ENERGY COST: " + idleEnergyCost.getExpression());
-                        System.out.println("TIME OF DEATH:" + timeOfDeath);
+			//if(tempEvent != null)
+			//System.out.println("BATTERY BWSN AF3:" + battery.getExpression() + " ;EVENT: " + tempEvent);
+			//System.out.println("IDLE ENERGY COST: " + idleEnergyCost.getExpression());
+                        //System.out.println("TIME OF DEATH:" + timeOfDeath);
 	}
 	
 	protected void eventDoneManager(List<Object> runReturn) throws NoRoomException, IllegalActionException{

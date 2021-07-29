@@ -39,6 +39,11 @@ public class SimpleFIFOBasedCPU implements SensorCPU{
 		String processedEvent = null;
 		if (task != null)
 			this.queue.add(task);
+		/*System.out.println("QUEUE " + queue);
+		System.out.println("CURRENT TIME " + currentTime);
+		System.out.println("nextTimeFree " + nextTimeFree);
+		System.out.println("COMPARISON " + currentTime.compareTo(this.nextTimeFree));
+		*/
 		if (this.queue.size() > 0 && currentTime.compareTo(this.nextTimeFree) == 0) {
 			processedEvent = this.queue.remove();
 			this.nextTimeFree = Time.NEGATIVE_INFINITY;
@@ -49,12 +54,18 @@ public class SimpleFIFOBasedCPU implements SensorCPU{
 			this.nextTimeFree = currentTime.add(round(taskCostMap.get(this.queue.element().split("_")[0])));
 		}
 		//if (task != null) processedEvent = task;
+		//System.out.println("SIZE: " + this.queue.size());
+		//System.out.println("QUEUE: " + this.queue);
 		this.tempReturn.clear();
 		tempReturn.add(new Integer(this.queue.size()));
+		//System.out.println("TEMṔ RETURN 2: " + tempReturn);
 		tempReturn.add(processedEvent);
+		//System.out.println("PROCESSED EVENT: " + processedEvent);
 		//System.out.println(this.nextTimeFree+"  "+task);
 		tempReturn.add(this.nextTimeFree);
 		//System.out.print(queue+";");
+		//if(processedEvent != null || this.queue.size() > 0)
+		//    System.out.println("TEMṔ RETURN: " + tempReturn);
 		return tempReturn;
 	}
 	

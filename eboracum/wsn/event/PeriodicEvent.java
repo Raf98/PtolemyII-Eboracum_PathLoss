@@ -31,7 +31,10 @@ public class PeriodicEvent extends BasicEvent {
     
     public void fire() throws NoTokenException, IllegalActionException {
         String[] messageInfo = this.getName().split("_");
-        message = messageInfo[0] + "_" + messageInfo[1] + "_" + this.numberOfProducedEvents;
+        if(messageInfo.length >= 2)
+            message = messageInfo[0] + "_" + messageInfo[1] + "_" + this.numberOfProducedEvents;
+        //else
+        //    message = messageInfo[0] + "_" + this.numberOfProducedEvents;
         super.fire();
     }
 

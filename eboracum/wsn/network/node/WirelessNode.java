@@ -229,14 +229,18 @@ public abstract class WirelessNode extends TypedAtomicActor {
 	
 	protected boolean sendMessageToSink(String token) throws NoRoomException, IllegalActionException{
 			double commCost = this.eventCommCostMap.get(token.split("_")[0]);
+                        //System.out.println("BATTERY WNODE B4:" + battery.getExpression() + " ;EVENT: " + token);
 			if ((!gateway.getExpression().equals("")&&!gateway.getExpression().equals("END")) && (Double.parseDouble(battery.getValueAsString()) >= commCost)){
 				battery.setExpression(Double.toString( ( Double.parseDouble(battery.getValueAsString()) - commCost )));
 				if (this.synchronizedRealTime.getExpression().equals("false"))
 					this.timeOfDeath = (this.getDirector().getModelTime().add(((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression())))));
 					//_fireAt(this.getDirector().getModelTime().add(round(Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression()))));
 				out.send(0, new StringToken("{event="+token+",gateway="+gateway.getExpression()+"}"));
-				System.out.println("EVENT: " + token + "; NODE: " + this.getName() +
-				        "; GATEWAY: " + gateway.getExpression());
+				
+				//System.out.println("EVENT: " + token + "; NODE: " + this.getName() +
+				//        "; GATEWAY: " + gateway.getExpression());
+		                //System.out.println("BATTERY WNODE AF3:" + battery.getExpression() + " ;EVENT: " + token);
+
 				this.numberOfSentMessages++;
 				return true;
 			}

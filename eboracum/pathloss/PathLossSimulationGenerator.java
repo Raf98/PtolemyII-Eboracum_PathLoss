@@ -536,8 +536,11 @@ public class PathLossSimulationGenerator {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        addEventToListOfEvents(eventType, commCost, taskID, taskCost);
+        
+        for(int i = 0; i < 9; ++i) {
+            eventType = "E" + i;
+            addEventToListOfEvents(eventType, commCost, taskID, taskCost);
+        }
         writeEventsInPlatformConfig();
         createDataReportFile();
     }
