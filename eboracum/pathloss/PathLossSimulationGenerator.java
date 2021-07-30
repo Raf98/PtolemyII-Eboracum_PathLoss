@@ -457,12 +457,12 @@ public class PathLossSimulationGenerator {
         networkName = "PathLossAdHocNetwork";
         sinkName = "NetworkMainGateway";
 
-        initBattery = 10;
+        initBattery = 20;
         commCover = 300;
         sensorCover = 90;
         dataReportFile = dataFilesPath + simulationName + ".csv"; /*"PLSimulation_DataReport.csv";*/
 
-        cpuEnergyCost = 0;
+        cpuEnergyCost = 10;
         idleEnergyCost = 1;
         synchronizedRealTime = true;
     }

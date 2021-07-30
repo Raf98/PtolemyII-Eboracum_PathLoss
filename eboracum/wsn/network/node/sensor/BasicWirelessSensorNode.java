@@ -163,15 +163,15 @@ public abstract class BasicWirelessSensorNode extends WirelessNode {
 			if ((Integer)runReturn.get(0)>0){ // if CPU has process to handle, collect information about this run
 				this.timeLastCPURun = this.getDirector().getModelTime(); // last time of CPU run
 				this.numberOfQueuedEvents = (Integer)runReturn.get(0); // collect number of event in the CPU waiting to be processed for statistics
-                                System.out.println("CPU RUN: " + timeLastCPURun);
-                                System.out.println("TEMPTIMECPU: " + tempTimeLastCPURun);
+                                //System.out.println("CPU RUN: " + timeLastCPURun);
+                                //System.out.println("TEMPTIMECPU: " + tempTimeLastCPURun);
 			}
 			else
 				this.numberOfQueuedEvents = 0;
 			if ((String)runReturn.get(1) != null){
 				// if an event was processed
-	                         System.out.println("\nPROCESSING EVENT " + (String)runReturn.get(1) + " - BATTERY = "+ battery.getExpression());
-	                         System.out.println("TIME OF DEATH PROCESSING: " + timeOfDeath);
+	                         //System.out.println("\nPROCESSING EVENT " + (String)runReturn.get(1) + " - BATTERY = "+ battery.getExpression());
+	                         //System.out.println("TIME OF DEATH PROCESSING: " + timeOfDeath);
 				if (Double.parseDouble(battery.getValueAsString()) >= ((Double.parseDouble(CPUEnergyCost.getValueAsString())*(this.getDirector().getModelTime().getDoubleValue()-this.newTimeControler.getDoubleValue())))){ // if it has battery yet 
 					// deals with the processed event
 					battery.setExpression(Double.toString(Double.parseDouble(battery.getValueAsString())-((Double.parseDouble(CPUEnergyCost.getValueAsString())*(this.getDirector().getModelTime().getDoubleValue()-this.newTimeControler.getDoubleValue())))));
@@ -179,8 +179,8 @@ public abstract class BasicWirelessSensorNode extends WirelessNode {
 						this.timeOfDeath = (this.getDirector().getModelTime().add(((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression())))));
 					this.eventDoneManager(runReturn);
 				}
-				System.out.println("TIME OF DEATH PROCESSED: " + timeOfDeath);
-				System.out.println("PROCESSED EVENT - " + (String)runReturn.get(1) + " BATTERY = "+battery.getExpression());
+				//System.out.println("TIME OF DEATH PROCESSED: " + timeOfDeath);
+				//System.out.println("PROCESSED EVENT - " + (String)runReturn.get(1) + " BATTERY = "+battery.getExpression());
 			}
 			else {
 				if (!this.timeControler.equals(this.getDirector().getModelTime())){
@@ -204,7 +204,7 @@ public abstract class BasicWirelessSensorNode extends WirelessNode {
 				if (this.synchronizedRealTime.getExpression().equals("false")){
 						this._fireAt(((Time)runReturn.get(2))); // fire at when the next event processing finishes
 				}
-				System.out.println("GOT HERE");
+				//System.out.println("GOT HERE");
 			}
 			else { 
 				this.timeLastCPURun = Time.NEGATIVE_INFINITY;

@@ -1,8 +1,8 @@
 Simulation Identification;PLSimulation
-Initial Battery;10.0
+Initial Battery;20.0
 Sensor Cover Radius;90.0
 Node Idle Energy Cost;1.0
-CPU Processing Energy Cost;0.0
+CPU Processing Energy Cost;10.0
 Communication Cost;1.0
 Communication Channel Type:eboracum.pathloss.LogDistanceChannel
 Transmission Power;2.0
@@ -17,92 +17,32 @@ Class Name;Type;Number of Instances;
 eboracum.wsn.network.node.PeriodicEvent;E8;9;
 
 Results
-Simulation Total Time;6
+Simulation Total Time;8
 Nodes
 Class Name; Name; Remaining Battery;Number of Received Messages;Number of Sent Messages;Number of Enqueued Events; Number of Sensored Events; Time of Death
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode1;0;10;4;0;3;5
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode8;0;7;3;1;3;6
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode1;0;6;2;0;1;7
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode8;0;3;1;1;1;8
 Events
 Class Name; Name; Type; Number of Produced Events; Number of Times Sensed
-eboracum.wsn.event.PeriodicEvent;E2_2;E2;4;0
-eboracum.wsn.event.PeriodicEvent;E7_7;E7;4;0
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode2;0;7;3;1;3;6
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode7;0;15;4;0;3;5
-eboracum.wsn.event.PeriodicEvent;E4_4;E4;4;0
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode6;0;12;6;0;2;3
-eboracum.wsn.event.PeriodicEvent;E1_1;E1;4;0
-eboracum.wsn.event.PeriodicEvent;E6_6;E6;4;0
-eboracum.wsn.event.PeriodicEvent;E0_0;E0;4;0
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode5;0;12;3;1;3;6
+eboracum.wsn.event.PeriodicEvent;E2_2;E2;5;0
+eboracum.wsn.event.PeriodicEvent;E7_7;E7;5;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode2;0;3;1;1;1;8
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode7;0;8;2;0;1;7
+eboracum.wsn.event.PeriodicEvent;E4_4;E4;5;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode6;0;10;3;1;1;6
+eboracum.wsn.event.PeriodicEvent;E1_1;E1;5;0
+eboracum.wsn.event.PeriodicEvent;E6_6;E6;5;0
+eboracum.wsn.event.PeriodicEvent;E0_0;E0;5;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode5;0;6;1;1;1;8
 eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode3;0;7;8;0;1;1
-eboracum.wsn.event.PeriodicEvent;E5_5;E5;4;0
-eboracum.wsn.event.PeriodicEvent;E3_3;E3;4;0
-eboracum.wsn.event.PeriodicEvent;E8_8;E8;4;0
+eboracum.wsn.event.PeriodicEvent;E5_5;E5;5;0
+eboracum.wsn.event.PeriodicEvent;E3_3;E3;5;0
+eboracum.wsn.event.PeriodicEvent;E8_8;E8;5;0
 Total Number of Sensed Events by the WSN;8
 Number of Sensed Events by the WSN per Day
 1;8
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode4;0;14;6;0;2;3
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode0;0;12;3;1;3;6
-Calculated Communication Cover;1290.23
-Calculated Path Loss;125.0
-Path Loss Exponent n;3.0
-PL(d0);50.0
-Simulation Total Time;6
-Nodes
-Class Name; Name; Remaining Battery;Number of Received Messages;Number of Sent Messages;Number of Enqueued Events; Number of Sensored Events; Time of Death
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode1;0;10;4;0;3;5
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode8;0;7;3;1;3;6
-Events
-Class Name; Name; Type; Number of Produced Events; Number of Times Sensed
-eboracum.wsn.event.PeriodicEvent;E2_2;E2;4;0
-eboracum.wsn.event.PeriodicEvent;E7_7;E7;4;0
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode2;0;7;3;1;3;6
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode7;0;15;4;0;3;5
-eboracum.wsn.event.PeriodicEvent;E4_4;E4;4;0
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode6;0;12;6;0;2;3
-eboracum.wsn.event.PeriodicEvent;E1_1;E1;4;0
-eboracum.wsn.event.PeriodicEvent;E6_6;E6;4;0
-eboracum.wsn.event.PeriodicEvent;E0_0;E0;4;0
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode5;0;12;3;1;3;6
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode3;0;7;8;0;1;1
-eboracum.wsn.event.PeriodicEvent;E5_5;E5;4;0
-eboracum.wsn.event.PeriodicEvent;E3_3;E3;4;0
-eboracum.wsn.event.PeriodicEvent;E8_8;E8;4;0
-Total Number of Sensed Events by the WSN;8
-Number of Sensed Events by the WSN per Day
-1;8
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode4;0;14;6;0;2;3
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode0;0;12;3;1;3;6
-Calculated Communication Cover;1290.23
-Calculated Path Loss;125.0
-Path Loss Exponent n;3.0
-PL(d0);50.0
-Simulation Total Time;6
-Nodes
-Class Name; Name; Remaining Battery;Number of Received Messages;Number of Sent Messages;Number of Enqueued Events; Number of Sensored Events; Time of Death
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode1;0;10;4;0;3;5
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode8;0;7;3;1;3;6
-Events
-Class Name; Name; Type; Number of Produced Events; Number of Times Sensed
-eboracum.wsn.event.PeriodicEvent;E2_2;E2;4;0
-eboracum.wsn.event.PeriodicEvent;E7_7;E7;4;0
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode2;0;7;3;1;3;6
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode7;0;15;4;0;3;5
-eboracum.wsn.event.PeriodicEvent;E4_4;E4;4;0
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode6;0;12;6;0;2;3
-eboracum.wsn.event.PeriodicEvent;E1_1;E1;4;0
-eboracum.wsn.event.PeriodicEvent;E6_6;E6;4;0
-eboracum.wsn.event.PeriodicEvent;E0_0;E0;4;0
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode5;0;12;3;1;3;6
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode3;0;7;8;0;1;1
-eboracum.wsn.event.PeriodicEvent;E5_5;E5;4;0
-eboracum.wsn.event.PeriodicEvent;E3_3;E3;4;0
-eboracum.wsn.event.PeriodicEvent;E8_8;E8;4;0
-Total Number of Sensed Events by the WSN;8
-Number of Sensed Events by the WSN per Day
-1;8
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode4;0;14;6;0;2;3
-eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode0;0;12;3;1;3;6
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode4;0;13;4;0;1;5
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode0;0;10;1;1;1;8
 Calculated Communication Cover;1290.23
 Calculated Path Loss;125.0
 Path Loss Exponent n;3.0

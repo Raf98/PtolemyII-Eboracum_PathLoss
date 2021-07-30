@@ -143,6 +143,9 @@ public abstract class WirelessNode extends TypedAtomicActor {
 				if ((((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression()))) > 0))
 					this.timeOfDeath = (this.getDirector().getModelTime().add(((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression())))));
 					//_fireAt((this.getDirector().getModelTime().add(round((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression()))))));
+				
+				//System.out.println("BATTERY WNODE-FIRE: " + battery.getExpression());
+				//battery gets negative here
 			}
 		}
 		// if senses an event
@@ -229,8 +232,9 @@ public abstract class WirelessNode extends TypedAtomicActor {
 	
 	protected boolean sendMessageToSink(String token) throws NoRoomException, IllegalActionException{
 			double commCost = this.eventCommCostMap.get(token.split("_")[0]);
-                        //System.out.println("BATTERY WNODE B4:" + battery.getExpression() + " ;EVENT: " + token);
+			
 			if ((!gateway.getExpression().equals("")&&!gateway.getExpression().equals("END")) && (Double.parseDouble(battery.getValueAsString()) >= commCost)){
+	                        //System.out.println("BATTERY WNODE B4:" + battery.getExpression() + " ;EVENT: " + token);
 				battery.setExpression(Double.toString( ( Double.parseDouble(battery.getValueAsString()) - commCost )));
 				if (this.synchronizedRealTime.getExpression().equals("false"))
 					this.timeOfDeath = (this.getDirector().getModelTime().add(((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression())))));
