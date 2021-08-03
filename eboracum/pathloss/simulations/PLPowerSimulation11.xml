@@ -20,7 +20,7 @@
     </property>
     <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{3932.0, 2400.0}">
     </property>
-    <property name="GlobalInitBattery" class="ptolemy.data.expr.Parameter" value="10.0">
+    <property name="GlobalInitBattery" class="ptolemy.data.expr.Parameter" value="20.0">
     </property>
     <property name="SensorCover" class="ptolemy.data.expr.Parameter" value="90.0">
     </property>
@@ -73,7 +73,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -87,7 +87,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -121,7 +121,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -175,7 +175,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -189,7 +189,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -203,7 +203,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -243,7 +243,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -257,7 +257,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -271,7 +271,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -301,7 +301,7 @@
         </property>
         <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="1.0">
         </property>
-        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="0.0">
+        <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="10.0">
         </property>
         <property name="SynchronizedRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>

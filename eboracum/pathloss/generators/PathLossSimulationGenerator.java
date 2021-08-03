@@ -1,4 +1,4 @@
-package eboracum.pathloss;
+package eboracum.pathloss.generators;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -144,6 +144,16 @@ public class PathLossSimulationGenerator {
     }
 
     void createPrimalEntityInXMLFile(String fileName) {
+        
+        File pathDir = new File(filePath);
+
+        if (!pathDir.exists()) {
+            if (!pathDir.mkdirs()) {
+                System.out.println("Failed to create directory!");
+                return;
+            }
+        }
+        
         xmlFile = new File(filePath + fileName + ".xml");
 
         try {

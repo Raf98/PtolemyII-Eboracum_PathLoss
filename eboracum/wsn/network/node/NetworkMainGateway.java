@@ -42,14 +42,14 @@ public class NetworkMainGateway extends WirelessNode {
 			//System.out.println("Sink pre flt:   >>>>>>> "+this.receivedMessage+" "+lastSensedEvent);
 			if (!this.receivedMessage.equals(lastSensedEvent)){
 				this.eventSensoredGenCounter++;
-				System.out.println("SINK RECONNED EVENT:   n: "+this.eventSensoredCounter + " ; EVT: " + this.receivedMessage);
+				//System.out.println("SINK RECONNED EVENT:   n: "+this.eventSensoredCounter + " ; EVT: " + this.receivedMessage);
 				if (this.getDirector().getModelTime().getDoubleValue()/(3600*24) > this.dayCounter){
 					this.eventSensoredCounter++;
 					detailEventSensoredCounter.add(this.eventSensoredCounter);
 				//	appendDataReportFile(this.dayCounter+";"+ this.eventSensoredCounter);
 					this.dayCounter++;
 					this.eventSensoredCounter = 0;
-			                System.out.println("CHANGED DAY EVENT: "+this.receivedMessage);
+			                //System.out.println("CHANGED DAY EVENT: "+this.receivedMessage);
 				}
 				else
 					this.eventSensoredCounter++;

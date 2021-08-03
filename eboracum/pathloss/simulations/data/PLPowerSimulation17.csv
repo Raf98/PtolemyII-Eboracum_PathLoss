@@ -1,8 +1,8 @@
 Simulation Identification;PLPowerSimulation
-Initial Battery;10.0
+Initial Battery;20.0
 Sensor Cover Radius;90.0
 Node Idle Energy Cost;1.0
-CPU Processing Energy Cost;0.0
+CPU Processing Energy Cost;10.0
 Communication Cost;1.0
 Communication Channel Type:eboracum.pathloss.LogDistanceChannel
 Transmission Power;17.0

@@ -1,4 +1,4 @@
-package eboracum.pathloss;
+package eboracum.pathloss.generators;
 
 import java.io.IOException;
 import java.util.List;

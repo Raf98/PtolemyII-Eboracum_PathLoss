@@ -170,8 +170,9 @@ public abstract class BasicWirelessSensorNode extends WirelessNode {
 				this.numberOfQueuedEvents = 0;
 			if ((String)runReturn.get(1) != null){
 				// if an event was processed
-	                         //System.out.println("\nPROCESSING EVENT " + (String)runReturn.get(1) + " - BATTERY = "+ battery.getExpression());
-	                         //System.out.println("TIME OF DEATH PROCESSING: " + timeOfDeath);
+			        System.out.println("\nPROCESSING EVENT " + (String)runReturn.get(1) + " - BATTERY = "+ battery.getExpression() + " - NODE: " + this.getName());
+	                        //System.out.println("\nPROCESSING EVENT " + (String)runReturn.get(1) + " - BATTERY = "+ battery.getExpression());
+	                        //System.out.println("TIME OF DEATH PROCESSING: " + timeOfDeath);
 				if (Double.parseDouble(battery.getValueAsString()) >= ((Double.parseDouble(CPUEnergyCost.getValueAsString())*(this.getDirector().getModelTime().getDoubleValue()-this.newTimeControler.getDoubleValue())))){ // if it has battery yet 
 					// deals with the processed event
 					battery.setExpression(Double.toString(Double.parseDouble(battery.getValueAsString())-((Double.parseDouble(CPUEnergyCost.getValueAsString())*(this.getDirector().getModelTime().getDoubleValue()-this.newTimeControler.getDoubleValue())))));
