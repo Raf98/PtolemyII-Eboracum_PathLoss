@@ -1,17 +1,17 @@
 <load>
-<event type="E0" ordinary="false" commcost="0.219178">
+<event type="E0" ordinary="false" commcost="282.74">
 <task id="0.0"><cpu name="SimpleFIFOBasedCPU" cost="1.0"/></task>
 </event>
-<event type="E1" ordinary="false" commcost="0.22356164">
+<event type="E1" ordinary="false" commcost="288.39429">
 <task id="0.0"><cpu name="SimpleFIFOBasedCPU" cost="1.0"/></task>
 </event>
-<event type="E2" ordinary="false" commcost="0.249863">
+<event type="E2" ordinary="false" commcost="322.32303">
 <task id="0.0"><cpu name="SimpleFIFOBasedCPU" cost="1.0"/></task>
 </event>
-<event type="E3" ordinary="false" commcost="0.298082">
+<event type="E3" ordinary="false" commcost="384.52572">
 <task id="0.0"><cpu name="SimpleFIFOBasedCPU" cost="1.0"/></task>
 </event>
-<event type="E4" ordinary="false" commcost="0.385753">
+<event type="E4" ordinary="false" commcost="479.62152">
 <task id="0.0"><cpu name="SimpleFIFOBasedCPU" cost="1.0"/></task>
 </event>
 </load>

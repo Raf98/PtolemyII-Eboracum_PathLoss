@@ -4,6 +4,8 @@ import java.io.IOException;
 
 public class PaperSimulationGenerator extends PathLossSimulationGenerator {
     
+    protected double[] commCosts = {0.219178, 0.22356164, 0.249863, 0.298082, 0.385753};
+    
     @Override
     void setChannelProps(){
         super.setChannelProps();
@@ -50,11 +52,15 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
         simulationName = "PaperSimulation";
     }
     
+    public void fillCommCosts(){
+        
+    }
+    
     public void run() {
         setAllProps();
         
-        final double[] commCosts = {0.219178, 0.22356164, 0.249863, 0.298082, 0.385753}; 
-                
+        fillCommCosts();
+        
         int initialTxPower = (int)this.transmitterPower;
         for(int i = 0; i < 5; i++) {
             this.transmitterPower = initialTxPower + (i*3);

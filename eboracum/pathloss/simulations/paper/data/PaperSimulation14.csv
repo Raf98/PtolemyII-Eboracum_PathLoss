@@ -17,3 +17,101 @@ Class Name;Type;Number of Instances;
 eboracum.wsn.network.node.PeriodicEvent;E4;36;
 
 Results
+Simulation Total Time;1260000
+Nodes
+Class Name; Name; Remaining Battery;Number of Received Messages;Number of Sent Messages;Number of Enqueued Events; Number of Sensored Events; Time of Death
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode22;0;1232;44;0;44;1253663.1513434
+Events
+Class Name; Name; Type; Number of Produced Events; Number of Times Sensed
+eboracum.wsn.event.PeriodicEvent;E4_32;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode14;0;2288;176;0;44;1253660.6053736
+eboracum.wsn.event.PeriodicEvent;E4_12;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode4;0;660;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode8;0;2112;88;0;44;1253662.3026868
+eboracum.wsn.event.PeriodicEvent;E4_4;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_29;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode10;0;1012;44;0;44;1253663.1513434
+eboracum.wsn.event.PeriodicEvent;E4_13;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_1;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode12;0;1540;484;0;44;1253654.6647774
+eboracum.wsn.event.PeriodicEvent;E4_19;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode23;0;660;44;0;44;1253663.1513434
+eboracum.wsn.event.PeriodicEvent;E4_35;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_0;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode33;0;748;44;0;44;1253663.1513434
+eboracum.wsn.event.PeriodicEvent;E4_17;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_33;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_26;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode20;0;2596;88;0;44;1253662.3026868
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode24;0;1188;264;0;44;1253658.9080604
+eboracum.wsn.event.PeriodicEvent;E4_22;E4;44;0
+Total Number of Sensed Events by the WSN;1584
+Number of Sensed Events by the WSN per Day
+1;109
+2;108
+3;108
+4;108
+5;108
+6;108
+7;108
+8;108
+9;108
+10;108
+11;108
+12;108
+13;108
+14;108
+15;71
+eboracum.wsn.event.PeriodicEvent;E4_5;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_18;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode35;0;352;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode1;0;1628;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode9;0;1496;176;0;44;1253660.6053736
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode0;0;1232;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode7;0;1628;396;0;44;1253656.3620906
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode21;0;1584;88;0;44;1253662.3026868
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode28;0;836;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode13;0;2376;132;0;44;1253661.4540302
+eboracum.wsn.event.PeriodicEvent;E4_27;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_9;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_21;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_2;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_7;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode11;0;616;44;0;44;1253663.1513434
+eboracum.wsn.event.PeriodicEvent;E4_11;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode26;0;1496;88;0;44;1253662.3026868
+eboracum.wsn.event.PeriodicEvent;E4_8;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_34;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode19;0;2288;132;0;44;1253661.4540302
+eboracum.wsn.event.PeriodicEvent;E4_14;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_6;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_23;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode25;0;1760;88;0;44;1253662.3026868
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode17;0;748;44;0;44;1253663.1513434
+eboracum.wsn.event.PeriodicEvent;E4_28;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_31;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode31;0;924;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode15;0;1892;88;0;44;1253662.3026868
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode34;0;572;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode5;0;440;44;0;44;1253663.1513434
+eboracum.wsn.event.PeriodicEvent;E4_20;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode27;0;1188;88;0;44;1253662.3026868
+eboracum.wsn.event.PeriodicEvent;E4_24;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode16;0;1232;44;0;44;1253663.1513434
+eboracum.wsn.event.PeriodicEvent;E4_30;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_15;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode6;0;1584;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode18;0;1980;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode29;0;528;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode32;0;1056;44;0;44;1253663.1513434
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode2;0;1320;44;0;44;1253663.1513434
+eboracum.wsn.event.PeriodicEvent;E4_16;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_25;E4;44;0
+eboracum.wsn.event.PeriodicEvent;E4_10;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode30;0;704;44;0;44;1253663.1513434
+eboracum.wsn.event.PeriodicEvent;E4_3;E4;44;0
+eboracum.wsn.network.node.sensor.SimpleWSNNode;SimpleWSNNode3;0;1232;44;0;44;1253663.1513434
+Calculated Communication Cover;388.28
+Calculated Path Loss;122.3
+Path Loss Exponent n;3.5
+PL(d0);50.0
