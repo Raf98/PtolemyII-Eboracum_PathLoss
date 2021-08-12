@@ -10,7 +10,7 @@ public class PaperSim2Gen extends PaperSimulationGenerator{
         commCover = 300;
         sensorCover = 70;
         cpuEnergyCost = 420;
-        idleEnergyCost = 20;
+        idleEnergyCost = 0.6;
         synchronizedRealTime = false;
     }
     

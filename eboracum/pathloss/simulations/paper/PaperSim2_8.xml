@@ -9,7 +9,7 @@
         </property>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-1300.0, 0.0]">
         </property>
-        <property name="timeResolution" class="ptolemy.actor.parameters.SharedParameter" value="1E-9">
+        <property name="timeResolution" class="ptolemy.actor.parameters.SharedParameter" value="1E-6">
         </property>
     </property>
     <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={0, 26, 1366, 742}, maximized=false}">
@@ -45,7 +45,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -99,7 +99,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -123,7 +123,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -137,7 +137,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -151,7 +151,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -165,7 +165,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -179,7 +179,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -193,7 +193,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -207,7 +207,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -221,7 +221,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -265,7 +265,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -319,7 +319,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -333,7 +333,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -351,7 +351,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -391,7 +391,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -405,7 +405,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -435,7 +435,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -449,7 +449,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -463,7 +463,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -497,7 +497,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -531,7 +531,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -545,7 +545,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -609,7 +609,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -623,7 +623,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -637,7 +637,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -651,7 +651,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -701,7 +701,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -745,7 +745,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -761,7 +761,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -785,7 +785,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -799,7 +799,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -827,7 +827,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -851,7 +851,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -865,7 +865,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -879,7 +879,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -903,7 +903,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>
@@ -917,7 +917,7 @@
         </property>
         <property name="Network" class="ptolemy.data.expr.StringParameter" value="PathLossAdHocNetwork">
         </property>
-        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="20.0">
+        <property name="IdleEnergyCost" class="ptolemy.data.expr.Parameter" value="0.6">
         </property>
         <property name="CPUEnergyCost" class="ptolemy.data.expr.Parameter" value="420.0">
         </property>

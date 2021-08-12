@@ -180,7 +180,7 @@ public class PathLossSimulationGenerator {
                             + synchronizedRealTime + "\">\n" + "        </property>\n"
                             + "        <property name=\"_location\" class=\"ptolemy.kernel.util.Location\" value=\"["
                             + defaultComponentsX + ", " + defaultComponentsY + "]\">\n" + "        </property>\n"
-                            + "        <property name=\"timeResolution\" class=\"ptolemy.actor.parameters.SharedParameter\" value=\"1E-9\">\n"
+                            + "        <property name=\"timeResolution\" class=\"ptolemy.actor.parameters.SharedParameter\" value=\"1E-6\">\n"
                             + "        </property>\n" + "    </property>\n");
             defaultComponentsX += 100;
 

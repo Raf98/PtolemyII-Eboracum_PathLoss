@@ -35,7 +35,7 @@ public class PaperSimulationGenerator extends PathLossSimulationGenerator {
         commCover = 300;
         sensorCover = 70;
         cpuEnergyCost = 2880;
-        idleEnergyCost = 20;
+        idleEnergyCost = 0.6;
         synchronizedRealTime = false;
     }
     
