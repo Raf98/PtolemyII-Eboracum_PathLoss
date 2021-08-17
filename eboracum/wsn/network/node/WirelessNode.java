@@ -13,6 +13,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import eboracum.simulation.BenchmarksGenerator;
+import eboracum.simulation.DataReporter;
 import eboracum.wsn.network.AdHocNetwork;
 import ptolemy.actor.CompositeActor;
 import ptolemy.actor.NoRoomException;
@@ -66,6 +68,9 @@ public abstract class WirelessNode extends TypedAtomicActor {
     public Time timeOfDeath;
     protected Map<String, Double> eventCommCostMap;
    // private boolean flagAlive;
+    
+    protected String dataReporterFileName;
+    protected File dataReporterFile;
     
     public StringParameter commChannelName;
     
@@ -127,6 +132,8 @@ public abstract class WirelessNode extends TypedAtomicActor {
 		else {
 			_fireAt((this.getDirector().getModelTime().add(round((Double.parseDouble(battery.getValueAsString())/Double.parseDouble(idleEnergyCost.getExpression()))))));
 		}
+		
+	setDataReportFileName();
 	}
     
 	public void fire() throws NoTokenException, IllegalActionException {
@@ -245,6 +252,10 @@ public abstract class WirelessNode extends TypedAtomicActor {
 				//        "; GATEWAY: " + gateway.getExpression());
 		                //System.out.println("BATTERY WNODE AF3:" + battery.getExpression() + " ;EVENT: " + token);
 
+				BenchmarksGenerator.appendDataReportFile(dataReporterFileName, 
+				        "EVENT: " + token + "; NODE: " + this.getName() +
+                                        "; GATEWAY: " + gateway.getExpression());
+				
 				this.numberOfSentMessages++;
 				return true;
 			}
@@ -365,5 +376,31 @@ public abstract class WirelessNode extends TypedAtomicActor {
                 e.printStackTrace();
             } 	
         }
+	
+	public void setDataReportFileName() {
+	    CompositeActor container = (CompositeActor) getContainer();
+	        @SuppressWarnings("rawtypes")
+	        Iterator actors = container.deepEntityList().iterator();
+	        dataReporterFileName = "";
+	        while (actors.hasNext()) {
+	            Entity actor = (Entity) actors.next();
+	            
+	            if(actor.getClassName().equals("eboracum.simulation.DataReporter") ||
+	                    actor.getClassName().equals("eboracum.pathloss.simulations.PLDataReporter")) {
+	                DataReporter dataReporter = (DataReporter)actor;
+	                if(dataReporter.simulationReportFile.getValueAsString().equals("null")) {
+	                    dataReporterFileName = dataReporter.simulationReportFile.getExpression();
+	                } else {
+	                    dataReporter.simulationReportFile.getValueAsString();
+	                }
+	                break;
+	            }
+	            
+	        }
+	        
+	        if(dataReporterFileName != "") {
+	            dataReporterFile = new File(dataReporterFileName);
+	        } 
+	}
 
 }
